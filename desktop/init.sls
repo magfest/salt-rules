@@ -1,5 +1,5 @@
 'gnome':
-  yumpkg.group_install: []
+  pkg.group_install: []
 
 gdm:
   service.running:
