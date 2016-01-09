@@ -1,0 +1,11 @@
+[magfest-fedora]
+name=MAGFest Fedora $releasever
+baseurl=http://repo.magfest.net/fedora-$basearch/RPMS.core/
+enabled=1
+gpgcheck=0
+
+[magfest-updates]
+name=MAGFest Fedora Updates $releasever
+baseurl=http://repo.magfest.net/fedora-$basearch/RPMS.updates/
+enabled=1
+gpgcheck=0

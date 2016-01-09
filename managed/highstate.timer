@@ -1,0 +1,10 @@
+[Unit]
+Description=Ensure that the highstate is enforced on a schedule
+
+[Timer]
+OnCalendar=hourly
+AccuracySec=15m
+Unit=highstate.service
+
+[Install]
+WantedBy=timers.target
