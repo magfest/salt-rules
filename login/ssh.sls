@@ -9,7 +9,7 @@ openssh-clients:
 
 sshd:
   service.running:
-    - enabled: True
+    - enable: True
     - require:
        - pkg: openssh-server
     - watch:
