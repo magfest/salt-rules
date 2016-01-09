@@ -1,5 +1,5 @@
 'gnome':
-  pkg.group_install: []
+  pkg.group_installed
 
 gdm:
   service.running:
