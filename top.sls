@@ -6,3 +6,4 @@ base:
     - login.ssh
     - login.admin
     - network.time
+    - desktop
