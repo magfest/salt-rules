@@ -1,5 +1,7 @@
-lxde-desktop:
-  pkg.group_install
+lxde:
+  module.run:
+    - name: yumpkg.group_install
+    - m_name: lxde-desktop
 
 lxdm:
   service.running:
