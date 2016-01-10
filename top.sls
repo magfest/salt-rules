@@ -13,3 +13,4 @@ base:
     - desktop.admins
     - extlinux
     - graphics
+    - kiosk
