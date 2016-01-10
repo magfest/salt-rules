@@ -33,7 +33,7 @@
   file.managed:
     - source: salt://extlinux/kiosk.target
 
-daemon-reload:
+extlinux-daemon-reload:
   cmd.wait:
     - watch:
       - file: /etc/systemd/system/challenges.target
@@ -47,16 +47,16 @@ setboot-challenges:
   service.enabled: []
   require:
     - file: /etc/systemd/system/setboot-challenges.service
-    - cmd: daemon-reload
+    - cmd: extlinux-daemon-reload
 
 setboot-reg:
   service.enabled: []
   require:
     - file: /etc/systemd/system/setboot-reg.service
-    - cmd: daemon-reload
+    - cmd: extlinux-daemon-reload
 
 setboot-kiosk:
   service.enabled: []
   require:
     - file: /etc/systemd/system/setboot-kiosk.service
-    - cmd: daemon-reload
+    - cmd: extlinux-daemon-reload
