@@ -90,3 +90,11 @@ lxdeconf:
     - source:
       - salt://desktop/desktop-items-0.conf
     - makedirs: True
+
+/home/magfest:
+  file.directory:
+    - user: magfest
+    - group: magfest
+    - recurse:
+      - user
+      - group
