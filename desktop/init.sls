@@ -42,6 +42,9 @@ lxde:
       - xscreensaver-extras
       - yumex
       - xorg-x11-drv-evdev
+      - ghostscript
+      - ghostscript-fonts
+      - hplip
 
 lxdm:
   service.running:
