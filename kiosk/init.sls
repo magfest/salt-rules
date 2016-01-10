@@ -4,7 +4,7 @@
     - source_hash: https://repo.magfest.net/porteus.kiosk.iso.hash
 
 imagekiosk:
-  exec.wait:
+  cmd.wait:
     - name: /usr/bin/dd if=/root/kiosk.iso of=/dev/sda4 bs=1M
     - watch:
       - file: /root/kiosk.iso
