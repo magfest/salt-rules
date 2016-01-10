@@ -3,7 +3,6 @@ lxde:
     - pkgs:
       - adwaita-gtk2-theme
       - adwaita-icon-theme
-      - clipit
       - fedora-icon-theme
       - firewall-config
       - galculator
@@ -42,7 +41,7 @@ lxde:
       - xscreensaver-base
       - xscreensaver-extras
       - yumex
-      - xf86-input-evdev
+      - xorg-x11-drv-evdev
 
 lxdm:
   service.running:
