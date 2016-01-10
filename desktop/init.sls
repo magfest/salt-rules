@@ -55,3 +55,22 @@ desktop:
     - name: /etc/sysconfig/desktop
     - source:
       - salt://desktop/desktop
+
+magfest:
+  user.present:
+    - fullname: MAGFest
+    - shell: /usr/bin/bash
+    - home: /home/magfest
+    - groups:
+
+wallpaper:
+  file.managed:
+    - name: /usr/share/backgrounds/magfest.png
+    - source:
+      - salt://desktop/magfest.png
+
+lxdm.conf:
+  file.managed:
+    - name: /etc/lxdm/lxdm.conf
+    - source:
+      - salt://desktop/lxdm.conf
