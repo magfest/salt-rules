@@ -19,7 +19,7 @@
 
 /etc/systemd/system/setboot-challenges.service:
   file.managed:
-    - source: salt://extlinux/setboot-chellenges.service
+    - source: salt://extlinux/setboot-challenges.service
 
 /etc/systemd/system/setboot-reg.service:
   file.managed:
