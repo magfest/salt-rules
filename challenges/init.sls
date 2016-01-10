@@ -12,7 +12,7 @@
 
 salt-minion-challenges:
   file.symlink:
-    - name: /etc/systemd/system/challenges.target.wants/salt-minion.service:
+    - name: /etc/systemd/system/challenges.target.wants/salt-minion.service
     - target: /usr/lib/systemd/system/salt-minion.service
 
 /etc/systemd/system/challenges.target.wants/salt-minion.service:
