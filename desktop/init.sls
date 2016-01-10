@@ -1,7 +1,7 @@
 lxde:
   module.run:
     - name: pkg.group_install
-    - m_name: lxde-desktop
+    - m_name: "LXDE Desktop"
 
 lxdm:
   service.running:
