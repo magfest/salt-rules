@@ -9,3 +9,9 @@ name=MAGFest Fedora Updates $releasever
 baseurl=http://repo.magfest.net/fedora-$basearch/RPMS.updates/
 enabled=1
 gpgcheck=0
+
+[magfest-install]
+name=MAGFest Fedora Install $releasever
+baseurl=http://repo.magfest.net/fedora-$basearch/disc1/
+enabled=1
+gpgcheck=0
