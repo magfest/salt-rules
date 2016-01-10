@@ -6,8 +6,10 @@ base:
     - login.ssh
     - login.admin
     - network.time
+    - utils
   'laptop.magfest.net':
     - desktop
     - desktop.utilities
+    - desktop.admins
     - extlinux
     - graphics
