@@ -1,5 +1,5 @@
 lxde-desktop:
-  yumpkg.group_install
+  pkg.group_install
 
 lxdm:
   service.running:
