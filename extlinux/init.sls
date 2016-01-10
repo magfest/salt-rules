@@ -1,14 +1,17 @@
 /boot/extlinux/challenges.cfg:
   file.managed:
     - source: salt://extlinux/challenges.cfg
+    - template: jinja
 
 /boot/extlinux/registration.cfg:
   file.managed:
     - source: salt://extlinux/registration.cfg
+    - template: jinja
 
 /boot/extlinux/kiosk.cfg:
   file.managed:
     - source: salt://extlinux/kiosk.cfg
+    - template: jinja
 
 /etc/systemd/system/challenges.target:
   file.managed:
