@@ -18,3 +18,4 @@ sshd:
     - context: /files/etc/ssh/sshd_config
     - changes:
       - set PermitEmptyPasswords no
+      - set PasswordAuthentication no
