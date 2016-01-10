@@ -108,6 +108,10 @@ lxdeconf:
   file.managed:
     - source: salt://desktop/slack.png
 
+/usr/share/icons/hicolor/128x128/apps/uber.png:
+  file.managed:
+    - source: salt://desktop/uber.png
+
 /home/magfest/Desktop:
   file.recurse:
     - source: salt://desktop/Desktop

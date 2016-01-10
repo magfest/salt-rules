@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Icon=/usr/share/icons/hicolor/128x128/apps/uber.png
+Name=Über
+Exec=google-chrome http://onsite.uber.magfest.org
+
+Comment[en_US]=
+
