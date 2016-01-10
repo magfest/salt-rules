@@ -7,5 +7,11 @@ lxdm:
   service.running:
     - enable: True
     - require:
-      - pkg: gnome-session
-      - pkg: xorg-x11-server-Xorg
+      - file: desktop
+      - module: lxde
+
+desktop:
+  file.managed:
+    - name: /etc/sysconfig/desktop
+    - source:
+      - salt://desktop/desktop
