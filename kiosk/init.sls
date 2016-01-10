@@ -14,4 +14,5 @@ vmlinuz:
     - name: /boot/porteus-vmlinuz
     - source: /porteus/boot/vmlinuz
     - force: True
-    - require: file: /root/kiosk.iso
+    - require:
+      - file: /root/kiosk.iso
