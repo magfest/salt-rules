@@ -42,6 +42,7 @@ lxde:
       - xscreensaver-base
       - xscreensaver-extras
       - yumex
+      - xf86-input-evdev
 
 lxdm:
   service.running:
