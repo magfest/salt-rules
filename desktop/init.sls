@@ -45,6 +45,7 @@ lxde:
       - ghostscript
       - ghostscript-fonts
       - hplip
+      - google-chrome-stable
 
 lxdm:
   service.running:
