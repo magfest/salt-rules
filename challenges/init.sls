@@ -50,3 +50,4 @@ profile:
     - source: salt://challenges/profile
     - owner: challenges
     - group: challenges
+    - mode: 755
