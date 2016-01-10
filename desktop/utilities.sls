@@ -1,4 +1,4 @@
-lxde:
+utilities:
   pkg.installed:
     - pkgs:
       - mlocate
