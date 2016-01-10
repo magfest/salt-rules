@@ -10,3 +10,4 @@ base:
     - desktop
     - desktop.utilities
     - extlinux
+    - graphics
