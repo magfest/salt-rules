@@ -104,3 +104,12 @@ lxdeconf:
   file.managed:
     - source: salt://desktop/greeter.ui
 
+/usr/share/icons/hicolor/128x128/apps/slack.png:
+  file.managed:
+    - source: salt://desktop/slack.png
+
+/home/magfest/Desktop:
+  file.recurse:
+    - source: salt://desktop/Desktop
+    - user: magfest
+    - group: magfest

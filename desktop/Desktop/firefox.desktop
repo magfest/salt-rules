@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Icon=firefox
+Name=Firefox
+Exec=firefox http://magfest.org
+
+Comment[en_US]=
+

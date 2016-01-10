@@ -1,0 +1,9 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Icon=/usr/share/icons/hicolor/128x128/apps/slack.png
+Name=Slack
+Exec=google-chrome --app=http://magfest.slack.com
+
+Comment[en_US]=
+
