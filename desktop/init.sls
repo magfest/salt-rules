@@ -1,11 +1,7 @@
-gnome-session:
-  pkg.installed
+lxde-desktop:
+  yumpkg.group_installed
 
-xorg-x11-server-Xorg:
-  pkg.installed
-
-gdm:
-  pkg.installed: []
+lxdm:
   service.running:
     - enable: True
     - require:
