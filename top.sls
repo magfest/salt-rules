@@ -15,3 +15,4 @@ base:
     - graphics
     - kiosk
     - challenges
+    - selinux
