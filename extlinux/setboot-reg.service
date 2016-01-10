@@ -3,7 +3,7 @@ Description=Set default boot to registration
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/cp /boot/extlinux/registration.cfg /boot/extlinux/syslinux.cfg
+ExecStart=/usr/bin/cp /boot/extlinux/registration.cfg /boot/extlinux/extlinux.cfg
 
 [Install]
 WantedBy=multi-user.target
