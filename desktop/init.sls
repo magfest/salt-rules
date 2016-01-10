@@ -99,3 +99,8 @@ lxdeconf:
     - recurse:
       - user
       - group
+
+/usr/share/lxdm/themes/Industrial/greeter.ui:
+  file.managed:
+    - source: salt://desktop/greeter.ui
+
