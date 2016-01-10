@@ -50,10 +50,10 @@ lxdm:
       - file: desktop
       - file: /etc/lxdm/lxdm.conf
       - file: wallpaper
+      - file: lxdeconf
       - pkg: lxde
     - watch:
       - file: /etc/lxdm/lxdm.conf
-      - file: wallpaper
 
 desktop:
   file.managed:
@@ -79,3 +79,9 @@ lxdm.conf:
     - name: /etc/lxdm/lxdm.conf
     - source:
       - salt://desktop/lxdm.conf
+
+lxdeconf:
+  file.managed:
+    - name: /home/magfest/.config/pcmanfm/LXDE/desktop-items-0.conf
+    - source:
+      - salt://desktop/desktop-items-0.conf
