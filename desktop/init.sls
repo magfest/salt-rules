@@ -1,6 +1,6 @@
 lxde:
   module.run:
-    - name: yumpkg.group_install
+    - name: pkg.group_install
     - m_name: lxde-desktop
 
 lxdm:
