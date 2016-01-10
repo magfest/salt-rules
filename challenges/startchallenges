@@ -1,0 +1,2 @@
+#!/usr/bin/bash
+/usr/sbin/lxdm -c /etc/lxdm/challenges.conf

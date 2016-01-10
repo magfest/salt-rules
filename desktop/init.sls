@@ -8,6 +8,7 @@ lxde:
       - galculator
       - gigolo
       - gnome-keyring-pam
+      - gnome-screenshot
       - gpicview
       - initial-setup-gui
       - leafpad

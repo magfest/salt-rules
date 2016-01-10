@@ -1,0 +1,8 @@
+[Unit]
+Description=Run Magfest Challenges
+
+[Service]
+ExecStart=/usr/bin/startchallenges
+
+[Install]
+WantedBy=challenges.target
