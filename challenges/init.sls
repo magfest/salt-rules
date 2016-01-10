@@ -31,6 +31,7 @@ challenges:
     - empty_password: True
     - home: /home/challenges
     - groups:
+      - autologin
 
 /usr/bin/startchallenges:
   file.managed:
