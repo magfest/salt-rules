@@ -65,6 +65,7 @@ magfest:
   user.present:
     - fullname: MAGFest
     - shell: /usr/bin/bash
+    - empty_password: True
     - home: /home/magfest
     - groups:
 
