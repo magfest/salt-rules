@@ -23,6 +23,12 @@ salt-minion-challenges:
   file.managed:
     - source: salt://challenges/challenges.service
 
+nopasswdlogin:
+  group.present
+
+autologin:
+  group.present
+
 challenges:
   service.enabled: []
   user.present:
@@ -32,6 +38,7 @@ challenges:
     - home: /home/challenges
     - groups:
       - autologin
+      - nopasswdlogin
 
 /usr/bin/startchallenges:
   file.managed:
