@@ -11,6 +11,8 @@ timesyncd:
     - user: root
     - watch:
       - file: timesyncd
+    - require:
+      - pkg: chrony
 
 # This is necessary in order to allow timesyncd to run on virtual machines.
 timesyncd-allowvirtual:
