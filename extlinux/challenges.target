@@ -1,0 +1,6 @@
+[Unit]
+Description=Challenges Go!
+Documentation=man:systemd.special(7)
+Requires=basic.target
+After=basic.target rescue.service rescue.target
+AllowIsolate=yes

@@ -9,3 +9,4 @@ base:
   'laptop.magfest.net':
     - desktop
     - desktop.utilities
+    - extlinux

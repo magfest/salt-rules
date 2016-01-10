@@ -1,0 +1,10 @@
+[Unit]
+Description=Set default boot to challenges
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/cp /boot/syslinux/kiosk.cfg /boot/syslinux/syslinux.cfg
+ExecStart=/usr/bin/reboot
+
+[Install]
+WantedBy=kiosk.target
