@@ -38,3 +38,5 @@ timezone:
     - user: root
     - unless: ls -l '/etc/localtime' | grep '{{ timezone }}'
 
+chrony:
+  pkg.installed
