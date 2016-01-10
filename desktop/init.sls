@@ -86,3 +86,4 @@ lxdeconf:
     - name: /home/magfest/.config/pcmanfm/LXDE/desktop-items-0.conf
     - source:
       - salt://desktop/desktop-items-0.conf
+    - makedirs: True
