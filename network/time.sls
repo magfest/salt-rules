@@ -11,11 +11,6 @@ timesyncd:
     - user: root
     - watch:
       - file: timesyncd
-  service.running:
-    - name: systemd-timesyncd
-    - enable: True
-    - require:
-      - file: timesyncd-allowvirtual
 
 # This is necessary in order to allow timesyncd to run on virtual machines.
 timesyncd-allowvirtual:
