@@ -68,6 +68,6 @@ setboot-kiosk:
 
 /boot/initramfs:
   file.copy:
-    - source: /initramfs-{{ salt['grains.get']('kernelrelease') }}.img
+    - source: /boot/initramfs-{{ salt['grains.get']('kernelrelease') }}.img
     - force: True
 
