@@ -3,7 +3,7 @@ Description=Set default boot to challenges
 
 [Service]
 Type=oneshot
-ExecStart=/usr/bin/cp /boot/extlinux/challenges.cfg /boot/extlinux/extlinux.cfg
+ExecStart=/usr/bin/cp /boot/extlinux/challenges.cfg /boot/extlinux/extlinux.conf
 
 [Install]
 WantedBy=challenges.target
