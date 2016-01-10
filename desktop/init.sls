@@ -49,8 +49,7 @@ lxde:
       - google-chrome-stable
 
 lxdm:
-  service.running:
-    - enable: True
+  service.enabled:
     - require:
       - file: desktop
       - file: /etc/lxdm/lxdm.conf
