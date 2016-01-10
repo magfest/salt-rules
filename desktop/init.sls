@@ -47,15 +47,13 @@ lxdm:
   service.running:
     - enable: True
     - require:
-      - file:
-        - desktop
-        - /etc/lxdm/lxdm.conf
-        - wallpaper
+      - file: desktop
+      - file: /etc/lxdm/lxdm.conf
+      - file: wallpaper
       - pkg: lxde
     - watch:
-      - file:
-        - /etc/lxdm/lxdm.conf
-        - wallpaper
+      - file: /etc/lxdm/lxdm.conf
+      - file: wallpaper
 
 desktop:
   file.managed:
