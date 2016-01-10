@@ -1,6 +1,8 @@
 gnome-session:
   pkg.installed
 
+xorg-x11-server-Xorg:
+  pkg.installed
 
 gdm:
   pkg.installed: []
@@ -8,3 +10,4 @@ gdm:
     - enable: True
     - require:
       - pkg: gnome-session
+      - pkg: xorg-x11-server-Xorg
