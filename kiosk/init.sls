@@ -1,7 +1,7 @@
 /root/kiosk.iso:
   file.managed:
-    - source: https://repo.magfest.net/porteus/kiosk.iso
-    - source_hash: https://repo.magfest.net/porteus.kiosk.iso.hash
+    - source: http://repo.magfest.net/porteus/kiosk.iso
+    - source_hash: http://repo.magfest.net/porteus.kiosk.iso.hash
 
 imagekiosk:
   cmd.wait:

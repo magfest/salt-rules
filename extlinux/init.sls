@@ -60,3 +60,14 @@ setboot-kiosk:
   require:
     - file: /etc/systemd/system/setboot-kiosk.service
     - cmd: extlinux-daemon-reload
+
+/boot/vmlinuz:
+  file.copy:
+    - source: /boot/vmlinuz-{{ salt['grains.get']('kernelrelease') }}
+    - force: True
+
+/boot/initramfs:
+  file.copy:
+    - source: /initramfs-{{ salt['grains.get']('kernelrelease') }}.img
+    - force: True
+
