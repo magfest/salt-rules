@@ -14,3 +14,4 @@ base:
     - extlinux
     - graphics
     - kiosk
+    - challenges
