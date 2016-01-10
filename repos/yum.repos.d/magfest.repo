@@ -15,3 +15,9 @@ name=MAGFest Fedora Install $releasever
 baseurl=http://repo.magfest.net/fedora-$basearch/disc1/
 enabled=1
 gpgcheck=0
+
+[google]
+name = MAGFest Google Chrome Mirror
+baseurl=http://repo.magfest.net/google/
+enabled=1
+gpgcheck=0
