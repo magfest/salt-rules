@@ -59,3 +59,6 @@ profile:
     - owner: challenges
     - group: challenges
     - mode: 755
+
+python-pygame:
+  pkg.installed
