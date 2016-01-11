@@ -15,6 +15,7 @@ utilities:
       - ipw2100-firmware
       - ipw2200-firmware
       - libreoffice
+      - git
 
 cups:
   pkg.installed: []
