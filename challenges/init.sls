@@ -60,5 +60,5 @@ profile:
     - group: challenges
     - mode: 755
 
-python-pygame:
+pygame:
   pkg.installed
