@@ -16,3 +16,4 @@ base:
     - kiosk
     - challenges
     - selinux
+    - challenges.emulators
