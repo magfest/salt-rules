@@ -1,0 +1,8 @@
+[Unit]
+Description=Sync containers among cloud hosts
+
+[Service]
+ExecStart=/usr/bin/containersync
+
+[Install]
+WantedBy=multi-user.target
