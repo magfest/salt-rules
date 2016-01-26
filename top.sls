@@ -41,3 +41,6 @@ base:
     - challenges
     - selinux
     - challenges.emulators
+
+  'repo.magfest.net':
+    - mrepo
