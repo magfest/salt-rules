@@ -16,7 +16,7 @@ pacman:
     - require:
       - file: /srv/images
 
-/usr/bin/pacstrap /srv/images/arch base:
+/usr/bin/pacstrap -d /srv/images/arch base:
   cmd.run:
     - creates: /srv/images/arch/etc/arch-release
     - require:
