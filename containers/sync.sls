@@ -1,21 +1,24 @@
 lsyncd:
   pkg.installed: []
 
-replication-group:
-  user.present:
-    - name: replication
-    - groups:
-      - root
-
-/home/replication/.ssh:
+/root/.ssh:
   file.directory:
     - mode: 700
 
-/home/replication/.ssh/id_rsa:
+/root/.ssh/id_rsa:
   file.managed:
-    - source: salt://containers/keys/replication
+    - source: salt://containers/keys/root
     - require:
-      - file: /home/replication/.ssh
+      - file: /root/.ssh
     - mode: 600
-    - owner: replication
-    - group: replication
+    - owner: root
+    - group: root
+
+/root/.ssh/authorized_keys:
+  file.managed:
+    - source: salt://containers/keys/root.pub
+    - require:
+      - file: /root/.ssh
+    - mode: 600
+    - owner: root
+    - group: root
