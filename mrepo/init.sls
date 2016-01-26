@@ -46,29 +46,34 @@ lftp:
     - mode: 0640
     - user: root
     - group: root
-    - contents: "
-      {{ salt['pillar.get']('mrepo:cert1')|indent(4) }}"
+    - contents: "{{ salt['pillar.get']('mrepo:cert1')|indent(4) }}"
 
 /etc/nginx/ssl/chain1.pem:
   file.managed:
     - mode: 0640
     - user: root
     - group: root
-    - contents: "
-      {{ salt['pillar.get']('mrepo:chain1')|indent(4) }}"
+    - contents: "{{ salt['pillar.get']('mrepo:chain1')|indent(4) }}"
 
 /etc/nginx/ssl/fullchain1.pem:
   file.managed:
     - mode: 0640
     - user: root
     - group: root
-    - contents: "
-      {{ salt['pillar.get']('mrepo:fullchain1')|indent(4) }}"
+    - contents: "{{ salt['pillar.get']('mrepo:fullchain1')|indent(4) }}"
 
 /etc/nginx/ssl/privkey1.pem:
   file.managed:
     - mode: 0640
     - user: root
     - group: root
-    - contents: "
-      {{ salt['pillar.get']('mrepo:privkey1')|indent(4) }}"
+    - contents: "{{ salt['pillar.get']('mrepo:privkey1')|indent(4) }}"
+
+nginx:
+  pkg.installed: []
+  service.running:
+    - enable: True
+    - watch:
+      - file: /etc/nginx/*
+    - require:
+      - file: /etc/nginx/*
