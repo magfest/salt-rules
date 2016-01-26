@@ -8,9 +8,11 @@ base:
     - network.time
     - utils
   'cloudeins.magfest.net':
+    - containers.sync
     - containers
     - network.bridge
   'cloudzwei.magfest.net':
+    - containers.sync
     - containers
     - network.bridge
   'laptop.magfest.net':
