@@ -1,0 +1,10 @@
+[Unit]
+Description=Hardware RNG Entropy Gatherer Daemon
+
+[Service]
+ExecStart=/sbin/rngd -f $EXTRAOPTIONS
+EnvironmentFile=-/etc/sysconfig/rngd
+SuccessExitStatus=66
+
+[Install]
+WantedBy=multi-user.target

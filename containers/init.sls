@@ -2,6 +2,23 @@
   file.managed:
     - source: salt://containers/systemd-nspawn@.service
 
+rngd:
+  pkg.installed: []
+  service.running:
+    - enable: True
+    - require:
+      - pkg: rngd
+      - file: /etc/sysconfig/rngd
+      - file: /etc/systemd/system/rngd.service
+
+/etc/sysconfig/rngd:
+  file.managed:
+    - source: salt://containers/rngd
+
+/etc/systemd/system/rngd.service:
+  file.managed:
+    - source: salt://containers/rngd.service
+
 arch-install-scripts:
   pkg.installed
 
@@ -25,6 +42,7 @@ gpg:
     - require:
       - pkg: gpg
       - pkg: pacman
+      - service: rngd
 
 /usr/bin/pacstrap -d /srv/images/arch base:
   cmd.run:
