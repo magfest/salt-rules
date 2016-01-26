@@ -77,8 +77,21 @@ fedora-installroot:
     - require:
       - file: /srv/images
 
-/usr/bin/dnf --installroot=/srv/images/fedora -y install salt-minion:
+fedora-salt:
   cmd.run:
+    - name: /usr/bin/dnf --installroot=/srv/images/fedora -y install salt-minion
     - creates: /srv/images/fedora/usr/bin/salt-call
     - require:
       - cmd: fedora-installroot
+
+/srv/images/arch/etc/salt/minion:
+  file.managed:
+    - source: salt://managed/minion.yaml
+    - require:
+      - cmd: arch-installroot
+
+/srv/images/fedora/etc/salt/minion:
+  file.managed:
+    - source: salt://managed/minion.yaml
+    - require:
+      - cmd: fedora-salt
