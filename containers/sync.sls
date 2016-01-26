@@ -27,7 +27,7 @@ lsyncd:
   file.managed:
     - source: salt://containers/10-inotify.conf
 
-sysctl -p:
+sysctl -p --system:
   cmd.wait:
     - watch:
       - file: /etc/sysctl.d/10-inotify.conf
