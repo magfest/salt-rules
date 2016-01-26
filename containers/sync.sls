@@ -1,6 +1,12 @@
 lsyncd:
   pkg.installed: []
 
+replication-group:
+  user.present:
+    - name: replication
+    - groups:
+      - root
+
 /home/replication/.ssh:
   file.directory:
     - mode: 700
