@@ -1,8 +1,14 @@
 {% if pillar.admins %}
 {% for admin, properties in pillar.admins.items() %}
-{{ admin }}:
+{{ admin }}present:
   user.present:
+    - name: {{ admin }}
     - remove_groups: False
+{{ admin }}passwd:
+  user.present:
+    - name: {{ admin }}
+    - require:
+      - user: {{ admin }}present
     {% for key, value in properties.items() %}
     - {{key}}: {{value}}
     {% endfor %}
