@@ -63,3 +63,9 @@ gnupg:
       - file: /srv/images/arch
       - cmd: /usr/bin/pacman-key --init
       - cmd: /usr/bin/pacman-key --populate
+
+/usr/bin/dnf --installroot=/srv/images/fedora -y groupinstall core:
+  cmd.run:
+    - creates: /srv/images/fedora/etc/fedora-release
+    - require:
+      - file: /srv/images
