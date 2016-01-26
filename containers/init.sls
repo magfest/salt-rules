@@ -2,12 +2,14 @@
   file.managed:
     - source: salt://containers/systemd-nspawn@.service
 
-rngd:
+rng-tools:
   pkg.installed: []
+
+rngd:
   service.running:
     - enable: True
     - require:
-      - pkg: rngd
+      - pkg: rng-tools
       - file: /etc/sysconfig/rngd
       - file: /etc/systemd/system/rngd.service
 
@@ -25,7 +27,7 @@ arch-install-scripts:
 pacman:
   pkg.installed
 
-gpg:
+gnupg:
   pkg.installed
 
 /srv/images:
