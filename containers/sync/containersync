@@ -38,13 +38,17 @@ class Process:
   def start(self):
     if not self.running:
       self.pid = subprocess.Popen(self.cmd).pid
+      self.running = True
 
   def restart(self):
+    print("Restarting lsyncd")
     self.stop()
     self.start()
 
   def stop(self):
     os.kill(self.pid, signal.SIGTERM)
+    time.sleep(5)
+    self.running = False
 
 lsyncd = Process(["/usr/bin/lsyncd", config['lsyncd_conf_path']])
 
