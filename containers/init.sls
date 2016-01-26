@@ -27,6 +27,10 @@ arch-install-scripts:
 pacman:
   pkg.installed
 
+/etc/pacman.conf:
+  file.managed:
+    - source: salt://containers/pacman.conf
+
 gnupg:
   pkg.installed
 
@@ -53,19 +57,28 @@ gnupg:
     - watch:
       - cmd: /usr/bin/pacman-key --init
 
-/usr/bin/pacstrap -d /srv/images/arch base:
+arch-installroot:
   cmd.run:
+    - name: /usr/bin/pacstrap -d /srv/images/arch base salt-zmq
     - creates: /srv/images/arch/etc/arch-release
     - require:
       - pkg: arch-install-scripts
       - pkg: pacman
       - file: /srv/images
       - file: /srv/images/arch
+      - file: /etc/pacman.conf
       - cmd: /usr/bin/pacman-key --init
       - cmd: /usr/bin/pacman-key --populate
 
-/usr/bin/dnf --installroot=/srv/images/fedora -y groupinstall core:
+fedora-installroot:
   cmd.run:
+    - name: /usr/bin/dnf --installroot=/srv/images/fedora install base
     - creates: /srv/images/fedora/etc/fedora-release
     - require:
       - file: /srv/images
+
+/usr/bin/dnf --installroot=/srv/images/fedora -y install salt-minion:
+  cmd.run:
+    - creates: /srv/images/fedora/usr/bin/salt-call
+    - require:
+      - cmd: fedora-installroot
