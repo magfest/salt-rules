@@ -38,8 +38,13 @@ lftp:
   file.managed:
     - source: salt://mrepo/nginx.conf
 
+/etc/nginx/:
+  file.directory: []
+
 /etc/nginx/ssl/:
-  file.directory: []  
+  file.directory:
+    - require:
+      - file: /etc/nginx/  
 
 /etc/nginx/ssl/cert1.pem:
   file.managed:
@@ -47,6 +52,8 @@ lftp:
     - user: root
     - group: root
     - contents: "{{ salt['pillar.get']('mrepo:cert1')|indent(4) }}"
+    - require:
+      - file: /etc/nginx/ssl/
 
 /etc/nginx/ssl/chain1.pem:
   file.managed:
@@ -54,6 +61,8 @@ lftp:
     - user: root
     - group: root
     - contents: "{{ salt['pillar.get']('mrepo:chain1')|indent(4) }}"
+    - require:
+      - file: /etc/nginx/ssl/
 
 /etc/nginx/ssl/fullchain1.pem:
   file.managed:
@@ -61,6 +70,8 @@ lftp:
     - user: root
     - group: root
     - contents: "{{ salt['pillar.get']('mrepo:fullchain1')|indent(4) }}"
+    - require:
+      - file: /etc/nginx/ssl/
 
 /etc/nginx/ssl/privkey1.pem:
   file.managed:
@@ -68,6 +79,8 @@ lftp:
     - user: root
     - group: root
     - contents: "{{ salt['pillar.get']('mrepo:privkey1')|indent(4) }}"
+    - require:
+      - file: /etc/nginx/ssl/
 
 nginx:
   pkg.installed: []
