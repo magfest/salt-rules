@@ -7,6 +7,9 @@ base:
     - login.admin
     - network.time
     - utils
+  'cloudeins.magfest.net':
+    - containers
+    - network.bridge
   'cloudzwei.magfest.net':
     - containers
     - network.bridge
