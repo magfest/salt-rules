@@ -72,7 +72,7 @@ arch-installroot:
 
 fedora-installroot:
   cmd.run:
-    - name: /usr/bin/dnf --installroot=/srv/images/fedora install base
+    - name: /usr/bin/dnf --installroot=/srv/images/fedora groupinstall core
     - creates: /srv/images/fedora/etc/fedora-release
     - require:
       - file: /srv/images
