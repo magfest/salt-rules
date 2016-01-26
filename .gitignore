@@ -1,3 +1,5 @@
 login/keys/*
+containers/keys/*
 !login/keys/.keep
+!containers/keys/.keep
 *~
