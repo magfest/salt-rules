@@ -53,7 +53,7 @@ lftp:
     - mode: 0640
     - user: root
     - group: root
-    - contents: "{{ salt['pillar.get']('mrepo:cert1')|indent(4) }}"
+    - contents_pillar: mrepo:cert1
     - require:
       - file: /etc/nginx/ssl/
 
@@ -62,7 +62,7 @@ lftp:
     - mode: 0640
     - user: root
     - group: root
-    - contents: "{{ salt['pillar.get']('mrepo:chain1')|indent(4) }}"
+    - contents_pillar: mrepo:chain1
     - require:
       - file: /etc/nginx/ssl/
 
@@ -71,7 +71,7 @@ lftp:
     - mode: 0640
     - user: root
     - group: root
-    - contents: "{{ salt['pillar.get']('mrepo:fullchain1')|indent(4) }}"
+    - contents_pillar: mrepo:fullchain1
     - require:
       - file: /etc/nginx/ssl/
 
@@ -80,7 +80,7 @@ lftp:
     - mode: 0640
     - user: root
     - group: root
-    - contents: "{{ salt['pillar.get']('mrepo:privkey1')|indent(4) }}"
+    - contents_pillar: mrepo:privkey1
     - require:
       - file: /etc/nginx/ssl/
 
