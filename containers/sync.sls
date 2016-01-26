@@ -32,10 +32,12 @@ sysctl -p --system:
     - watch:
       - file: /etc/sysctl.d/10-inotify.conf
 
-{% for server, key in salt['mine.get']('roles:containerhost', 'sshkey', expr_form='pillar').items() %}
+{% for server, key in salt['mine.get']('roles:containerhost', 'sshkeys', expr_form='pillar').items() %}
+{% if server != grains['nodename'] %}
 {{ server }}:
   ssh_known_hosts.present:
     - key: {{ key }}
     - user: root
     - enc: ssh-rsa
+{% endif %}
 {% endfor %}
