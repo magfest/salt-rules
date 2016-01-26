@@ -84,7 +84,7 @@ while True:
       os.makedirs(os.path.dirname(config['lsyncd_conf_path']))
     with open(config['lsyncd_conf_path'], "w") as currentConfFile:
       currentConfFile.write(lsyncdConf)
-      lsyncd.restart()
+    lsyncd.restart()
   lsyncd.start()
 
 lsyncd.stop()
