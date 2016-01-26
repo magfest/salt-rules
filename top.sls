@@ -11,6 +11,7 @@ base:
     - containers.sync
     - containers
     - network.bridge
+    - selinux
 
   'role:container':
     - match: pillar
