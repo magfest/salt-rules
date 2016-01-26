@@ -31,3 +31,11 @@ sysctl -p --system:
   cmd.wait:
     - watch:
       - file: /etc/sysctl.d/10-inotify.conf
+
+{% for server, key in salt['mine.get']('roles:containerhost', 'sshkey', expr_form='pillar').items() %}
+{{ server }}:
+  ssh_known_hosts.present:
+    - key: {{ key }}
+    - user: root
+    - enc: ssh-rsa
+{% endfor %}
