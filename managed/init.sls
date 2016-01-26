@@ -32,4 +32,5 @@ daemon-reload:
     - name: systemctl daemon-reload
     - user: root
     - group: root
-
+    - watch:
+      - file: /etc/systemd/system/*

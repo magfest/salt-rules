@@ -8,6 +8,7 @@ base:
     - network.time
     - utils
   'cloudzwei.magfest.net':
+    - containers
     - network.bridge
   'laptop.magfest.net':
     - desktop
