@@ -46,6 +46,13 @@ gnupg:
       - pkg: pacman
       - service: rngd
 
+/usr/bin/pacman-key --populate:
+  cmd.wait:
+    - require:
+      - cmd: /usr/bin/pacman-key --init
+    - watch:
+      - cmd: /usr/bin/pacman-key --init
+
 /usr/bin/pacstrap -d /srv/images/arch base:
   cmd.run:
     - creates: /srv/images/arch/etc/arch-release
@@ -55,3 +62,4 @@ gnupg:
       - file: /srv/images
       - file: /srv/images/arch
       - cmd: /usr/bin/pacman-key --init
+      - cmd: /usr/bin/pacman-key --populate
