@@ -95,3 +95,18 @@ fedora-salt:
     - source: salt://managed/minion.yaml
     - require:
       - cmd: fedora-salt
+
+/srv/images/arch/etc/securetty:
+  file.append:
+    - text:
+      - "pts/0"
+
+/srv/images/arch/etc/shadow:
+  file.replace:
+    - pattern: "^root::.*$"
+    - repl: "root:$6$oisdfoiaj$rffY1PXLJ5DLMOV/nmA8elQRRNbq8hgK7K/WZsXc3SOvmFZd6qRYXRH9IttsQ7x3yXbShSbJcn9h0j7/T7uQC1:14871::::::"
+
+/srv/images/fedora/etc/shadow:
+  file.replace:
+    - pattern: "^root:\*:.*$"
+    - repl: "root:$6$oisdfoiaj$rffY1PXLJ5DLMOV/nmA8elQRRNbq8hgK7K/WZsXc3SOvmFZd6qRYXRH9IttsQ7x3yXbShSbJcn9h0j7/T7uQC1:16805:0:99999:7:::"
