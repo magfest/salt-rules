@@ -6,7 +6,7 @@ systemd-networkd:
 
 /etc/systemd/network/host0.network:
   file.managed:
-    - source: salt://network/bridge/host0.network
+    - source: salt://network/container/host0.network
     - template: jinja
     - require:
       - file: /etc/systemd/network
