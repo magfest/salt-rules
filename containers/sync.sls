@@ -34,8 +34,9 @@ sysctl -p --system:
 
 {% for server, key in salt['mine.get']('*', 'sshkeys').items() %}
 {% if server != grains['nodename'] %}
-/root/.ssh/known_hosts:
+{{ server }}-known_hosts:
   file.append:
+    - name: /root/.ssh/known_hosts
     - text:
       - "{{ server }} {{ key }}"
 {% endif %}
