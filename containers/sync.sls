@@ -22,3 +22,12 @@ lsyncd:
     - mode: 600
     - owner: root
     - group: root
+
+/etc/sysctl.d/10-inotify.conf:
+  file.managed:
+    - source: salt://containers/10-inotify.conf
+
+sysctl -p:
+  cmd.wait:
+    - watch:
+      - file: /etc/sysctl.d/10-inotify.conf
