@@ -7,6 +7,8 @@ base:
     - login.admin
     - network.time
     - utils
+  'cloudzwei.magfest.net':
+    - network.bridge
   'laptop.magfest.net':
     - desktop
     - desktop.utilities
