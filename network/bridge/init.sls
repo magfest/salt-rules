@@ -1,8 +1,5 @@
 systemd-networkd:
-  service.running:
-    - enable: True
-    - watch:
-      - file: /etc/systemd/network/*
+  service.enabled
 
 /etc/systemd/network:
   file.directory: []
