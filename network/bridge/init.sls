@@ -21,13 +21,6 @@ systemd-networkd:
     - require:
       - file: /etc/systemd/network
 
-/etc/systemd/network/{{ pillar['network'][grains['host']]['containerdev'] }}.netdev:
-  file.managed:
-    - source: salt://network/bridge/eth.netdev
-    - template: jinja
-    - require:
-      - file: /etc/systemd/network
-
 /etc/systemd/network/{{ pillar['network'][grains['host']]['containerdev'] }}.network:
   file.managed:
     - source: salt://network/bridge/eth.network
