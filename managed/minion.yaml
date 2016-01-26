@@ -47,4 +47,4 @@ schedule:
 
 mine_functions:
   network.ip_addrs: []
-  sshkey: []
+  grains.item: [sshkey]
