@@ -42,7 +42,7 @@ gnupg:
   cmd.run:
     - creates: /etc/pacman.d/gnupg/trustdb.gpg
     - require:
-      - pkg: gpg
+      - pkg: gnupg
       - pkg: pacman
       - service: rngd
 
