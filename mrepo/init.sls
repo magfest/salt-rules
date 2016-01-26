@@ -22,7 +22,7 @@ git-mrepo:
 
 mrepo-install:
   cmd.run:
-    - name: /usr/bin/python /root/mrepo/setup.py install
+    - name: /usr/bin/make install
     - creates: /etc/mrepo.conf
     - cwd: /root/mrepo/
     - require:
