@@ -12,12 +12,12 @@ systemd-networkd:
     - source: salt://network/bridge/br0.network
     - template: jinja
 
-/etc/systemd/network/{{ pillar.network[grains['host']]['containerdev'] }}.netdev:
+/etc/systemd/network/{{ pillar['network'][grains['host']]['containerdev'] }}.netdev:
   file.managed:
     - source: salt://network/bridge/eth.netdev
     - template: jinja
 
-/etc/systemd/network/{{ pillar.network[grains['host']]['containerdev'] }}.network:
+/etc/systemd/network/{{ pillar['network'][grains['host']]['containerdev'] }}.network:
   file.managed:
     - source: salt://network/bridge/eth.network
     - template: jinja
