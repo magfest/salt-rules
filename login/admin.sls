@@ -3,8 +3,6 @@
 {{ admin }}:
   user.present:
     - remove_groups: False
-    - require:
-      - user: {{ admin }}present
     {% for key, value in properties.items() %}
     - {{key}}: {{value}}
     {% endfor %}
