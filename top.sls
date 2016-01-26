@@ -1,5 +1,6 @@
 base:
-  '*':
+  'role:containerhost':
+    - match: pillar
     - repos
     - managed
     - managed.update
@@ -7,12 +8,30 @@ base:
     - login.admin
     - network.time
     - utils
-  'role:containerhost':
-    - match: pillar
     - containers.sync
     - containers
     - network.bridge
-  'laptop.magfest.net':
+
+  'role:container':
+    - match: pillar
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - network.container
+
+  'role:laptop':
+    - match: pillar
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
     - desktop
     - desktop.utilities
     - desktop.admins
