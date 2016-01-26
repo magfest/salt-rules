@@ -37,6 +37,8 @@ lftp:
 /etc/nginx/nginx.conf:
   file.managed:
     - source: salt://mrepo/nginx.conf
+    - require:
+      - file: /etc/nginx/
 
 /etc/nginx/:
   file.directory: []
