@@ -27,3 +27,9 @@ mrepo-install:
     - cwd: /root/mrepo/
     - require:
       - git: git-mrepo
+
+createrepo:
+  pkg.installed: []
+
+lftp:
+  pkg.installed: []
