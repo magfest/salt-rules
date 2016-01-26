@@ -108,5 +108,5 @@ fedora-salt:
 
 /srv/images/fedora/etc/shadow:
   file.replace:
-    - pattern: "^root:\*:.*$"
+    - pattern: "^root:.:.*$"
     - repl: "root:$6$oisdfoiaj$rffY1PXLJ5DLMOV/nmA8elQRRNbq8hgK7K/WZsXc3SOvmFZd6qRYXRH9IttsQ7x3yXbShSbJcn9h0j7/T7uQC1:16805:0:99999:7:::"
