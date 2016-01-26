@@ -11,3 +11,5 @@ lsyncd:
     - require:
       - file: /home/replication/.ssh
     - mode: 600
+    - owner: replication
+    - group: replication
