@@ -18,8 +18,8 @@ config = {
   "remote_hosts": [ ],
   "containers": { },
   "sync_interval": 30,
-  "conf_template": "/usr/lib/sync/lsyncd.conf.jinja",
-  "lsyncd_conf_path": "/var/lib/sync/lsyncd.conf",
+  "conf_template": "/usr/lib/containersync/lsyncd.conf.jinja",
+  "lsyncd_conf_path": "/var/lib/containersync/lsyncd.conf",
 }
 
 with open(CONFIG_FILE, "r") as configFile:
