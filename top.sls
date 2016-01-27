@@ -15,6 +15,7 @@ base:
 
   'role:container':
     - match: pillar
+    - firewall
     - repos
     - managed
     - managed.update

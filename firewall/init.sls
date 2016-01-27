@@ -1,0 +1,2 @@
+firewalld:
+  service.disabled: []
