@@ -45,3 +45,6 @@ base:
 
   'repo.magfest.net':
     - mrepo
+
+  'freeipa.magfest.net':
+    - freeipa

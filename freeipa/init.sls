@@ -1,0 +1,3 @@
+freeipa-server:
+  pkg.installed
+
