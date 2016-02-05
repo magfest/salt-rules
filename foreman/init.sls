@@ -61,7 +61,6 @@ install-foreman:
       --{{ key }}
       {% endif %}
       {%- endfor -%}
-      {%- endfor -%}
     - require:
       - pkg: foreman-installer
       - pkg: foreman-plugins
