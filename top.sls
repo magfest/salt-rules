@@ -44,8 +44,8 @@ base:
     - selinux
     - challenges.emulators
 
-  'repo.magfest.net':
+  'repo.magfe.st':
     - mrepo
 
-  'freeipa.magfest.net':
+  'freeipa.magfe.st':
     - freeipa

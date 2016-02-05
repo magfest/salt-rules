@@ -1,23 +1,23 @@
 [magfest-fedora]
 name=MAGFest Fedora $releasever
-baseurl=http://repo.magfest.net/fedora-$basearch/RPMS.core/
+baseurl=http://repo.magfe.st/fedora-$basearch/RPMS.core/
 enabled=1
 gpgcheck=0
 
 [magfest-updates]
 name=MAGFest Fedora Updates $releasever
-baseurl=http://repo.magfest.net/fedora-$basearch/RPMS.updates/
+baseurl=http://repo.magfe.st/fedora-$basearch/RPMS.updates/
 enabled=1
 gpgcheck=0
 
 [magfest-install]
 name=MAGFest Fedora Install $releasever
-baseurl=http://repo.magfest.net/fedora-$basearch/disc1/
+baseurl=http://repo.magfe.st/fedora-$basearch/disc1/
 enabled=1
 gpgcheck=0
 
 [google]
 name = MAGFest Google Chrome Mirror
-baseurl=http://repo.magfest.net/google/
+baseurl=http://repo.magfe.st/google/
 enabled=1
 gpgcheck=0

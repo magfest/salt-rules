@@ -1,17 +1,17 @@
 /root/kiosk.iso:
   file.managed:
-    - source: http://repo.magfest.net/porteus/kiosk.iso
-    - source_hash: http://repo.magfest.net/porteus/kiosk.iso.hash
+    - source: http://repo.magfe.st/porteus/kiosk.iso
+    - source_hash: http://repo.magfe.st/porteus/kiosk.iso.hash
 
 /boot/porteus-initrd.xz:
   file.managed:
-    - source: http://repo.magfest.net/porteus/initrd.xz
-    - source_hash: http://repo.magfest.net/porteus/initrd.xz.hash
+    - source: http://repo.magfe.st/porteus/initrd.xz
+    - source_hash: http://repo.magfe.st/porteus/initrd.xz.hash
 
 /boot/porteus-vmlinuz:
   file.managed:
-    - source: http://repo.magfest.net/porteus/vmlinuz
-    - source_hash: http://repo.magfest.net/porteus/vmlinuz.hash
+    - source: http://repo.magfe.st/porteus/vmlinuz
+    - source_hash: http://repo.magfe.st/porteus/vmlinuz.hash
 
 imagekiosk:
   cmd.wait:

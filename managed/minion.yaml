@@ -5,7 +5,7 @@ default_include: minion.d/*.conf
 
 # Set the location of the salt master server. If the master server cannot be
 # resolved, then the minion will fail to start.
-master: foreman.magfest.net
+master: foreman.magfe.st
 
 # Set the number of seconds to wait before attempting to resolve
 # the master hostname if name resolution fails. Defaults to 30 seconds.
@@ -20,7 +20,7 @@ ipv6: False
 # Append a domain to a hostname in the event that it does not exist.  This is
 # useful for systems where socket.getfqdn() does not actually result in a
 # FQDN (for instance, Solaris).
-append_domain: magfest.net
+append_domain: magfe.st
 
 # When waiting for a master to accept the minion's public key, salt will
 # continuously attempt to reconnect until successful. This is the time, in
