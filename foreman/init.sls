@@ -56,9 +56,9 @@ install-foreman:
       --{{ key }}={{val}} \
       {% endfor -%}
       {%- elif salt['utils.is_bool'](opt) -%}
-      --{{ key }}={{ salt['utils.bool_lc'](opt) \
+      --{{ key }}={{ salt['utils.bool_lc'](opt) }} \
       {% elif salt['utils.is_str'](opt) -%}
-      --{{ key}}
+      --{{ key }}
       {% endif %}
       {%- endfor -%}
       {%- endfor -%}
