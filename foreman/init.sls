@@ -52,7 +52,7 @@ install-foreman:
       foreman-installer \
       {%- for opt in salt['pillar.get']('foreman:installer-args') -%}
       {%- if salt['utils.is_dict'](opt) -%}
-      {%- for key, val in opt.items() -%}
+      {%- for key, val in opt.items() %}
       --{{ key }}={{val}} \
       {% endfor -%}
       {% elif salt['utils.is_str'](opt) -%}
