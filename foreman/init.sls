@@ -50,7 +50,7 @@ install-foreman:
   cmd.run:
     - name: |
       foreman-installer \
-      {%- for opt in pillars.foreman.installer-args -%}
+      {%- for opt in pillar.foreman.installer-args -%}
       {%- if salt['utils.is_dict'](opt) -%}
       {%- for key, val in opt.items() -%}
       --{{ key }}={{val}} \
