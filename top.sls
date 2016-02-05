@@ -47,5 +47,8 @@ base:
   'repo.magfe.st':
     - mrepo
 
+  'foreman.magfe.st':
+    - foreman
+
   'freeipa.magfe.st':
     - freeipa
