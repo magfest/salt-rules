@@ -56,7 +56,7 @@ install-foreman:
       --{{ key }}={{val}} \
       {% endfor -%}
       {% elif salt['utils.is_str'](opt) -%}
-      --{{ opt }}
+      --{{ opt }} \
       {% endif %}
       {%- endfor -%}
     - require:
