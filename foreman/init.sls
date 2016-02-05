@@ -49,16 +49,16 @@ httpd:
 install-foreman:
   cmd.run:
     - name: |
-      foreman-installer \
-      {% for opt in salt['pillar.get']('foreman:installer-args') -%}
-      {%- if salt['utils.is_dict'](opt) -%}
-      {%- for key, val in opt.items() -%}
-      --{{ key }}={{val}} \
-      {% endfor -%}
-      {% elif salt['utils.is_str'](opt) -%}
-      --{{ opt }} \
-      {% endif %}
-      {%- endfor -%}
+        foreman-installer \
+        {% for opt in salt['pillar.get']('foreman:installer-args') -%}
+        {%- if salt['utils.is_dict'](opt) -%}
+        {%- for key, val in opt.items() -%}
+        --{{ key }}={{val}} \
+        {% endfor -%}
+        {% elif salt['utils.is_str'](opt) -%}
+        --{{ opt }} \
+        {% endif %}
+        {%- endfor -%}
     - require:
       - pkg: foreman-installer
       - pkg: foreman-plugins
