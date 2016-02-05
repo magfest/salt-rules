@@ -18,6 +18,34 @@ httpd:
       - cmd: install-foreman
       - pkg: foreman-plugins
 
+/etc/pki/tls/certs/cert1.pem:
+  file.managed:
+    - mode: 0640
+    - user: root
+    - group: root
+    - contents_pillar: foreman:cert1
+
+/etc/pki/tls/certs/chain1.pem:
+  file.managed:
+    - mode: 0640
+    - user: root
+    - group: root
+    - contents_pillar: foreman:chain1
+
+/etc/pki/tls/certs/fullchain1.pem:
+  file.managed:
+    - mode: 0640
+    - user: root
+    - group: root
+    - contents_pillar: foreman:fullchain1
+
+/etc/pki/tls/private/privkey1.pem:
+  file.managed:
+    - mode: 0640
+    - user: root
+    - group: root
+    - contents_pillar: foreman:privkey1
+
 install-foreman:
   cmd.run:
     - name: |
@@ -37,3 +65,4 @@ install-foreman:
     - require:
       - pkg: foreman-installer
       - pkg: foreman-plugins
+      - file: /etc/pki/tls/*
