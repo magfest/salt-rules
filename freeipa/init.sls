@@ -1,3 +1,3 @@
-ipa-server:
+freeipa-server:
   pkg.installed
 
