@@ -1,10 +1,9 @@
 foreman-plugins:
   pkg.installed:
    - pkgs:
-     - rubygem-foreman_discovery
-     - rubygem-foreman_salt
-     - rubygem-foreman_templates
-     - rubygem-foreman_remote_execution
+     - tfm-rubygem-foreman_discovery
+     - tfm-rubygem-foreman_salt
+     - tfm-rubygem-foreman_templates
    - watch_in:
      - service: httpd
 
