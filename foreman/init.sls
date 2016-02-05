@@ -62,4 +62,3 @@ install-foreman:
       - pkg: foreman-installer
       - pkg: foreman-plugins
       - file: /etc/pki/tls/*
-    - creates: /etc/foreman/foreman-installer-answers.yaml
