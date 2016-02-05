@@ -59,6 +59,7 @@ install-foreman:
         --{{ opt }} \
         {% endif %}
         {%- endfor -%}
+
     - require:
       - pkg: foreman-installer
       - pkg: foreman-plugins
