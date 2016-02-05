@@ -55,10 +55,8 @@ install-foreman:
       {%- for key, val in opt.items() -%}
       --{{ key }}={{val}} \
       {% endfor -%}
-      {%- elif salt['utils.is_bool'](opt) -%}
-      --{{ key }}={{ salt['utils.bool_lc'](opt) }} \
       {% elif salt['utils.is_str'](opt) -%}
-      --{{ key }}
+      --{{ opt }}
       {% endif %}
       {%- endfor -%}
     - require:
