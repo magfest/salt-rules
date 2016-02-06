@@ -19,7 +19,7 @@
       - user: tftp
   archive.extracted:
     - source: https://repo.magfe.st/tftp/tftp.tar.gz
-    - hash: https://repo.magfe.st/tftp/tftp.tar.gz.hash
+    - source_hash: https://repo.magfe.st/tftp/tftp.tar.gz.hash
     - archive_format: tar
     - tar_options: z
 
