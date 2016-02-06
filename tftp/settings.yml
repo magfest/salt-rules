@@ -10,8 +10,8 @@
 # NOTE that both certificates need to be signed by the same CA in order for this to work
 # see http://theforeman.org/projects/smart-proxy/wiki/SSL for more information
 :ssl_ca_file: /var/lib/puppet/ssl/certs/ca.pem
-:ssl_certificate: /var/lib/puppet/ssl/certs/foreman.magfe.st.pem
-:ssl_private_key: /var/lib/puppet/ssl/private_keys/foreman.magfe.st.pem
+:ssl_certificate: /var/lib/puppet/ssl/certs/tftp.magfe.st.pem
+:ssl_private_key: /var/lib/puppet/ssl/private_keys/tftp.magfe.st.pem
 
 # the hosts which the proxy accepts connections from
 # commenting the following lines would mean every verified SSL connection allowed
