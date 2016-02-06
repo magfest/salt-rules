@@ -24,3 +24,10 @@ systemd-networkd:
     - template: jinja
     - require:
       - file: /etc/systemd/network
+
+/etc/systemd/network/{{ pillar['network'][grains['host']]['hostdev'] }}.network:
+  file.managed:
+    - source: salt://network/bridge/hostdev.network
+    - template: jinja
+    - require:
+      - file: /etc/systemd/network

@@ -1,0 +1,15 @@
+[Match]
+Name={{ pillar.network[grains['host']]['hostdev'] }}
+
+{% if pillar.network[grains['host']]['dhcp'] %}
+[Network]
+DHCP=ipv4
+{% else %}
+[Network]
+DHCP=no
+Address={{ pillar.network[grains['host']]['ipaddress'] }}
+Gateway={{ pillar.network[grains['host']]['gateway'] }}
+{% for server in pillar.network[grains['host']]['dns'] %}
+DNS={{ server }}
+{% endfor %}
+{% endif %}
