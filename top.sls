@@ -53,6 +53,14 @@ base:
 
   'foreman.magfe.st':
     - foreman
+    - firewall
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - network.container
 
   'freeipa.magfe.st':
     - freeipa
