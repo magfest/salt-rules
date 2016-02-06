@@ -17,6 +17,9 @@
     - require:
       - group: tftp
       - user: tftp
+  archive.extracted:
+    - source: https://repo.magfe.st/tftp/tftp.tar.gz
+    - hash: https://repo.magfe.st/tftp/tftp.tar.gz.hash
 
 /etc/conf.d/tftpd:
   file.managed:
