@@ -5,7 +5,7 @@
   }, grain='os_family', default='RedHat')
 %}
 
-/srv/tftp:
+/var/lib/tftpboot:
   file.directory:
     - user: root
     - group: tftp
@@ -20,10 +20,13 @@
   archive.extracted:
     - source: https://repo.magfe.st/tftp/tftp.tar.gz
     - hash: https://repo.magfe.st/tftp/tftp.tar.gz.hash
+    - archive_format: tar
+    - tar_options: z
 
 /etc/conf.d/tftpd:
   file.managed:
     - source: salt://tftp/conf
+    - makedirs: True
 
 tftp:
   pkg.installed:
@@ -31,7 +34,7 @@ tftp:
   group.present: []
   user.present:
     - shell: /bin/nologin
-    - home: /srv/tftp
+    - home: /var/lib/tftpboot
     - system: True
     - groups:
       - tftp
@@ -42,6 +45,6 @@ tftpd:
     - require:
       - pkg: tftp
       - user: tftp
-      - file: /srv/tftp
+      - file: /var/lib/tftpboot
     - watch:
       - file: /etc/conf.d/tftpd
