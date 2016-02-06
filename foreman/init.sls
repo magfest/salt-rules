@@ -62,3 +62,10 @@ install-foreman:
       - pkg: foreman-installer
       - pkg: foreman-plugins
       - file: /etc/pki/tls/*
+
+/etc/sudoers:
+  file.append:
+    - text:
+      - Cmnd_Alias SALT = /usr/bin/salt, /usr/bin/salt-key
+      - foreman-proxy ALL = NOPASSWD: SALT
+      - Defaults:foreman-proxy !requiretty
