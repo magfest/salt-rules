@@ -55,6 +55,11 @@ base:
     - match: pillar
     - dhcp
 
+  'role:tftp-server':
+    - match: pillar
+    - tftp
+    - tftp.foreman-proxy
+
   'foreman.magfe.st':
     - firewall
     - managed
