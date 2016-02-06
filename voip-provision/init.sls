@@ -13,13 +13,21 @@ provision-bin:
       - salt://voip-provision/provisioner.py
     - mode: '775'
 
+provision-dirs-templated:
+  file.managed:
+    - name: /etc/voip-provision/extens.json
+    - source: salt://voip-provision/data/extens.json
+    - template: jinja
+
 provision-dirs:
   file.recurse:
-    - name: /etc/voip-provision
-    - source: salt://voip-provision/data
+    - name: /etc/voip-provision/templates
+    - source: salt://voip-provision/data/templates
     - template: None
     - watch_in:
       - service: provision-service
+    - require:
+      - file: provision-dirs-templated
 
 /srv/tftp:
   file.recurse:
