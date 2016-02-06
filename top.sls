@@ -63,6 +63,7 @@ base:
   'tftp.magfe.st':
     - tftp
     - tftp.foreman-proxy
+    - voip-provision
 
   'foreman.magfe.st':
     - firewall
