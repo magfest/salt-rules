@@ -56,7 +56,6 @@ base:
     - dhcp
 
   'foreman.magfe.st':
-    - foreman
     - firewall
     - managed
     - managed.update
