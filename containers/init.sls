@@ -84,6 +84,12 @@ fedora-salt:
     - require:
       - cmd: fedora-installroot
 
+centos-image:
+  cmd.run:
+    - name: create-centos-image centos
+    - source: salt://containers/create-centos-image
+    - creates: /srv/images/centos/usr/bin/salt-minion
+
 /srv/images/arch/etc/salt/minion:
   file.managed:
     - source: salt://managed/minion.yaml
@@ -95,6 +101,12 @@ fedora-salt:
     - source: salt://managed/minion.yaml
     - require:
       - cmd: fedora-salt
+
+/srv/images/centos/etc/salt/minion:
+  file.managed:
+    - source: salt://managed/minion.yaml
+    - require:
+      - cmd: centos-image
 
 /srv/images/arch/etc/securetty:
   file.append:
