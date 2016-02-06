@@ -26,6 +26,7 @@ USERS_TEMPLATE = "ast_sip.jinja"
 EXTENS_TEMPLATE = "ast_extens.jinja"
 
 CISCO_TEMPLATE = "cisco_SIP.cnf.jinja"
+POLYCOM_TEMPLATE = "phoneMAC.cfg.jinja"
 
 TFTP_DIR = "/srv/tftp"
 
@@ -33,13 +34,13 @@ MODEL_C7940 = "c7940"
 MODEL_C7940G = "c7940g"
 MODEL_C7960 = "c7960"
 MODEL_C7960G = "c7960g"
-MODEL_P = 'p'
+MODEL_P321 = 'p321'
 
 MODELS = {
     MODEL_C7940: Model(MODEL_C7940, 'Cisco 7940', 'CTLSEP{umac}.tlv'),
     MODEL_C7940G: Model(MODEL_C7940G, 'Cisco 7940G', 'CTLSEP{umac}.tlv'),
     MODEL_C7960: Model(MODEL_C7960, 'Cisco 7960', 'CTLSEP{umac}.tlv'),
-    MODEL_P: Model(MODEL_P, 'Polycom FIXME', ''),
+    MODEL_P321: Model(MODEL_P321, 'Polycom 321', 'phone{umac}.cfg'),
 }
 
 def gen_username(exten, mac):
@@ -92,7 +93,9 @@ def get_user(exten, mac, model):
 
 def create_config(exten, mac, model, user):
     if model in (MODEL_C7960,
-                 MODEL_C7960G):
+                 MODEL_C7960G,
+                 MODEL_C7940,
+                 MODEL_C7940G):
         template = jenv.get_template(CISCO_TEMPLATE)
 
         with open(os.path.join(TFTP_DIR, 'SIP{}.cnf'.format(mac.upper())), 'w') as target:
@@ -107,6 +110,16 @@ def create_config(exten, mac, model, user):
 
         with open(os.path.join(TFTP_DIR, 'SEP{}.cnf.xml'.format(mac.upper())), 'w') as target:
             target.write('<device>\n<loadInformation model="IP Phone 7960">P0S3-08-11-00</loadInformation>\n</device>\n')
+
+    elif model == MODEL_P321:
+        template = jenv.get_template(POLYCOM_TEMPLATE)
+
+        with open(os.path.join(TFTP_DIR, 'phone{}.cfg'.format(mac.upper())), 'w') as target:
+            target.write(template.render(
+                username=user['username'],
+                cid=user.get('callerid', exten),
+                password=user['password'],
+                desc=user.get('desc', exten)))
 
 def reload_asterisk():
     requests.post(ASTERISK_URL)

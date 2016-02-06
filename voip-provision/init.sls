@@ -21,6 +21,12 @@ provision-dirs:
     - watch_in:
       - service: provision-service
 
+/srv/tftp:
+  file.recurse:
+    - source: salt://voip-provision/tftp
+    - template: jinja
+    - makedirs: True
+
 provision-service:
   file.managed:
     - name: /usr/lib/systemd/system/voip_provision.service

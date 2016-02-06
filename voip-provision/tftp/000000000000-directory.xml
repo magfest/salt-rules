@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<!-- $RCSfile$  $Revision: 35928 $ -->
+<directory>
+	<item_list>
+{% for exten, vals in salt['pillar.get']('phone_extensions', {}).items() %}
+		<item>
+			<lb>{{ vals['desc'] }}</lb>
+			<ct>{{ exten }}</ct>
+		</item>
+{% endfor %}
+	</item_list>
+</directory>
