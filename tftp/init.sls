@@ -39,7 +39,7 @@ tftp:
     - groups:
       - tftp
 
-tftpd:
+tftp:
   service.running:
     - enable: True
     - require:
