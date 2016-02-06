@@ -11,7 +11,7 @@ provision-bin:
     - name: /usr/bin/provisioner.py
     - source:
       - salt://voip-provision/provisioner.py
-    - mode: 775
+    - mode: '775'
 
 provision-dirs:
   file.recurse:

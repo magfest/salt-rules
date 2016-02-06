@@ -8,13 +8,27 @@ asterisk:
       - pkg: asterisk
       - file: /etc/asterisk
 
-python:
-  pkg.installed
-
-python-flask:
+reloader-deps:
   pkg.installed:
+    - pkgs:
+      - python
+      - python-flask
+
+reloader-service:
+  file.managed:
+    - name: /usr/lib/systemd/system/asterisk_reloader.service
+    - source:
+      - salt://asterisk/reloader.service
+    - watch_in:
+      - cmd: daemon-reload
+
+  service.running:
+    - name: asterisk_reloader
+    - enable: True
     - require:
-      - pkg: python-flask
+      - file: /usr/bin
+      - file: reloader-service
+      - pkg: reloader-deps
 
 /etc/asterisk:
   file.recurse:

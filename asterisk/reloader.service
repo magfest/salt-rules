@@ -1,0 +1,11 @@
+[Unit]
+Description=Asterisk Config Reloader Daemon
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/reloader.py
+User=root
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
