@@ -51,6 +51,10 @@ base:
   'repo.magfe.st':
     - mrepo
 
+  'role:dhcp-server':
+    - match: pillar
+    - dhcp
+
   'foreman.magfe.st':
     - foreman
     - firewall
