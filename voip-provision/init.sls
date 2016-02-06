@@ -17,7 +17,7 @@ provision-dirs:
   file.recurse:
     - name: /etc/voip-provision
     - source: salt://voip-provision/data
-    - template: jinja
+    - template: None
     - watch_in:
       - service: provision-service
 
