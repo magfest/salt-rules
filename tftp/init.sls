@@ -38,8 +38,6 @@ tftp:
     - system: True
     - groups:
       - tftp
-
-tftp:
   service.running:
     - enable: True
     - require:
