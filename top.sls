@@ -58,6 +58,7 @@ base:
   'role:tftp-server':
     - match: pillar
     - tftp
+    - container
     - tftp.foreman-proxy
 
   'foreman.magfe.st':
