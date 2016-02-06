@@ -6,3 +6,13 @@ enabled=1
 gpgcheck=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
 priority=1
+
+[centos-extras]
+name=CentOS-7 - Extras
+#mirrorlist=http://mirrorlist.centos.org/?release=7&arch=basearch&repo=extras
+#baseurl=http://mirror.centos.org/centos/7/extras/$basearch/
+baseurl=http://centos.mbni.med.umich.edu/mirror/7/extras/$basearch
+enabled=1
+gpgcheck=0
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
+priority=1
