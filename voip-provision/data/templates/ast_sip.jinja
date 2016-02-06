@@ -1,0 +1,9 @@
+{% for user in users %}
+[{{ user['username'] }}]
+type=friend
+username={{ user['username'] }}
+secret={{ user['password'] }}
+host=dynamic
+context=internal
+{% if 'callerid' in user %}callerid={{ user['callerid'] }}{% endif %}
+{% endfor %}

@@ -1,0 +1,6 @@
+{% for extension, vals in extens.items() %}
+{% if 'users' in vals and vals['users'] %}
+exten => {{ extension }},1,Dial({{ '&'.join(vals['users']) }},60)
+same => n,Hangup
+{% endif %}
+{% endfor %}
