@@ -60,6 +60,10 @@ base:
     - tftp
     - tftp.foreman-proxy
 
+  'tftp.magfe.st':
+    - tftp
+    - tftp.foreman-proxy
+
   'foreman.magfe.st':
     - firewall
     - managed
