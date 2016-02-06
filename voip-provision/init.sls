@@ -23,7 +23,7 @@ provision-dirs:
   file.recurse:
     - name: /etc/voip-provision/templates
     - source: salt://voip-provision/data/templates
-    - template: None
+    - template: False
     - watch_in:
       - service: provision-service
     - require:
