@@ -2,7 +2,6 @@ foreman-release:
   pkg.installed:
     - sources:
       - foreman-release: salt://foreman/foreman-release.rpm
-    - allow_updates: True
 
 /etc/foreman-proxy/settings.yml:
   file.managed:
