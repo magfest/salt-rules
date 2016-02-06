@@ -8,6 +8,7 @@ foreman-release:
     - source: salt://tftp/settings.yml
     - watch_in:
       - service: foreman-proxy
+    - makedirs: True
 
 foreman-proxy:
   pkg.installed:
