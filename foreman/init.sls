@@ -69,3 +69,12 @@ install-foreman:
       - Cmnd_Alias SALT = /usr/bin/salt, /usr/bin/salt-key
       - foreman-proxy ALL = NOPASSWD: SALT
       - Defaults:foreman-proxy !requiretty
+
+/etc/salt/master:
+  file.managed:
+    - source: salt://foreman/master
+
+/etc/salt/autosign.conf:
+  file.managed:
+    - mode: 664
+    - group: foreman-proxy
