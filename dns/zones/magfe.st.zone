@@ -1,0 +1,23 @@
+
+{%- set zone_domain = 'magfe.st' -%}
+$TTL 3600
+; magfe.st
+@ IN SOA dns1.magfe.st. admin.magfe.st. (
+	2016010821  ; Serial
+	28800      ; Refresh
+	1800       ; Retry
+	604800     ; Expire - 1 week
+	86400 )    ; Minimum
+		IN	NS	vegafive
+
+{%- set dns_defaults = salt['pillar.get']('dns:defaults') -%}
+{%- for name, network in salt['pillar.get']('dns:networks').items() %}
+; {{ name }}
+{%- set net_domain = salt['pillar.get']('dns:networks:' + name + ':options:domain-name', salt['pillar.get']('dns:defaults:options:domain-name')) %}
+; {{ net_domain }}
+{%- if net_domain == zone_domain -%}
+{%- for hostname, attrs in salt['pillar.get']('dns:networks:' + name + ':hosts', {}).items() %}
+{{ hostname }}	  	IN	A	{{ attrs['ip'] }}
+{%- endfor -%}
+{%- endif -%}
+{%- endfor -%}
