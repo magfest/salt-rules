@@ -15,7 +15,7 @@ foreman-proxy:
     - require:
       - pkg: foreman-release
   service.running:
-    - enabled: True
+    - enable: True
     - require:
       - file: /etc/foreman-proxy/settings.yml
       - pkg: foreman-proxy
