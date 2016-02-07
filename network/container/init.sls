@@ -1,3 +1,6 @@
+network:
+  service.disabled
+
 systemd-networkd:
   service.enabled
 
