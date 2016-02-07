@@ -81,4 +81,3 @@ base:
   'role:dns-server':
     - match: pillar
     - dns
-    - container
