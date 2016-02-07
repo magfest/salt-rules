@@ -84,11 +84,18 @@ fedora-salt:
     - require:
       - cmd: fedora-installroot
 
+/usr/bin/create-centos-image:
+  file.managed:
+    - source: salt://containers/create-centos-image
+    - mode: 755
+
 centos-image:
   cmd.run:
-    - name: create-centos-image centos
+    - name: /usr/bin/create-centos-image centos
     - source: salt://containers/create-centos-image
     - creates: /srv/images/centos/usr/bin/salt-minion
+    - require:
+      - file: /usr/bin/create-centos-image
 
 /srv/images/arch/etc/salt/minion:
   file.managed:
