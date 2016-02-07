@@ -81,3 +81,12 @@ base:
   'role:dns-server':
     - match: pillar
     - dns
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - network.container
