@@ -44,8 +44,7 @@ base:
     - selinux
     - challenges.emulators
 
-  'role:asterisk':
-    - match: pillar
+  'asterisk.magfe.st':
     - asterisk
 
   'repo.magfe.st':
