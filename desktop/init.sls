@@ -38,7 +38,6 @@ lxde:
       - xarchiver
       - xcompmgr
       - xdg-user-dirs-gtk
-      - xpad
       - xscreensaver-base
       - xscreensaver-extras
       - yumex
