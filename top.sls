@@ -77,3 +77,7 @@ base:
 
   'freeipa.magfe.st':
     - freeipa
+
+  'role:dns-server':
+    - match: pillar
+    - dns
