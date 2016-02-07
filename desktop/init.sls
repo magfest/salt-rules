@@ -47,6 +47,9 @@ lxde:
       - hplip
       - google-chrome-stable
 
+xpad:
+  pkg.removed
+
 lxdm:
   service.enabled:
     - require:
