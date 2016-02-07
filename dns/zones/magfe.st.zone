@@ -8,7 +8,10 @@ $TTL 3600
 	1800       ; Retry
 	604800     ; Expire - 1 week
 	86400 )    ; Minimum
-		IN	NS	vegafive
+		IN	NS	dns1
+		IN	NS	dns2
+dns1        IN	A	10.14.1.8
+dns2        IN	A	10.14.1.9
 
 {%- set dns_defaults = salt['pillar.get']('dns:defaults') -%}
 {%- for name, network in salt['pillar.get']('dns:networks').items() %}
