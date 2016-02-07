@@ -5,6 +5,10 @@
   }, grain='os_family', default='RedHat')
 %}
 
+/etc/systemd/system/tftp.service:
+  file.managed:
+    - source: salt://tftp/tftp.service
+
 /var/lib/tftpboot:
   file.directory:
     - user: root
@@ -23,11 +27,6 @@
     - archive_format: tar
     - tar_options: z
 
-/etc/conf.d/tftpd:
-  file.managed:
-    - source: salt://tftp/conf
-    - makedirs: True
-
 tftp:
   pkg.installed:
     - name: {{ tftp_pkg }}
@@ -44,5 +43,4 @@ tftp:
       - pkg: tftp
       - user: tftp
       - file: /var/lib/tftpboot
-    - watch:
-      - file: /etc/conf.d/tftpd
+      - file: /etc/systemd/system/tftp.service
