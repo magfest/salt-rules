@@ -59,6 +59,11 @@ lxdm:
     - watch:
       - file: /etc/lxdm/lxdm.conf
 
+/etc/systemd/system/multi-user.target.wants/display-manager.service:
+  file.symlink:
+    - target: ../display-manager.service
+    
+
 desktop:
   file.managed:
     - name: /etc/sysconfig/desktop
