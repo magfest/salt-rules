@@ -28,7 +28,7 @@ EXTENS_TEMPLATE = "ast_extens.jinja"
 CISCO_TEMPLATE = "cisco_SIP.cnf.jinja"
 POLYCOM_TEMPLATE = "phoneMAC.cfg.jinja"
 
-TFTP_DIR = "/srv/tftp"
+TFTP_DIR = "/var/lib/tftpboot"
 
 MODEL_C7940 = "c7940"
 MODEL_C7940G = "c7940g"

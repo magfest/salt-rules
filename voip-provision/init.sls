@@ -29,7 +29,7 @@ provision-dirs:
     - require:
       - file: provision-dirs-templated
 
-/srv/tftp:
+/var/lib/tftpboot:
   file.recurse:
     - source: salt://voip-provision/tftp
     - template: jinja
