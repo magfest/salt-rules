@@ -85,6 +85,9 @@ base:
     - utils
     - network.container
 
+  'ntp*.magfe.st':
+    - ntp
+
   'role:dns-server':
     - match: pillar
     - dns
