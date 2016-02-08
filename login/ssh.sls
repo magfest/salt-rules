@@ -1,17 +1,21 @@
 include:
   - augeas
-
-openssh-server:
+{% if salt['grains.get']('os') == "CentOS" %}
+openssh:
+  pkg.installed:
+    - pkgs:
+      - openssh-clients
+      - openssh-server
+{% else %}
+openssh:
   pkg.installed
-
-openssh-clients:
-  pkg.installed
+{% endif %}
 
 sshd:
   service.running:
     - enable: True
     - require:
-       - pkg: openssh-server
+       - pkg: openssh
     - watch:
        - augeas: sshd
   augeas.change:
