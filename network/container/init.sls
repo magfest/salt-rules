@@ -1,3 +1,6 @@
+firewalld:
+  service.disabled
+
 network:
   service.disabled
 
