@@ -23,7 +23,7 @@ base:
     - login.admin
     - network.time
     - utils
-    - network.container
+    - network
 
   'role:laptop':
     - match: pillar
