@@ -10,6 +10,15 @@ xorg-x11-drv-intel:
 {% if gpu['vendor'] == 'ati' %} 
 xorg-x11-drv-ati: 
   pkg.installed
+{% if gpu['vendor'] == 'unknown' %} 
+xorg-x11-drv-ati: 
+  pkg.installed
+xorg-x11-drv-intel: 
+  pkg.installed
+xorg-x11-drv-nouveau: 
+  pkg.installed
+xorg-x11-drv-vmware: 
+  pkg.installed
 {% endif %}  
 {% if gpu['vendor'] == 'vmware' %} 
 xorg-x11-drv-vmware: 
