@@ -10,6 +10,7 @@ xorg-x11-drv-intel:
 {% if gpu['vendor'] == 'ati' %} 
 xorg-x11-drv-ati: 
   pkg.installed
+{% endif %}
 {% if gpu['vendor'] == 'unknown' %} 
 xorg-x11-drv-ati: 
   pkg.installed
