@@ -11,6 +11,7 @@ ntp:
 /etc/ntp.conf:
   file.managed:
     - source: salt://ntp/ntp.conf
+    - template: jinja
     - watch_in:
       - service: ntp
 
