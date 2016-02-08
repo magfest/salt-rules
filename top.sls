@@ -75,6 +75,15 @@ base:
 
   'freeipa.magfe.st':
     - freeipa
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - network.container
 
   'role:dns-server':
     - match: pillar
@@ -88,3 +97,15 @@ base:
     - network.time
     - utils
     - network.container
+
+  'freeradius.magfe.st':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - network.container
+
