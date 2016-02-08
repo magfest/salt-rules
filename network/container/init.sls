@@ -1,11 +1,17 @@
 network:
   service.disabled
 
+{% if salt['grains.get']('os') == 'CentOS' %}
+systemd-networkd-pkg:
+  pkg.installed
+{% endif %}
+
 systemd-networkd:
-  pkg.installed: []
   service.enabled:
+{% if salt['grains.get']('os') == "CentOS" %}
     - require:
-      - pkg: systemd-networkd
+      - pkg: systemd-networkd-pkg
+{% endif %}
 
 /etc/systemd/network:
   file.directory: []
