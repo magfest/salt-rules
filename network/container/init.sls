@@ -2,7 +2,10 @@ network:
   service.disabled
 
 systemd-networkd:
-  service.enabled
+  pkg.installed: []
+  service.enabled:
+    - require:
+      - pkg: systemd-networkd
 
 /etc/systemd/network:
   file.directory: []
