@@ -2,7 +2,7 @@ network:
   service.disabled
 
 {% if salt['grains.get']('os') == 'CentOS' %}
-systemd-networkd-pkg:
+systemd-networkd:
   pkg.installed
 {% endif %}
 
