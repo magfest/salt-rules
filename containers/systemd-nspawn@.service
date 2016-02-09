@@ -13,7 +13,7 @@ Before=machines.target
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/systemd-nspawn --quiet --keep-unit --boot --link-journal=try-guest --network-bridge=br0 --machine=%I
+ExecStart=/usr/bin/systemd-nspawn --quiet --keep-unit --boot --link-journal=try-guest --network-bridge=br0 --capability=CAP_SYS_TIME --machine=%I
 KillMode=mixed
 Type=notify
 RestartForceExitStatus=133
