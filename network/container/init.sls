@@ -6,7 +6,7 @@ systemd-networkd:
   pkg.installed
 {% endif %}
 
-systemd-networkd:
+systemd-networkd-service:
 {% if salt['grains.get']('os') == "CentOS" %}
   service.enabled:
     - require:
