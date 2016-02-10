@@ -43,6 +43,8 @@ base:
     - challenges
     - selinux
     - challenges.emulators
+    - laptop
+    - laptop.notify
 
   'asterisk.magfe.st':
     - asterisk
