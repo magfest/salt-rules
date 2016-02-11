@@ -17,6 +17,10 @@ if not os.path.isdir(os.path.join(container_dir, container)):
 if not os.path.isdir(tmp_dir):
   os.makedirs(tmp_dir)
 
+if not os.path.isdir(os.path.join(sync_dir, container)):
+  print("Nothing to replace with")
+  sys.exit()
+
 current_time = os.path.getctime(os.path.join(container_dir, container))
 new_time = os.path.getctime(os.path.join(sync_dir, container))
 
