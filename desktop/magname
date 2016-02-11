@@ -1,0 +1,16 @@
+#!/bin/bash
+VAL=$(($RANDOM % 2))
+if [ "$VAL" -eq 0 ]; then
+    WORD=$(grep -iE "^m[aeiou]([cdb]|[stg][^h])" /usr/share/dict/words | grep -v "'s$" | shuf -n 1 | tr 'A-Z' 'a-z')
+    FIRST=$(echo ${WORD:3:1} | tr 'a-z' 'A-Z')
+    echo MAG${FIRST}${WORD:4}
+elif [ "$VAL" -eq 1 ]; then
+    WORD=$(grep -iE '[bcdfghjklmnpqrsvwxyz]est$' /usr/share/dict/words | shuf -n 1 | tr 'A-Z' 'a-z')
+    TRIM=$((0+${#WORD}/5))
+    FIRST=$(echo ${WORD:$(($TRIM-1)):1} | tr 'a-z' 'A-Z')
+    echo MAG${FIRST}${WORD:$TRIM}
+else
+    WORD=$(grep -vE "'s$" /usr/share/dict/words | shuf -n 1 | tr 'A-Z' 'a-z')
+    FIRST=$(echo ${WORD:0:1} | tr 'a-z' 'A-Z')
+    echo MAG${FIRST}${WORD:1}
+fi

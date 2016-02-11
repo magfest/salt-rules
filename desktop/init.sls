@@ -40,6 +40,8 @@ lxde:
       - xdg-user-dirs-gtk
       - xscreensaver-base
       - xscreensaver-extras
+      - xscreensaver-gl-base
+      - xscreensaver-gl-extras
       - yumex
       - xorg-x11-drv-evdev
       - ghostscript
@@ -124,3 +126,14 @@ lxdeconf:
     - source: salt://desktop/Desktop
     - user: magfest
     - group: magfest
+
+/usr/bin/magname:
+  file.managed:
+    - source: salt://desktop/magname
+    - mode: '755'
+
+/home/magfest/.xscreensaver:
+  file.managed:
+    - source: salt://desktop/xscreensaver
+    - require:
+      - file: /usr/bin/magname
