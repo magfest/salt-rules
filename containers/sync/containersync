@@ -11,7 +11,8 @@ from jinja2 import Template
 CONFIG_FILE = "/etc/containersync.conf"
 config = {
   "update_interval": 30,
-  "machine_dir": "/var/lib/containersync/machines",
+  "machine_dir": "/var/lib/machines",
+  "dest_dir": "/var/lib/containersync/machines",
   "port": 1030,
   "sync_running": True,
   "remote_hosts": [ ],
@@ -65,7 +66,7 @@ while True:
         "interval": config['sync_interval'],
       }
       for host in list(config['remote_hosts']):
-        target = host+":"+os.path.join(config['machine_dir'], container)
+        target = host+":"+os.path.join(config['dest_dir'], container)
         currentSync[container]['targets'].append(target)
   else:
     for container in lockfiles:
