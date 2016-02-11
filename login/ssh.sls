@@ -23,3 +23,5 @@ sshd:
     - changes:
       - set PermitEmptyPasswords no
       - set PasswordAuthentication no
+      - set Match[1]/Condition/User "hacluster"
+      - set Match[1]/Settings/PasswordAuthentication "yes"
