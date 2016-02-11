@@ -72,12 +72,12 @@ sysctl -p --system:
    - require:
      - file: /var/lib/containersync
 
-containersync:
-  service.enabled:
-    - require:
-      - file: /etc/containersync.conf
-      - file: /usr/bin/containersync
-      - file: /etc/systemd/system/containersync.service
-      - file: /usr/lib/containersync
-      - file: /usr/lib/containersync/lsyncd.conf.jinja
-      - file: /var/lib/containersync
+#containersync:
+#  service.enabled:
+#    - require:
+#      - file: /etc/containersync.conf
+#      - file: /usr/bin/containersync
+#      - file: /etc/systemd/system/containersync.service
+#      - file: /usr/lib/containersync
+#      - file: /usr/lib/containersync/lsyncd.conf.jinja
+#      - file: /var/lib/containersync
