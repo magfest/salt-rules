@@ -20,6 +20,7 @@ config = {
   "sync_interval": 30,
   "conf_template": "/usr/lib/containersync/lsyncd.conf.jinja",
   "lsyncd_conf_path": "/var/lib/containersync/lsyncd.conf",
+  "exclude_containers": [ ],
 }
 
 with open(CONFIG_FILE, "r") as configFile:
@@ -60,6 +61,8 @@ while True:
   lockfiles = [x for x in lockfiles if os.path.isdir(os.path.join(config['machine_dir'], x))]
   if config['sync_running']:
     for container in lockfiles:
+      if container in config['exclude_containers']:
+        continue
       currentSync[container] = {
         "source": os.path.join(config['machine_dir'], container),
         "targets": [],
