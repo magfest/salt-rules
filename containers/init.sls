@@ -1,3 +1,8 @@
+/usr/bin/containerswap:
+  file.managed:
+   - source: salt://containers/containerswap
+   - mode: 755
+
 /etc/systemd/system/systemd-nspawn@.service:
   file.managed:
     - source: salt://containers/systemd-nspawn@.service
