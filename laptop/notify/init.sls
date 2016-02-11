@@ -6,6 +6,7 @@ notify-bin:
   file.managed:
     - name: /usr/bin/magnotifier.py:
     - source: salt://laptop/notify/notifier.py
+    - mode: '755'
 
 notify-sounds:
   file.recurse:
