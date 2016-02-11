@@ -67,6 +67,11 @@ sysctl -p --system:
 /var/lib/containersync:
   file.directory: []
 
+/var/lib/containersync/machines:
+  file.directory:
+   - require:
+     file: /var/lib/containersync
+
 containersync:
   service.enabled:
     - require:

@@ -8,11 +8,10 @@ import socket
 import subprocess
 from jinja2 import Template
 
-MACHINE_DIR = "/var/lib/machines"
 CONFIG_FILE = "/etc/containersync.conf"
 config = {
   "update_interval": 30,
-  "machine_dir": "/var/lib/machines",
+  "machine_dir": "/var/lib/containersync/machines",
   "port": 1030,
   "sync_running": True,
   "remote_hosts": [ ],
