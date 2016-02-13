@@ -2,23 +2,117 @@
 <html>
   <head>
     <title>Phone Provisioning</title>
+    <style type="text/css">
+      table, td {
+      border: black 1px solid;
+      border-collapse: collapse;
+      }
+
+      tbody tr {
+      cursor: pointer;
+      }
+
+      td:nth-child(1), td:nth-child(4) {
+      text-align: center;
+      }
+
+      tr:nth-child(2n) {
+      background-color: #00aaaa;
+      }
+
+      tr:nth-child(2n+1) {
+      background-color: #aaa;
+      }
+
+      tbody tr:hover {
+      background-color: #aaaa00;
+      }
+
+      input {
+      margin-bottom: 20px;
+      }
+
+      td {
+      padding: 5px;
+      }
+    </style>
   </head>
   <body>
     <form action="/enroll" method="post">
       <div>
-	<input type="text" name="mac" placeholder="MAC"/><br/>
-	<input type="text" name="exten" placeholder="Extension"/><br/>
-	<input type="submit" name="model" value="c7960"/>
-	<input type="submit" name="model" value="c7940"/>
-	<input type="submit" name="model" value="p321"/>
-	<input type="submit" name="model" value="c7902"/>
+	<input id="mac" type="text" name="mac" placeholder="MAC"/><br/>
+	<input id="exten" type="text" name="exten" placeholder="Extension"/><br/>
+	<button type="submit" name="model" value="c7960">Cisco 7960</button>
+	<button type="submit" name="model" value="c7940">Cisco 7940</button>
+	<button type="submit" name="model" value="p321">Polycom 321</button>
+	<button type="submit" name="model" value="c7902">Cisco 7902</button>
       </div>
     </form>
+
+    <br/>
+    <hr/>
+    <br/>
+
+    <div style="width: 100%;">
+      <div style="float:left; width: auto;">
+	<table>
+	  <thead>
+	    <caption>Available Extensions</caption>
+	    <tr>
+	      <th>Extension</th>
+	      <th>Description</th>
+	      <th>Caller-ID</th>
+	      <th>Registered Users</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for extension, info in extens %}
+	    <tr onclick="setExten('{{ extension }}');">
+	      <td>{{ extension }}</td>
+	      <td>{{ '<br/>'.join([info.get('desc')]+info.get('alt_descs',[]))}}</td>
+	      <td>{{ info.get('cid') }}</td>
+	      <td>{{ info.get('num_users') }}</td>
+	    </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
+      </div>
+      <div style="float:left; margin-left: 30px;">
+	<table>
+	  <thead>
+	    <caption>Provisioned Phones</caption>
+	    <tr>
+	      <th>Extension</th>
+	      <th>MAC</th>
+	      <th>Model Number</th>
+	    </tr>
+	  </thead>
+	  <tbody>
+	    {% for user in users %}
+	    <tr onclick="setMac('{{ user['mac'] }}');">
+	      <td>{{ user['exten'] }}</td>
+	      <td>{{ user['mac'] }}</td>
+	      <td>{{ user['model']|pretty_model }}</td>
+	    </tr>
+	    {% endfor %}
+	  </tbody>
+	</table>
+      </div>
+    </div>
+
     <script type="application/javascript">
       function checkEnter(e){
       e = e || event;
       var txtArea = /textarea/i.test((e.target || e.srcElement).tagName);
       return txtArea || (e.keyCode || e.which || e.charCode || 0) !== 13;
+      }
+
+      function setMac(mac) {
+      document.getElementById('mac').value = mac;
+      }
+
+      function setExten(exten) {
+      document.getElementById('exten').value = exten;
       }
 
       document.querySelector('form').onkeypress = checkEnter;

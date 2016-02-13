@@ -54,6 +54,14 @@ MODELS = {
     MODEL_C7902: Model(MODEL_C7902, 'Cisco 7902', 'ff{umac}', 'Skinny'),
 }
 
+def pretty_model(model):
+    if model in MODELS:
+        return MODELS[model].desc
+    else:
+        return model
+
+jenv.filters['pretty_model'] = pretty_model
+
 def gen_username(exten, mac):
     return exten + "-" + mac[-6:]
 
@@ -150,7 +158,13 @@ def reload_asterisk():
 def index():
     template = jenv.get_template(INDEX_TEMPLATE)
 
-    return template.render()
+    users = get_users()
+    extens = get_extens()
+    for exten, thing in extens.items():
+        thing['num_users'] = len([u for u in users if u.get('exten','') == exten])
+
+    return template.render(users=users,
+                           extens=sorted(extens.items(), key=lambda a:int(a[0])))
 
 @APP.route('/enroll', methods=['POST'])
 def enroll():
