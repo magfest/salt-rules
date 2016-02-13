@@ -48,6 +48,7 @@ lxde:
       - ghostscript-fonts
       - hplip
       - google-chrome-stable
+      - words
 
 xpad:
   pkg.removed
