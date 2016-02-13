@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import os
+import sys
 import json
 import flask
 import jinja2
@@ -10,15 +11,21 @@ import requests
 from flask import request
 from collections import namedtuple
 
+TESTING = False
+
+if len(sys.argv) > 1:
+    if sys.argv[1].lower() == "test":
+        TESTING = True
+
 Model = namedtuple('Model', ['label', 'desc', 'template', 'chan'])
 
-jenv = jinja2.Environment(loader=jinja2.FileSystemLoader('/etc/voip-provision/templates'))
+jenv = jinja2.Environment(loader=jinja2.FileSystemLoader('./data/templates' if TESTING else '/etc/voip-provision/templates'))
 
 APP = flask.Flask(__name__)
 
 ASTERISK_URL = "http://asterisk:8080/"
-USERS_FILE = "/etc/voip-provision/users.json"
-EXTENS_FILE = "/etc/voip-provision/extens.json"
+USERS_FILE = 'users.json' if TESTING else "/etc/voip-provision/users.json"
+EXTENS_FILE = 'depts.json' if TESTING else "/etc/voip-provision/extens.json"
 
 INDEX_TEMPLATE = "index.html.jinja"
 
@@ -30,7 +37,7 @@ CISCO_TEMPLATE = "cisco_SIP.cnf.jinja"
 POLYCOM_TEMPLATE = "phoneMAC.cfg.jinja"
 CISCO_7902_TEMPLATE = "cisco_SEP_7902.cnf.jinja"
 
-TFTP_DIR = "/var/lib/tftpboot"
+TFTP_DIR = "./tftpdir" if TESTING else "/var/lib/tftpboot"
 
 MODEL_C7940 = "c7940"
 MODEL_C7940G = "c7940g"
