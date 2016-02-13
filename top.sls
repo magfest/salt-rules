@@ -61,6 +61,15 @@ base:
     - tftp.foreman-proxy
 
   'tftp.magfe.st':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - network.container
     - tftp
     - tftp.foreman-proxy
     - voip-provision
