@@ -2,6 +2,7 @@
 import os
 import sys
 import time
+import shutil
 
 container_dir = "/var/lib/machines"
 sync_dir = "/var/lib/containersync/machines"
