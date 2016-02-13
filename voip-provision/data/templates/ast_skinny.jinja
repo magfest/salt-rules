@@ -12,6 +12,8 @@ regexten={{ user['exten'] }}
 {% endfor %}
 
 [devices]
+permit=10.20.0.0/16
+
 {% for user in users %}
 [{{ user['username'] }}]
 device=SEP{{ user['mac'] }}
