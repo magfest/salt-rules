@@ -183,7 +183,7 @@ def asterisk_skinny():
 
     users = get_users()
 
-    return template.render(users)
+    return template.render(users=users)
 
 @APP.route('/asterisk_extens')
 def asterisk_extensions():
