@@ -1,3 +1,6 @@
+asterisk-skinny:
+  pkg.installed: []
+
 asterisk:
   pkg.installed: []
 
@@ -6,6 +9,7 @@ asterisk:
     - reload: True
     - require:
       - pkg: asterisk
+      - pkg: asterisk-skinny
       - file: /etc/asterisk
 
 reloader-deps:
