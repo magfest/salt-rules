@@ -22,6 +22,6 @@ sshd:
     - context: /files/etc/ssh/sshd_config
     - changes:
       - set PermitEmptyPasswords no
-      - set PasswordAuthentication no
+      - set PasswordAuthentication yes
       - set Match[1]/Condition/User "hacluster"
       - set Match[1]/Settings/PasswordAuthentication "yes"
