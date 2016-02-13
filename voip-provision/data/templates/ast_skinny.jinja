@@ -1,0 +1,20 @@
+[lines]
+context=phones
+regcontext=phones
+
+{% for user in users %}
+[line-{{ user['username'] }}]
+{% if 'callerid' in user %}callerid={{ user['callerid'] }}{% endif %}
+{% if 'exten' in user %}
+exten={{ user['exten'] }}
+regexten={{ user['exten'] }}
+{% endif %}
+{% endfor %}
+
+[devices]
+{% for user in users %}
+[{{ user['username'] }}]
+device=SEP{{ user['mac'] }}
+version=030313A
+line=line-{{ user['username'] }}
+{% endfor %}

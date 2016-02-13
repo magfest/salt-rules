@@ -10,7 +10,7 @@ import requests
 from flask import request
 from collections import namedtuple
 
-Model = namedtuple('Model', ['label', 'desc', 'template'])
+Model = namedtuple('Model', ['label', 'desc', 'template', 'chan'])
 
 jenv = jinja2.Environment(loader=jinja2.FileSystemLoader('/etc/voip-provision/templates'))
 
@@ -23,10 +23,12 @@ EXTENS_FILE = "/etc/voip-provision/extens.json"
 INDEX_TEMPLATE = "index.html.jinja"
 
 USERS_TEMPLATE = "ast_sip.jinja"
+SKINNY_TEMPLATE = "ast_skinny.jinja"
 EXTENS_TEMPLATE = "ast_extens.jinja"
 
 CISCO_TEMPLATE = "cisco_SIP.cnf.jinja"
 POLYCOM_TEMPLATE = "phoneMAC.cfg.jinja"
+CISCO_7902_TEMPLATE = "cisco_SEP_7902.cnf.jinja"
 
 TFTP_DIR = "/var/lib/tftpboot"
 
@@ -35,12 +37,14 @@ MODEL_C7940G = "c7940g"
 MODEL_C7960 = "c7960"
 MODEL_C7960G = "c7960g"
 MODEL_P321 = 'p321'
+MODEL_C7902 = 'c7902'
 
 MODELS = {
-    MODEL_C7940: Model(MODEL_C7940, 'Cisco 7940', 'CTLSEP{umac}.tlv'),
-    MODEL_C7940G: Model(MODEL_C7940G, 'Cisco 7940G', 'CTLSEP{umac}.tlv'),
-    MODEL_C7960: Model(MODEL_C7960, 'Cisco 7960', 'CTLSEP{umac}.tlv'),
-    MODEL_P321: Model(MODEL_P321, 'Polycom 321', 'phone{umac}.cfg'),
+    MODEL_C7940: Model(MODEL_C7940, 'Cisco 7940', 'CTLSEP{umac}.tlv', 'SIP'),
+    MODEL_C7940G: Model(MODEL_C7940G, 'Cisco 7940G', 'CTLSEP{umac}.tlv', 'SIP'),
+    MODEL_C7960: Model(MODEL_C7960, 'Cisco 7960', 'CTLSEP{umac}.tlv', 'SIP'),
+    MODEL_P321: Model(MODEL_P321, 'Polycom 321', 'phone{umac}.cfg', 'SIP'),
+    MODEL_C7902: Model(MODEL_C7902, 'Cisco 7902', 'ff{umac}', 'Skinny'),
 }
 
 def gen_username(exten, mac):
@@ -69,6 +73,7 @@ def get_user(exten, mac, model):
         if user.get('mac', None) == mac:
             user['exten'] = exten
             user['model'] = model
+            user['chan'] = MODELS[model].chan
             res = user
             break
     else:
@@ -120,6 +125,16 @@ def create_config(exten, mac, model, user):
                 cid=user.get('callerid', exten),
                 password=user['password'],
                 desc=user.get('desc', exten)))
+    elif model == MODEL_C7902:
+        template = jenv.get_template(CISCO_7902_TEMPLATE)
+
+        with open(os.path.join(TFTP_DIR, 'SEP{}.cnf.xml'.format(mac.upper())), 'w') as target:
+            target.write(template.render(
+                username=user['username'],
+                cid=user.get('callerid', exten),
+                desc=user.get('desc', exten)))
+        with open(os.path.join(TFTP_DIR, 'ff{}'.format(mac.lower())), 'w') as target:
+            target.write('#txt\nDomain:magfe.st\n')
 
 def reload_asterisk():
     requests.post(ASTERISK_URL)
@@ -162,6 +177,14 @@ def asterisk_users():
 
     return template.render(users=get_users())
 
+@APP.route('/asterisk_skinny')
+def asterisk_skinny():
+    template = jenv.get_template(SKINNY_TEMPLATE)
+
+    users = get_users()
+
+    return template.render(user)
+
 @APP.route('/asterisk_extens')
 def asterisk_extensions():
     template = jenv.get_template(EXTENS_TEMPLATE)
@@ -178,7 +201,10 @@ def asterisk_extensions():
         if 'users' not in extensions[user['exten']]:
             extensions[user['exten']]['users'] = []
 
-        extensions[user['exten']]['users'].append("SIP/" + user['username'])
+        if 'chan_address' in user:
+            extensions[user['exten']]['users'].append(user['dial_address'])
+        else:
+            extensions[user['exten']]['users'].append(user.get('chan', 'SIP') + "/" + user['username'])
 
     return template.render(extens=extensions)
 
