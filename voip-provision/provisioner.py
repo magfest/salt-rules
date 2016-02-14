@@ -103,8 +103,8 @@ def get_user(exten, mac, model):
 
     extens = get_extens()
     if exten in extens:
-        user['callerid'] = extens[exten].get('cid', exten)
-        user['desc'] = extens[exten].get('desc', exten)
+        res['callerid'] = extens[exten].get('cid', exten)
+        res['desc'] = extens[exten].get('desc', exten)
 
     with open(USERS_FILE, 'w') as user_file:
         json.dump(users, user_file)
