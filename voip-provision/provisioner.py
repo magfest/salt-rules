@@ -98,8 +98,12 @@ def get_user(exten, mac, model):
             'model': model,
             'username': gen_username(exten, mac),
             'password': gen_password(),
+            'chan': MODELS[model].chan,
         }
         users.append(res)
+
+    if MODELS[model].chan == 'Skinny':
+        user['chan_address'] = 'Skinny/line-{username}@{username}'
 
     extens = get_extens()
     if exten in extens:
@@ -223,7 +227,7 @@ def asterisk_extensions():
             extensions[user['exten']]['users'] = []
 
         if 'chan_address' in user:
-            extensions[user['exten']]['users'].append(user['dial_address'])
+            extensions[user['exten']]['users'].append(user['chan_address'].format(**user))
         else:
             extensions[user['exten']]['users'].append(user.get('chan', 'SIP') + "/" + user['username'])
 
