@@ -93,7 +93,7 @@
 	  <tbody>
 	    {% for user in users %}
 	    <tr onclick="setMac('{{ user['mac'] }}');">
-	      <td>{{ user.get('desc', '')}} {{ user['exten'] }}</td>
+	      <td>{% if 'desc' in user %}{{ user['desc'] }}&nbsp;({{ user['exten'] }}){% else %}{{ user['exten'] }}</td>
 	      <td>{{ user['mac'] }}</td>
 	      <td>{{ user['model']|pretty_model }}</td>
 	    </tr>
