@@ -43,14 +43,14 @@ MODEL_C7940 = "c7940"
 MODEL_C7940G = "c7940g"
 MODEL_C7960 = "c7960"
 MODEL_C7960G = "c7960g"
-MODEL_P321 = 'p321'
+MODEL_P335 = 'p335'
 MODEL_C7902 = 'c7902'
 
 MODELS = {
     MODEL_C7940: Model(MODEL_C7940, 'Cisco 7940', 'CTLSEP{umac}.tlv', 'SIP'),
     MODEL_C7940G: Model(MODEL_C7940G, 'Cisco 7940G', 'CTLSEP{umac}.tlv', 'SIP'),
     MODEL_C7960: Model(MODEL_C7960, 'Cisco 7960', 'CTLSEP{umac}.tlv', 'SIP'),
-    MODEL_P321: Model(MODEL_P321, 'Polycom 321', 'phone{umac}.cfg', 'SIP'),
+    MODEL_P335: Model(MODEL_P335, 'Polycom 335', 'phone{umac}.cfg', 'SIP'),
     MODEL_C7902: Model(MODEL_C7902, 'Cisco 7902', 'ff{umac}', 'Skinny'),
 }
 
@@ -135,7 +135,7 @@ def create_config(exten, mac, model, user):
         with open(os.path.join(TFTP_DIR, 'SEP{}.cnf.xml'.format(mac.upper())), 'w') as target:
             target.write('<device>\n<loadInformation model="IP Phone 7960">P0S3-08-11-00</loadInformation>\n</device>\n')
 
-    elif model == MODEL_P321:
+    elif model == MODEL_P335:
         template = jenv.get_template(POLYCOM_TEMPLATE)
 
         with open(os.path.join(TFTP_DIR, '{}-phone.cfg'.format(mac.lower())), 'w') as target:
