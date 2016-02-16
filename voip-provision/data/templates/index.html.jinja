@@ -72,7 +72,7 @@
 	    {% for extension, info in extens %}
 	    <tr onclick="setExten('{{ extension }}');">
 	      <td>{{ extension }}</td>
-	      <td>{{ '<br/>'.join([info.get('desc')]+info.get('alt_descs',[]))}}</td>
+	      <td>{{ '&nbsp;/<br/>'.join([info.get('desc')]+info.get('alt_descs',[]))}}</td>
 	      <td>{{ info.get('cid') }}</td>
 	      <td>{{ info.get('num_users') }}</td>
 	    </tr>
@@ -93,7 +93,7 @@
 	  <tbody>
 	    {% for user in users %}
 	    <tr onclick="setMac('{{ user['mac'] }}');">
-	      <td>{{ user['exten'] }}</td>
+	      <td>{{ user.get('desc', '')}} {{ user['exten'] }}</td>
 	      <td>{{ user['mac'] }}</td>
 	      <td>{{ user['model']|pretty_model }}</td>
 	    </tr>
