@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<!-- Generated reg-basic.cfg Configuration File -->
+<!-- Generated sip-basic.cfg Configuration File -->
 <polycomConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="polycomConfig.xsd">
-  <call call.callsPerLineKey="24">
-  </call>
-  <reg reg.1.address="{{ username }}" reg.1.auth.password="{{ password }}" reg.1.auth.userId="{{ username }}" reg.1.displayName="{{ desc }}" reg.1.label="{{ cid }}" reg.1.outboundProxy.address="asterisk.magfe.st" reg.1.outboundProxy.port="5060">
+  <msg>
+    <msg.mwi msg.mwi.1.callBackMode="registration" msg.mwi.2.callBackMode="registration">
+    </msg.mwi>
+  </msg>
+  <reg reg.1.address="{{ username }}" reg.1.auth.password="{{ password }}" reg.1.auth.userId="{{ username }}" reg.1.label="{{ callerid }}" reg.1.outboundProxy.address="asterisk.hackafe.net">
   </reg>
-  <bitmaps>
-    <IP_3330 bitmap.IP_330.60.name="logo-321" />
-  </bitmaps>
 </polycomConfig>

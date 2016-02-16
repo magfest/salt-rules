@@ -138,7 +138,7 @@ def create_config(exten, mac, model, user):
     elif model == MODEL_P321:
         template = jenv.get_template(POLYCOM_TEMPLATE)
 
-        with open(os.path.join(TFTP_DIR, 'phone{}.cfg'.format(mac.upper())), 'w') as target:
+        with open(os.path.join(TFTP_DIR, '{}-phone.cfg'.format(mac.lower())), 'w') as target:
             target.write(template.render(
                 username=user['username'],
                 cid=user.get('callerid', exten),
