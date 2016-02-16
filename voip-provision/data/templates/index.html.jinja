@@ -39,12 +39,16 @@
       table {
       margin-bottom: 20px;
       }
+
+      .mac {
+      font-family: monospace;
+      }
     </style>
   </head>
   <body>
     <form action="/enroll" method="post">
       <div>
-	<input id="mac" type="text" name="mac" placeholder="MAC"/><br/>
+	<input id="mac" type="text" name="mac" maxlenth="12" placeholder="MAC"/><br/>
 	<input id="exten" type="text" name="exten" placeholder="Extension"/><br/>
 	<button type="submit" name="model" value="c7902">Cisco 7902</button>
 	<button type="submit" name="model" value="c7960">Cisco 7960/7940</button>
@@ -94,7 +98,7 @@
 	    {% for user in users %}
 	    <tr onclick="setMac('{{ user['mac'] }}');setExen( '{{ user['exten'] }}');">
 	      <td>{% if 'desc' in user %}{{ user['desc'] }}&nbsp;({{ user['exten'] }}){% else %}{{ user['exten'] }}{% endif %}</td>
-	      <td>{{ user['mac'] }}</td>
+	      <td class="mac">{{ user['mac']|upper }}</td>
 	      <td>{{ user['model']|pretty_model }}</td>
 	    </tr>
 	    {% endfor %}
