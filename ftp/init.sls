@@ -3,10 +3,6 @@
     - source: salt://ftp/bftpd.conf
     - mode: '600'
 
-/srv/ftp:
-  file.symlink:
-    - target: /var/lib/tftpboot
-
 bftpd:
   pkg.installed: []
   service.running:
@@ -14,4 +10,3 @@ bftpd:
     - require:
       - pkg: bftpd
       - file: /etc/bftpd.conf
-      - file: /srv/ftp
