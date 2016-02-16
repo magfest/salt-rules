@@ -34,6 +34,11 @@ reloader-service:
       - file: reloader-service
       - pkg: reloader-deps
 
+/var/lib/asterisk/sounds/en/magfest:
+  file.recurse:
+    - source: salt://asterisk/sounds
+    - makedirs: True
+
 /etc/asterisk:
   file.recurse:
     - source: salt://asterisk/conf
