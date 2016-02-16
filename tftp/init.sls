@@ -27,6 +27,14 @@
     - archive_format: tar
     - tar_options: z
 
+phone-config-files:
+  archive.extracted:
+    - source: https://repo.magfe.st/tftp/sipfiles.tar.gz
+    - source_hash: https://repo.magfe.st/sipfiles.tar.gz.hash
+    - archive_format: tar
+    - tar_options: z
+    - if_missing: /var/lib/tftpboot/sip.ld
+
 tftp:
   pkg.installed:
     - name: {{ tftp_pkg }}
