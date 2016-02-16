@@ -141,7 +141,7 @@ def create_config(exten, mac, model, user):
         with open(os.path.join(TFTP_DIR, '{}-phone.cfg'.format(mac.lower())), 'w') as target:
             target.write(template.render(
                 username=user['username'],
-                cid=user.get('callerid', exten),
+                callerid=user.get('callerid', exten),
                 password=user['password'],
                 desc=user.get('desc', exten)))
     elif model == MODEL_C7902:
