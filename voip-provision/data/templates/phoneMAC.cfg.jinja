@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <!-- Generated sip-basic.cfg Configuration File -->
 <polycomConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="polycomConfig.xsd">
+  <device device.hostname="phone{{ mac }}" device.set="1">
+    <device.sntp device.sntp.gmtOffset="" device.sntp.serverName="0.pool.us.ntp.org">
+      <device.sntp.gmtOffset device.sntp.gmtOffset.set="-18000">
+      </device.sntp.gmtOffset>
+      <device.sntp.serverName device.sntp.serverName.set="0.pool.us.ntp.org">
+      </device.sntp.serverName>
+    </device.sntp>
+  </device>
   <msg>
     <msg.mwi msg.mwi.1.callBackMode="registration" msg.mwi.2.callBackMode="registration">
     </msg.mwi>

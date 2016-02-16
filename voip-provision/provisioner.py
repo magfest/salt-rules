@@ -140,6 +140,7 @@ def create_config(exten, mac, model, user):
 
         with open(os.path.join(TFTP_DIR, '{}-phone.cfg'.format(mac.lower())), 'w') as target:
             target.write(template.render(
+                mac=mac.lower(),
                 username=user['username'],
                 callerid=user.get('callerid', exten),
                 password=user['password'],
