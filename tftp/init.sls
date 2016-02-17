@@ -27,6 +27,26 @@
     - archive_format: tar
     - tar_options: z
 
+phone-config-files:
+  archive.extracted:
+    - source: https://repo.magfe.st/tftp/sipfiles.tar.gz
+    - source_hash: https://repo.magfe.st/sipfiles.tar.gz.hash
+    - archive_format: tar
+    - tar_options: z
+    - if_missing: /var/lib/tftpboot/sip.ld
+
+{% if salt['pillar.get']('phone_extensions') %}
+polycom-directory:
+  file.managed:
+    - name: /var/lib/tftpboot/000000000000-directory.xml
+    - source: salt://voip-provision/directory.xml
+    - template: jinja
+    - require: /var/lib/tftpboot
+  file.symlink:
+    - name: /var/lib/tftpboot/000000000000-directory~.xml
+    - target: /var/lib/tftpboot/000000000000-directory.xml
+{% endif %}
+
 tftp:
   pkg.installed:
     - name: {{ tftp_pkg }}

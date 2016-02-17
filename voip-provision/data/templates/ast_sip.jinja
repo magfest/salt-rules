@@ -4,6 +4,6 @@ type=friend
 username={{ user['username'] }}
 secret={{ user['password'] }}
 host=dynamic
-context=internal
+context=phones
 {% if 'callerid' in user %}callerid={{ user['callerid'] }}{% endif %}
 {% endfor %}

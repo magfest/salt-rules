@@ -39,17 +39,20 @@
       table {
       margin-bottom: 20px;
       }
+
+      .mac {
+      font-family: monospace;
+      }
     </style>
   </head>
   <body>
     <form action="/enroll" method="post">
       <div>
-	<input id="mac" type="text" name="mac" placeholder="MAC"/><br/>
+	<input id="mac" type="text" name="mac" maxlenth="12" placeholder="MAC"/><br/>
 	<input id="exten" type="text" name="exten" placeholder="Extension"/><br/>
-	<button type="submit" name="model" value="c7960">Cisco 7960</button>
-	<button type="submit" name="model" value="c7940">Cisco 7940</button>
-	<button type="submit" name="model" value="p321">Polycom 321</button>
 	<button type="submit" name="model" value="c7902">Cisco 7902</button>
+	<button type="submit" name="model" value="c7960">Cisco 7960/7940</button>
+	<button type="submit" name="model" value="p335">Polycom 335</button>
       </div>
     </form>
 
@@ -73,7 +76,7 @@
 	    {% for extension, info in extens %}
 	    <tr onclick="setExten('{{ extension }}');">
 	      <td>{{ extension }}</td>
-	      <td>{{ '<br/>'.join([info.get('desc')]+info.get('alt_descs',[]))}}</td>
+	      <td>{{ '&nbsp;/<br/>'.join([info.get('desc')]+info.get('alt_descs',[]))}}</td>
 	      <td>{{ info.get('cid') }}</td>
 	      <td>{{ info.get('num_users') }}</td>
 	    </tr>
@@ -93,9 +96,9 @@
 	  </thead>
 	  <tbody>
 	    {% for user in users %}
-	    <tr onclick="setMac('{{ user['mac'] }}');">
-	      <td>{{ user['exten'] }}</td>
-	      <td>{{ user['mac'] }}</td>
+	    <tr onclick="setMac('{{ user['mac'] }}');setExten( '{{ user['exten'] }}');">
+	      <td>{% if 'desc' in user %}{{ user['desc'] }}&nbsp;({{ user['exten'] }}){% else %}{{ user['exten'] }}{% endif %}</td>
+	      <td class="mac">{{ user['mac']|upper }}</td>
 	      <td>{{ user['model']|pretty_model }}</td>
 	    </tr>
 	    {% endfor %}
