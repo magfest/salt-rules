@@ -1,0 +1,16 @@
+
+{%- set zone_domain = 'magfest.org' -%}
+$TTL 3600
+; magfest.org
+@ IN SOA dns1.magfe.st. admin.magfe.st. (
+	2016021703  ; Serial
+	28800      ; Refresh
+	1800       ; Retry
+	604800     ; Expire - 1 week
+	86400 )    ; Minimum
+			IN	NS	dns1
+			IN	NS	dns2
+dns1			IN	A	10.14.1.8
+dns2			IN	A	10.14.1.9
+
+onsite.uber.magfest.org	IN	A	10.14.1.26
