@@ -15,7 +15,6 @@ cups:
       - user: {{admin}}
       {% endfor %}
   service.running:
-    - name: org.cups.cupsd.service
     - enable: True
     - require:
       - pkg: cups
