@@ -94,7 +94,7 @@ programs:								      \
 -				xjack -root				    \n\
 -				xlyap -root				    \n\
 - GL: 				atlantis -root				    \n\
-				bsod -root				    \n\
+-				bsod -root				    \n\
 - GL: 				bubble3d -root				    \n\
 - GL: 				cage -root				    \n\
 -				crystal -root				    \n\
