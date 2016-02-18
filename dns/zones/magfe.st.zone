@@ -3,7 +3,7 @@
 $TTL 3600
 ; magfe.st
 @ IN SOA dns1.magfe.st. admin.magfe.st. (
-	2016021401  ; Serial
+	2016021801  ; Serial
 	28800      ; Refresh
 	1800       ; Retry
 	604800     ; Expire - 1 week
@@ -24,6 +24,8 @@ _kerberos-master._udp	IN	SRV	10	10	88	freeipa
 _kerberos._udp		IN	SRV	10	10	88	freeipa
 _kpasswd._udp		IN	SRV	10	10	88	freeipa
 _ldap._tcp		IN	SRV	10	10	389	freeipa
+
+@			IN	A	107.170.205.68
 
 {%- set dns_defaults = salt['pillar.get']('dns:defaults') -%}
 {%- for name, network in salt['pillar.get']('dns:networks').items() %}
