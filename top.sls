@@ -124,3 +124,5 @@ base:
     - utils
     - network.container
 
+  'cups.magfe.st':
+    - cups
