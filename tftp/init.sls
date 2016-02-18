@@ -36,12 +36,14 @@ phone-config-files:
     - if_missing: /var/lib/tftpboot/sip.ld
 
 {% if salt['pillar.get']('phone_extensions') %}
-polycom-directory:
+polycom-directory-a:
   file.managed:
     - name: /var/lib/tftpboot/000000000000-directory.xml
     - source: salt://voip-provision/directory.xml
     - template: jinja
     - require: /var/lib/tftpboot
+
+polycom-directory-b:
   file.symlink:
     - name: /var/lib/tftpboot/000000000000-directory~.xml
     - target: /var/lib/tftpboot/000000000000-directory.xml
