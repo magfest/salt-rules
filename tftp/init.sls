@@ -41,7 +41,8 @@ polycom-directory-a:
     - name: /var/lib/tftpboot/000000000000-directory.xml
     - source: salt://voip-provision/directory.xml
     - template: jinja
-    - require: /var/lib/tftpboot
+    - require:
+      - file: /var/lib/tftpboot
 
 polycom-directory-b:
   file.symlink:
