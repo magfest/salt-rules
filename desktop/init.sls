@@ -138,3 +138,7 @@ lxdeconf:
     - source: salt://desktop/xscreensaver
     - require:
       - file: /usr/bin/magname
+
+/usr/lib/firefox/browser/defaults/preferences/firefox-redhat-default-prefs.js:
+  file.managed:
+    - source: salt://desktop/prefs.js
