@@ -4,13 +4,17 @@ asterisk-skinny:
 asterisk:
   pkg.installed: []
 
+asterisk-sip:
+  pkg.installed: []
+
+asterisk:
   service.running:
     - enable: True
     - reload: True
     - require:
       - pkg: asterisk
       - pkg: asterisk-skinny
-      - file: /etc/asterisk
+      - pkg: asterisk-sip
 
 reloader-deps:
   pkg.installed:
@@ -39,12 +43,14 @@ reloader-service:
     - source: salt://asterisk/sounds
     - makedirs: True
 
-/etc/asterisk:
-  file.recurse:
-    - source: salt://asterisk/conf
+{% for conf_file in ['skinny', 'sip', 'extensions'] %}
+/etc/asterisk/{{ conf_file }}.conf:
+  file.managed:
+    - source: salt://asterisk/conf/{{ conf_file }}.conf
     - template: jinja
     - watch_in:
       - service: asterisk
+{% endfor %}
 
 /usr/bin:
   file.recurse:
