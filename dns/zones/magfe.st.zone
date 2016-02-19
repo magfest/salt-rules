@@ -26,7 +26,7 @@ _kpasswd._udp		IN	SRV	10	10	88	freeipa
 _ldap._tcp		IN	SRV	10	10	389	freeipa
 
 @			IN	A	107.170.205.68
-
+staffsuite		IN	CNAME	magsuite.jennytru.com
 {%- set dns_defaults = salt['pillar.get']('dns:defaults') -%}
 {%- for name, network in salt['pillar.get']('dns:networks').items() %}
 ; {{ name }}
