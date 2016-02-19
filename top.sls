@@ -54,6 +54,15 @@ base:
   'role:dhcp-server':
     - match: pillar
     - dhcp
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - network.container
 
   'role:tftp-server':
     - match: pillar
