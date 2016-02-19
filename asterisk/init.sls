@@ -1,13 +1,11 @@
 asterisk-skinny:
   pkg.installed: []
 
-asterisk:
-  pkg.installed: []
-
 asterisk-sip:
   pkg.installed: []
 
 asterisk:
+  pkg.installed: []
   service.running:
     - enable: True
     - reload: True
