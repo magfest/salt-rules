@@ -135,3 +135,15 @@ base:
 
   'cups.magfe.st':
     - cups
+
+  'noc.magfe.st':
+    - match: pillar
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - network.container
