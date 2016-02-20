@@ -49,6 +49,7 @@ lxde:
       - hplip
       - google-chrome-stable
       - words
+      - iwl3945-firmware
 
 xpad:
   pkg.removed
