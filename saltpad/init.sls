@@ -11,6 +11,8 @@ move-saltpad:
     - name: /srv/saltpad
     - source: /tmp/saltpad/dist
     - makedirs: True
+    - require:
+      - archive: saltpad-package
 
 /srv/saltpad/static/settings.json:
   file.managed:
