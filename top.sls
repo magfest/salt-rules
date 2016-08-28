@@ -1,18 +1,4 @@
 base:
-  'role:containerhost':
-    - match: pillar
-    - repos
-    - managed
-    - managed.update
-    - login.ssh
-    - login.admin
-    - network.time
-    - utils
-    - containers.sync
-    - containers
-    - network.bridge
-    - selinux
-
   'role:container':
     - match: pillar
     - firewall
@@ -23,7 +9,6 @@ base:
     - login.admin
     - network.time
     - utils
-    - network.container
 
   'role:laptop':
     - match: pillar
@@ -66,7 +51,6 @@ base:
     - login.admin
     - network.time
     - utils
-    - network.container
 
   'role:tftp-server':
     - match: pillar
@@ -82,7 +66,6 @@ base:
     - login.admin
     - network.time
     - utils
-    - network.container
     - tftp
     - tftp.foreman-proxy
     - voip-provision
@@ -96,7 +79,6 @@ base:
     - login.admin
     - network.time
     - utils
-    - network.container
 
   'freeipa.magfe.st':
     - freeipa
@@ -108,7 +90,6 @@ base:
     - login.admin
     - network.time
     - utils
-    - network.container
 
   'ntp*.magfe.st':
     - ntp
@@ -124,7 +105,6 @@ base:
     - login.admin
     - network.time
     - utils
-    - network.container
 
   'freeradius.magfe.st':
     - firewall
@@ -135,7 +115,6 @@ base:
     - login.admin
     - network.time
     - utils
-    - network.container
 
   'cups.magfe.st':
     - cups
@@ -150,4 +129,3 @@ base:
     - login.admin
     - network.time
     - utils
-    - network.container

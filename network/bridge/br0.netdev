@@ -1,5 +1,0 @@
-[NetDev]
-Description=Bridge for containers
-Name=br0
-Kind=bridge
-

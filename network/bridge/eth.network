@@ -1,6 +1,0 @@
-[Match]
-Name={{ pillar.network[grains['host']]['containerdev'] }}
-
-[Network]
-Bridge=br0
-DHCP=no

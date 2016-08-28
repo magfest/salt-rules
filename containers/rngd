@@ -1,1 +1,0 @@
-EXTRAOPTIONS="-r /dev/urandom -o /dev/random"
