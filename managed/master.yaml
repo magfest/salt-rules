@@ -13,6 +13,7 @@ gitfs_remotes:
   - git@github.com:magfest/salt-rules.git:
     - privkey: /etc/salt/pki/master/salt_git_key
     - pubkey: /etc/salt/pki/master/salt_git_key.pub
+  - https://github.com/magfest/ipa-formula
 
 ext_pillar:
   - git:
