@@ -89,11 +89,11 @@ def merged(base, top):
     merge(res, top)
     return res
 
-def merged_grains(base, top, base_default=None):
+def merged_pillars(base, top, base_default=None):
     if base_default is None:
         base_default = {}
 
-    return merged(__salt__['grains.get'](base, base_default), __salt__['grains.get'](top, {}))
+    return merged(__salt__['pillar.get'](base, base_default), __salt__['pillar.get'](top, {}))
 
 def merge_listdict(a, b):
     "merges b into a"

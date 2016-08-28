@@ -1,4 +1,4 @@
-{% set admins = salt['utils.merged_grains']('admins:default', 'admins:' + grains['host']) %}
+{% set admins = salt['utils.merged_pillars']('admins:default', 'admins:' + grains['host']) %}
 {% for admin, properties in admins.items() %}
 {{ admin }}:
   user.present:
@@ -32,8 +32,8 @@ sudo:
 root:
   user.present:
     - remove_groups: False
-{% if salt['grains.get']('host', None) in pillar.rootpw_overrides %}
-    - password: {{ pillar.rootpw_overrides[salt['grains.get']('host', None)] }}
+{% if grains['host'] in pillar.rootpw_overrides %}
+    - password: {{ pillar.rootpw_overrides[grains['host']] }}
 {% else %}
     - password: {{ pillar.rootpw }}
 {% endif %}
