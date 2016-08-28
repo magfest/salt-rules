@@ -16,7 +16,7 @@ salt-group:
     - name: salt
     - system: True
     {% set admins = salt['utils.merged_grains']('admins:default', 'admins:' + grains['host']) %}
-    {% if pillar.admins %}
+    {% if admins %}
     - members:
       {% for admin in admins.keys() %}
       - {{admin}}
