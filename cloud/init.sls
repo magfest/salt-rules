@@ -6,6 +6,9 @@ cloud-config:
       - salt://cloud/cloud.conf
     - template: jinja
 
+python-IPy:
+  pkg.installed: []
+
 {% set deleted = salt['pillar.get']('cloud:deleted', []) %}
 {% set defaults = salt['pillar.get']('cloud_defaults', {}) %}
 
