@@ -84,6 +84,11 @@ def is_listdict(d):
 def resolve(hostname):
     return socket.gethostbyname(hostname)
 
+def merged(base, top):
+    res = copy(base)
+    merge(res, top)
+    return res
+
 def merge_listdict(a, b):
     "merges b into a"
 
