@@ -5,7 +5,7 @@ default_include: minion.d/*.conf
 
 # Set the location of the salt master server. If the master server cannot be
 # resolved, then the minion will fail to start.
-master: foreman.magfe.st
+master: salt.magfe.st
 
 # Set the number of seconds to wait before attempting to resolve
 # the master hostname if name resolution fails. Defaults to 30 seconds.
