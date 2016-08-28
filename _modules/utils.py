@@ -25,7 +25,7 @@ def remap(k):
     return k
 
 NET_PARAMS = ['name', 'bridge', 'gw', 'ip', 'type', 'ip6', 'hwaddr', 'tag']
-KEEP_ANYWAY = ['name']
+KEEP_ANYWAY = ['name', 'ip']
 
 def filter_netparams(param_dictlist):
     return [{remap(k): v} for d in param_dictlist for k, v in d.items() if k not in NET_PARAMS or k in KEEP_ANYWAY]
