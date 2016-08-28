@@ -116,6 +116,7 @@ base:
     - login.admin
     - network.time
     - utils
+    - freeradius
 
   'cups.magfe.st':
     - cups
