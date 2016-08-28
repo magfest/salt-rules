@@ -1,4 +1,3 @@
-{% if pillar.admins %}
 {% set admins = salt['utils.merged_grains']('admins:default', 'admins:' + grains['host']) %}
 {% for admin, properties in admins.items() %}
 {{ admin }}:
@@ -13,9 +12,6 @@
     - name: {{ salt['pillar.get']('ssh_keys:' + admin) }}
   {% endif %}
 {% endfor %}
-{% else %}
-{% set admins = {} %}
-{% endif %}
 
 sudo:
   group.present:
