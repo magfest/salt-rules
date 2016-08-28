@@ -27,3 +27,14 @@ file_ignore_regex:
 reactor:
   - 'salt/fileserver/gitfs/update':
     - /srv/reactor/update_fileserver.sls
+
+rest_tornado:
+    # can be any port
+    port: 8000
+    ssl_crt: /etc/pki/api/certs/server.crt
+    # no need to specify ssl_key if cert and key
+    # are in one single file
+    ssl_key: /etc/pki/api/certs/server.key
+    debug: False
+    disable_ssl: False
+    websockets: True
