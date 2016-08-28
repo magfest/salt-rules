@@ -10,6 +10,12 @@ salt-master:
     - require:
       - pkg: python-pygit2
 
+salt-api:
+  service.running:
+    - enable: True
+    - require:
+      - pkg: python-tornado
+
 salt-master-config:
   file.managed:
     - name: /etc/salt/master
