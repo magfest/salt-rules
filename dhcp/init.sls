@@ -1,4 +1,4 @@
-dhcp-server:
+dhcp:
   pkg.installed: []
 
 dhcpd:
