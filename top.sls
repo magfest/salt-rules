@@ -47,6 +47,7 @@ base:
 
   'salt.magfe.st':
     - managed.master
+    - cloud
 
   'asterisk.magfe.st':
     - asterisk
