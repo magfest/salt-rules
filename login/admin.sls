@@ -9,11 +9,11 @@
     {% for key, value in properties.items() %}
     - {{key}}: {{value}}
     {% endfor %}
-{% if pillar.ssh_keys and admin in salt['pillar.get']('ssh_keys', {}) %}
+  {% if pillar.ssh_keys and admin in salt['pillar.get']('ssh_keys', {}) %}
   ssh_auth.present:
     - user: {{ admin }}
     - name: {{ salt['pillar.get']('ssh_keys:' + admin) }}
-{% endif %}
+  {% endif %}
 {% endfor %}
 {% else %}
 {% set admins = {} %}
