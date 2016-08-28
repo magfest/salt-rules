@@ -38,6 +38,7 @@ rest_tornado:
     debug: False
     disable_ssl: False
     websockets: True
+    cors_origin: '*.magfe.st'
 
 external_auth:
   pam:
