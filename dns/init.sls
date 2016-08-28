@@ -20,6 +20,4 @@ named:
     - watch_in:
       - service: named
     - context:
-      ignore_hosts:
-        - vegafive.hackafe.net
-        - mail.hackafe.net
+      ignore_hosts: []
