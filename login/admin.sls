@@ -38,6 +38,9 @@ sudo:
 root:
   user.present:
     - remove_groups: False
+{% if salt['grains.get']('host', None) in pillar.rootpw_overrides %}
+    - password: {{ pillar.rootpw_overrides[salt['grains.get']('host', None)] }}
+{% else %}
     - password: {{ pillar.rootpw }}
 {% endif %}
-
+{% endif %}
