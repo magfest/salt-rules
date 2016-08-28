@@ -4,6 +4,7 @@ saltpad-package:
     - source: https://github.com/Lothiraldan/saltpad/releases/download/v0.3.1/dist.zip
     - source_hash: sha1=4c25b16234ac900085358574bdc1041e65e7d4e6
     - if_missing: /srv/saltpad/
+    - archive_format: zip
 
 move-saltpad:
   file.copy:
