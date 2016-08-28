@@ -45,6 +45,9 @@ base:
     - challenges.emulators
     - laptop.notify
 
+  'salt.magfe.st':
+    - managed.master
+
   'asterisk.magfe.st':
     - asterisk
 
