@@ -3,6 +3,7 @@ ntp:
     - name: ntp
   service.running:
     - name: ntpd
+    - enable: True
     - require:
       - pkg: ntp
       - file: /etc/ntp.conf
