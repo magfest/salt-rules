@@ -18,6 +18,8 @@ move-saltpad:
   file.managed:
     - source: salt://saltpad/settings.json
     - makedirs: True
+    - require:
+      - file: move-saltpad
 
 nginx:
   pkg.installed: []
