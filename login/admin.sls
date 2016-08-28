@@ -3,7 +3,7 @@
 {% set local_admins = salt['pillar.get']('admins:' + grains['host'], {}) %}
 {% set _ = salt['utils.merge'](admins, local_admins) %}
 {% for admin, properties in admins.items() %}
-   {{ admin }}:
+{{ admin }}:
   user.present:
     - remove_groups: False
     {% for key, value in properties.items() %}
