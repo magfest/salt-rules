@@ -38,3 +38,16 @@ rest_tornado:
     debug: False
     disable_ssl: False
     websockets: True
+
+external_auth:
+  pam:
+    root:
+      - .*
+      - '@runner'
+      - '@wheel'
+    {% for admin in pillar.admins.default.keys() %}
+    {{ admin }}:
+      - .*
+      - '@runner'
+      - '@wheel'
+    {% endfor %}
