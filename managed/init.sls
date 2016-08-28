@@ -16,12 +16,13 @@ salt-group:
     - name: salt
     - system: True
     {% if pillar.admins %}
+    {% set admins = salt['utils.merged_grains']('admins:default', 'admins:' + grains['host']) %}
     - members:
-      {% for admin in pillar.admins.keys() %}
+      {% for admin in admins.keys() %}
       - {{admin}}
       {% endfor %}
     - require:
-      {% for admin in pillar.admins.keys() %}
+      {% for admin in admins.keys() %}
       - user: {{admin}}
       {% endfor %}
     {% endif %}

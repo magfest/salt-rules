@@ -1,7 +1,5 @@
 {% if pillar.admins %}
-{% set admins = salt['pillar.get']('admins:default', {}) %}
-{% set local_admins = salt['pillar.get']('admins:' + grains['host'], {}) %}
-{% set _ = salt['utils.merge'](admins, local_admins) %}
+{% set admins = salt['utils.merged_grains']('admins:default', 'admins:' + grains['host']) %}
 {% for admin, properties in admins.items() %}
 {{ admin }}:
   user.present:
