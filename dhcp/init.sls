@@ -5,7 +5,7 @@ dhcpd:
   service.running:
     - enable: True
     - require:
-      - pkg: dhcp-server
+      - pkg: dhcp
       - file: /etc/dhcp/dhcpd.conf
 
 /etc/dhcp/dhcpd.conf:
