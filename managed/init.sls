@@ -31,7 +31,6 @@ salt-group:
 daemon-reload:
   cmd.wait:
     - name: systemctl daemon-reload
-    - user: root
-    - group: root
+    - runas: root
     - watch:
       - file: /etc/systemd/system/*
