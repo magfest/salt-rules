@@ -33,6 +33,7 @@ base:
   'salt.magfe.st':
     - managed.master
     - cloud
+    - saltpad
 
   'asterisk.magfe.st':
     - asterisk
