@@ -1,5 +1,5 @@
 {
-    "API_URL": "salt.magfe.st:8000",
+    "API_URL": "salt.magfe.st/api",
     "SECURE_HTTP": false,
     "FLAVOUR": "rest_tornado"
 }
