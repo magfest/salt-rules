@@ -18,19 +18,19 @@ def dictlist_to_dict(l):
             res[k] = v
     return res
 
-NET_REMAP = {'ip': 'ip_address'}
+NET_REMAP = {'ip': 'ip_address', 'net_model': 'model'}
 def remap(k):
     if k in NET_REMAP:
         return NET_REMAP[k]
     return k
 
-NET_PARAMS = ['name', 'bridge', 'gw', 'ip', 'type', 'ip6', 'hwaddr', 'tag']
+NET_PARAMS = ['name', 'bridge', 'gw', 'ip', 'type', 'ip6', 'hwaddr', 'tag', 'net_model']
 KEEP_ANYWAY = ['name', 'ip']
 
 def filter_netparams(param_dictlist):
     return [{remap(k): v} for d in param_dictlist for k, v in d.items() if k not in NET_PARAMS or k in KEEP_ANYWAY]
 
-def mknet(name='eth0', bridge='vmbr0', gw=None, ip=None, type='veth', **kwargs):
+def mknet(name='eth0', bridge='vmbr0', gw=None, ip=None, type='veth', model='', **kwargs):
     if ip and '/' not in ip:
         ip += '/24'
 
@@ -43,10 +43,11 @@ def mknet(name='eth0', bridge='vmbr0', gw=None, ip=None, type='veth', **kwargs):
     kwargs.update({
         'name': name,
         'bridge': bridge,
-        'type': type
+        'type': type,
     })
 
-    return ','.join(['='.join((k,str(v))) for k, v in kwargs.items() if k in NET_PARAMS])
+    # Prefix the model if it's present, for VMs
+    return ','.join(([model] if model else []) + ['='.join((k,str(v))) for k, v in kwargs.items() if k in NET_PARAMS])
 
 def is_list(obj):
     return isinstance(obj, list)
