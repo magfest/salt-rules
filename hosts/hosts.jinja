@@ -1,0 +1,15 @@
+################################################
+#         THIS FILE IS MANAGED BY SALT         #
+#  Any changes you make will be overwritten!   #
+################################################
+
+127.0.0.1	localhost.localdomain	localhost
+::1		localhost.localdomain	localhost
+
+{%- set dns_defaults = salt['pillar.get']('dns:defaults') -%}
+{%- for name, network in salt['pillar.get']('dns:networks').items() %}
+{%- set net_domain = salt['pillar.get']('dns:networks:' + name + ':options:domain-name', salt['pillar.get']('dns:defaults:options:domain-name')) %}
+{%- for hostname, attrs in salt['pillar.get']('dns:networks:' + name + ':hosts', {}).items() %}
+{{ attrs['ip'] }}	{{ hostname }}.{{ net_domain }} {{ hostname }}
+{%- endfor -%}
+{%- endfor -%}

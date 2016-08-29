@@ -9,6 +9,7 @@ base:
     - login.admin
     - network.time
     - utils
+    - hosts
 
   'role:laptop':
     - match: pillar
@@ -29,17 +30,20 @@ base:
     - selinux
     - challenges.emulators
     - laptop.notify
+    - hosts
 
   'salt.magfe.st':
     - managed.master
     - cloud
     - saltpad
+    - hosts
 
   'asterisk.magfe.st':
     - asterisk
 
   'repo.magfe.st':
     - mrepo
+    - hosts
 
   'role:dhcp-server':
     - match: pillar
@@ -52,11 +56,13 @@ base:
     - login.admin
     - network.time
     - utils
+    - hosts
 
   'role:tftp-server':
     - match: pillar
     - tftp
     - tftp.foreman-proxy
+    - hosts
 
   'tftp.magfe.st':
     - firewall
@@ -71,6 +77,7 @@ base:
     - tftp.foreman-proxy
     - voip-provision
     - ftp
+    - hosts
 
   'foreman.magfe.st':
     - firewall
@@ -80,6 +87,7 @@ base:
     - login.admin
     - network.time
     - utils
+    - hosts
 
   'freeipa.magfe.st':
     - freeipa
@@ -91,9 +99,11 @@ base:
     - login.admin
     - network.time
     - utils
+    - hosts
 
   'ntp*.magfe.st':
     - ntp
+    - hosts
 
   'role:dns-server':
     - match: pillar
@@ -106,6 +116,7 @@ base:
     - login.admin
     - network.time
     - utils
+    - hosts
 
   'freeradius.magfe.st':
     - firewall
@@ -117,9 +128,11 @@ base:
     - network.time
     - utils
     - freeradius
+    - hosts
 
   'cups.magfe.st':
     - cups
+    - hosts
 
   'noc.magfe.st':
     - match: pillar
@@ -131,3 +144,4 @@ base:
     - login.admin
     - network.time
     - utils
+    - hosts
