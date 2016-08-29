@@ -4,6 +4,9 @@ python-pygit2:
 python-tornado:
   pkg.installed: []
 
+python-cherrypy:
+  pkg.installed: []
+
 salt-master:
   service.running:
     - enable: True

@@ -28,14 +28,21 @@ reactor:
   - 'salt/fileserver/gitfs/update':
     - /srv/reactor/update_fileserver.sls
 
-rest_tornado:
-    # can be any port
-    port: 8000
-    listen: 127.0.0.1
-    debug: False
-    disable_ssl: True
-    websockets: True
-    cors_origin: '*'
+rest_cherypy:
+  port: 8000
+  listen: 127.0.0.1
+  debug: False
+  disable_ssl: True
+  websockets: True
+
+rest_cherrypy:
+  port: 8000
+  host: 127.0.0.1
+  disable_ssl: True
+  static: /srv/saltpad/static
+  static_path: /static
+  app: /srv/saltpad/index.html
+  app_path: /saltpad
 
 external_auth:
   pam:
