@@ -20,6 +20,9 @@ git-mrepo:
     - require:
       - pkg: git
 
+make:
+  pkg.installed: []
+
 mrepo-install:
   cmd.run:
     - name: /usr/bin/make install
@@ -27,6 +30,7 @@ mrepo-install:
     - cwd: /root/mrepo/
     - require:
       - git: git-mrepo
+      - pkg: make
 
 createrepo:
   pkg.installed: []
