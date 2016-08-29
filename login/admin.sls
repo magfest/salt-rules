@@ -37,4 +37,9 @@ root:
 {% else %}
     - password: {{ pillar.rootpw }}
 {% endif %}
+{% if pillar.root_keys and grains['host'] in pillar.root_keys %}
+  ssh_auth.present:
+    - user: root
+    - name: {{ salt['pillar.get']('root_keys:' + grains['host']) }}
+{% endif %}
 {% endif %}
