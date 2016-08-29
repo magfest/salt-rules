@@ -28,13 +28,6 @@ reactor:
   - 'salt/fileserver/gitfs/update':
     - /srv/reactor/update_fileserver.sls
 
-rest_cherypy:
-  port: 8000
-  listen: 127.0.0.1
-  debug: False
-  disable_ssl: True
-  websockets: True
-
 rest_cherrypy:
   port: 8000
   host: 127.0.0.1
