@@ -40,11 +40,13 @@ def mknet(name='eth0', bridge='vmbr0', gw=None, ip=None, type='veth', model='', 
     if ip:
         kwargs['ip'] = ip
 
+    if hwaddr:
+        kwargs['hwaddr'] = hwaddr
+
     kwargs.update({
         'name': name,
         'bridge': bridge,
         'type': type,
-        'hwaddr': hwaddr,
     })
 
     # Prefix the model if it's present, for VMs
