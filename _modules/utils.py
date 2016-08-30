@@ -30,7 +30,7 @@ KEEP_ANYWAY = ['name', 'ip']
 def filter_netparams(param_dictlist):
     return [{remap(k): v} for d in param_dictlist for k, v in d.items() if k not in NET_PARAMS or k in KEEP_ANYWAY]
 
-def mknet(name='eth0', bridge='vmbr0', gw=None, ip=None, type='veth', model='', **kwargs):
+def mknet(name='eth0', bridge='vmbr0', gw=None, ip=None, type='veth', model='', hwaddr='', **kwargs):
     if ip and '/' not in ip:
         ip += '/24'
 
@@ -44,6 +44,7 @@ def mknet(name='eth0', bridge='vmbr0', gw=None, ip=None, type='veth', model='', 
         'name': name,
         'bridge': bridge,
         'type': type,
+        'hwaddr': hwaddr,
     })
 
     # Prefix the model if it's present, for VMs
