@@ -50,7 +50,7 @@ def mknet(name='eth0', bridge='vmbr0', gw=None, ip=None, type='veth', model='', 
     })
 
     # Prefix the model if it's present, for VMs
-    return ','.join(([model + (('=' + hwaddr) if hwaddr else '')] if model else []) + ['='.join((k,str(v))) for k, v in kwargs.items() if k in NET_PARAMS])
+    return ','.join(([model + (('=' + hwaddr) if hwaddr else '')] if model else []) + ['='.join((k,str(v))) for k, v in kwargs.items() if v and k in NET_PARAMS])
 
 def is_list(obj):
     return isinstance(obj, list)
