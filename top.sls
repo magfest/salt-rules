@@ -61,7 +61,6 @@ base:
   'role:tftp-server':
     - match: pillar
     - tftp
-    - tftp.foreman-proxy
     - hosts
 
   'tftp.magfe.st':
@@ -74,7 +73,6 @@ base:
     - network.time
     - utils
     - tftp
-    - tftp.foreman-proxy
     - voip-provision
     - ftp
     - hosts
