@@ -31,7 +31,7 @@ provision-dirs:
 
 tftp-files:
   file.recurse:
-    - name: /var/lib/tftpboot
+    - name: /srv/tftp
     - source: salt://voip-provision/tftp
     - template: jinja
     - makedirs: True

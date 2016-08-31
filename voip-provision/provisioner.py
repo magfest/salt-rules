@@ -37,7 +37,7 @@ CISCO_TEMPLATE = "cisco_SIP.cnf.jinja"
 POLYCOM_TEMPLATE = "phoneMAC.cfg.jinja"
 CISCO_7902_TEMPLATE = "cisco_SEP_7902.cnf.jinja"
 
-TFTP_DIR = "./tftpdir" if TESTING else "/var/lib/tftpboot"
+TFTP_DIR = "./tftpdir" if TESTING else "/srv/tftp"
 
 MODEL_C7940 = "c7940"
 MODEL_C7940G = "c7940g"
