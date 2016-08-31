@@ -50,9 +50,9 @@
       <div>
 	<input id="mac" type="text" name="mac" maxlenth="12" placeholder="MAC"/><br/>
 	<input id="exten" type="text" name="exten" placeholder="Extension"/><br/>
-	<button type="submit" name="model" value="c7902">Cisco 7902</button>
-	<button type="submit" name="model" value="c7960">Cisco 7960/7940</button>
-	<button type="submit" name="model" value="p335">Polycom 335</button>
+	{% for display, models in models %}
+	<button type="submit" name="model" value="{{ models[0] }}">{{ display }}</button>
+	{% endfor %}
       </div>
     </form>
 

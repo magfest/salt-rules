@@ -57,6 +57,13 @@ MODELS = {
     MODEL_YT26P: Model(MODEL_YT26P, 'Yealink T26P', '{umac}.cfg', 'SIP'),
 }
 
+MODEL_GROUPS = {
+    "Cisco 7960/7940": [MODEL_C7940, MODEL_C7940G, MODEL_C7960],
+    "Cisco 7902": [MODEL_C7902],
+    "Polycom 335": [MODEL_P335],
+    "Yealink T26P ": [MODEL_YT26P],
+}
+
 def pretty_model(model):
     if model in MODELS:
         return MODELS[model].desc
@@ -165,7 +172,7 @@ def create_config(exten, mac, model, user):
         with open(os.path.join(TFTP_DIR, '{}.cfg'.format(mac.lower())), 'w') as target:
             target.write(template.render(
                 username=user['username'],
-                cid=uer.get('callerid', exten),
+                cid=user.get('callerid', exten),
                 desc=user.get('desc', exten),
                 password=user['password']
             ))
@@ -182,7 +189,7 @@ def index():
     for exten, thing in extens.items():
         thing['num_users'] = len([u for u in users if u.get('exten','') == exten])
 
-    return template.render(users=users,
+    return template.render(users=users, models=sorted(MODEL_GROUPS.items()),
                            extens=sorted(extens.items(), key=lambda a:int(a[0])))
 
 @APP.route('/enroll', methods=['POST'])
