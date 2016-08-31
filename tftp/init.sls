@@ -14,6 +14,10 @@ tftp-hpa:
       - group: tftp
       - user: tftp
 
+/etc/conf.d/tftpd:
+  file.managed:
+    - source: salt://tftp/conf
+
 {% if salt['pillar.get']('phone_extensions') %}
 polycom-directory-a:
   file.managed:
