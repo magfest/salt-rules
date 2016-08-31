@@ -3,7 +3,7 @@ provision-deps:
     - pkgs:
       - python
       - python-flask
-      - python-jinja2
+      - python-jinja
       - python-requests
 
 provision-bin:
