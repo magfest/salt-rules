@@ -18,12 +18,14 @@ provision-dirs-templated:
     - name: /etc/voip-provision/extens.json
     - source: salt://voip-provision/data/extens.json
     - template: jinja
+    - makedirs: True
 
 provision-dirs:
   file.recurse:
     - name: /etc/voip-provision/templates
     - source: salt://voip-provision/data/templates
     - template: False
+    - makedirs: True
     - watch_in:
       - service: provision-service
     - require:
