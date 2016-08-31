@@ -1,15 +1,7 @@
-{% set tftp_pkg = salt['grains.filter_by']({
-  'Arch': 'tftp-hpa',
-  'Debian': 'tftpd-hpa',
-  'RedHat': 'tftp-server',
-  }, grain='os_family', default='RedHat')
-%}
+tftp-hpa:
+  pkg.installed
 
-/etc/systemd/system/tftp.service:
-  file.managed:
-    - source: salt://tftp/tftp.service
-
-/var/lib/tftpboot:
+/srv/tftp:
   file.directory:
     - user: root
     - group: tftp
@@ -51,19 +43,20 @@ polycom-directory-b:
 {% endif %}
 
 tftp:
-  pkg.installed:
-    - name: {{ tftp_pkg }}
   group.present: []
   user.present:
     - shell: /bin/nologin
-    - home: /var/lib/tftpboot
+    - home: /srv/tftp
     - system: True
     - groups:
       - tftp
+
+tftpd:
   service.running:
     - enable: True
     - require:
-      - pkg: tftp
+      - pkg: tftp-hpa
       - user: tftp
-      - file: /var/lib/tftpboot
-      - file: /etc/systemd/system/tftp.service
+      - file: /srv/tftp
+    - watch:
+      - file: /etc/conf.d/tftpd
