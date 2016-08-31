@@ -1,9 +1,3 @@
-asterisk-skinny:
-  pkg.installed: []
-
-asterisk-sip:
-  pkg.installed: []
-
 asterisk:
   pkg.installed: []
   service.running:
@@ -11,8 +5,6 @@ asterisk:
     - reload: True
     - require:
       - pkg: asterisk
-      - pkg: asterisk-skinny
-      - pkg: asterisk-sip
 
 reloader-deps:
   pkg.installed:
