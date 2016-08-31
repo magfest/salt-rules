@@ -36,6 +36,7 @@ EXTENS_TEMPLATE = "ast_extens.jinja"
 CISCO_TEMPLATE = "cisco_SIP.cnf.jinja"
 POLYCOM_TEMPLATE = "phoneMAC.cfg.jinja"
 CISCO_7902_TEMPLATE = "cisco_SEP_7902.cnf.jinja"
+YEALINK_TEMPLATE = "yealink.cfg"
 
 TFTP_DIR = "./tftpdir" if TESTING else "/srv/tftp"
 
@@ -45,6 +46,7 @@ MODEL_C7960 = "c7960"
 MODEL_C7960G = "c7960g"
 MODEL_P335 = 'p335'
 MODEL_C7902 = 'c7902'
+MODEL_YT26P = 'yt26p'
 
 MODELS = {
     MODEL_C7940: Model(MODEL_C7940, 'Cisco 7940', 'CTLSEP{umac}.tlv', 'SIP'),
@@ -52,6 +54,7 @@ MODELS = {
     MODEL_C7960: Model(MODEL_C7960, 'Cisco 7960', 'CTLSEP{umac}.tlv', 'SIP'),
     MODEL_P335: Model(MODEL_P335, 'Polycom 335', 'phone{umac}.cfg', 'SIP'),
     MODEL_C7902: Model(MODEL_C7902, 'Cisco 7902', 'ff{umac}', 'Skinny'),
+    MODEL_YT26P: Model(MODEL_YT26P, 'Yealink T26P', '{umac}.cfg', 'SIP'),
 }
 
 def pretty_model(model):
@@ -155,6 +158,17 @@ def create_config(exten, mac, model, user):
                 desc=user.get('desc', exten)))
         with open(os.path.join(TFTP_DIR, 'ff{}'.format(mac.lower())), 'w') as target:
             target.write('#txt\nDomain:magfe.st\n')
+
+    elif model == MODEL_YT26P:
+        template = jenv.get_template(YEALINK_TEMPLATE)
+
+        with open(os.path.join(TFTP_DIR, '{}.cfg'.format(mac.lower())), 'w') as target:
+            target.write(template.render(
+                username=user['username'],
+                cid=uer.get('callerid', exten),
+                desc=user.get('desc', exten),
+                password=user['password']
+            ))
 
 def reload_asterisk():
     requests.post(ASTERISK_URL)
