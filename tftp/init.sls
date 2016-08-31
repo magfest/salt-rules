@@ -18,7 +18,7 @@ tftp-hpa:
 polycom-directory-a:
   file.managed:
     - name: /srv/tftp/000000000000-directory.xml
-    - source: salt://voip-provision/directory.xml
+    - source: salt://voip-provision/directory-000000000000.xml
     - template: jinja
     - require:
       - file: /srv/tftp
