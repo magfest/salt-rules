@@ -38,6 +38,7 @@ reloader-service:
   file.managed:
     - source: salt://asterisk/conf/{{ conf_file }}.conf
     - template: jinja
+    - makedirs: True
     - watch_in:
       - service: asterisk
 {% endfor %}
