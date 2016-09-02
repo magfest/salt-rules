@@ -14,18 +14,13 @@ tftp-hpa:
       - group: tftp
       - user: tftp
   archive.extracted:
-    - source: https://repo.magfe.st/tftp/tftp.tar.gz
-    - source_hash: https://repo.magfe.st/tftp/tftp.tar.gz.hash
-    - archive_format: tar
-    - tar_options: z
-
-phone-config-files:
-  archive.extracted:
     - source: https://repo.magfe.st/tftp/sipfiles.tar.gz
     - source_hash: https://repo.magfe.st/sipfiles.tar.gz.hash
+    - if_missing: /srv/tftp/tftpboot/sip.ld
     - archive_format: tar
     - tar_options: z
-    - if_missing: /var/lib/tftpboot/sip.ld
+    - require:
+      - file: /srv/tftp
 
 /etc/conf.d/tftpd:
   file.managed:
