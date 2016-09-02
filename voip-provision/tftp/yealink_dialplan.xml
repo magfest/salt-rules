@@ -1,0 +1,6 @@
+<DialNow>
+  <Data DialNowRule="0" LineID=""/>
+  <Data DialNowRule="7" LineID=""/>
+  <Data DialNowRule="9xxxxxxxxxx." LineID=""/>
+  <Data DialNowRule="[1-5]xx" LineID=""/>
+</DialNow>
