@@ -8,4 +8,3 @@ freeradius-utils:
   file.managed:
     - source: salt://freeradius/clients.conf
       - template: jinja
-          
