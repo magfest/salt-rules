@@ -12,4 +12,5 @@ dhcpd:
   file.managed:
     - source: salt://dhcp/dhcpd.conf
     - template: jinja
-
+    - watch_in:
+      - serviec: dhcpd
