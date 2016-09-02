@@ -26,21 +26,6 @@ tftp-hpa:
   file.managed:
     - source: salt://tftp/conf
 
-{% if salt['pillar.get']('phone_extensions') %}
-polycom-directory-a:
-  file.managed:
-    - name: /srv/tftp/000000000000-directory.xml
-    - source: salt://voip-provision/directory.xml
-    - template: jinja
-    - require:
-      - file: /srv/tftp
-
-polycom-directory-b:
-  file.symlink:
-    - name: /srv/tftp/000000000000-directory~.xml
-    - target: /srv/tftp/000000000000-directory.xml
-{% endif %}
-
 tftp:
   group.present: []
   user.present:
