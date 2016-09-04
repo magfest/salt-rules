@@ -1,0 +1,12 @@
+#!/bin/bash
+
+TMPFILE="/tmp/astconf_$1_tmp$$"
+SAVEFILE="/tmp/astconf_$1"
+
+set -e
+
+if curl --silent -o $TMPFILE "http://tftp.magfe.st:8080/asterisk_$1" 2>/dev/null; then
+    cp $TMPFILE $SAVEFILE 2>/dev/null
+fi
+
+cat $SAVEFILE 2>/dev/null
