@@ -145,7 +145,6 @@ base:
     - hosts
 
   'assman.magfe.st':
-    - match: pillar
     - firewall
     - repos
     - managed
