@@ -143,3 +143,15 @@ base:
     - network.time
     - utils
     - hosts
+
+  'assman.magfe.st':
+    - match: pillar
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
