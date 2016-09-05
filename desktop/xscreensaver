@@ -1,6 +1,6 @@
 # XScreenSaver Preferences File
-# Written by xscreensaver-demo 5.34 for magfest on Sat Feb 13 16:49:14 2016.
-# http://www.jwz.org/xscreensaver/
+# Written by xscreensaver-demo 5.35 for magfest on Sun Sep  4 22:38:33 2016.
+# https://www.jwz.org/xscreensaver/
 
 timeout:	0:05:00
 cycle:		0:05:00
@@ -94,7 +94,13 @@ programs:								      \
 -				xjack -root				    \n\
 -				xlyap -root				    \n\
 - GL: 				atlantis -root				    \n\
-  				bsod -root -no-windows -no-nt -no-2k -no-msdos -no-amiga -no-android -no-apple2 -no-nvidia -no-os2 -no-mac -no-mac1 -no-macsbug -no-macx -no-os390 -no-vms -no-hvx -no-blitdamage -no-atm -no-linux -no-hppalinux -no-solaris -no-sco -no-hpux -no-tru64    \n\
+				bsod -root -no-windows -no-nt -no-2k	      \
+				  -no-msdos -no-amiga -no-android	      \
+				  -no-apple2 -no-nvidia -no-os2 -no-mac	      \
+				  -no-mac1 -no-macsbug -no-macx -no-os390     \
+				  -no-vms -no-hvx -no-blitdamage -no-atm      \
+				  -no-linux -no-hppalinux -no-solaris	      \
+				  -no-sco -no-hpux -no-tru64		    \n\
 - GL: 				bubble3d -root				    \n\
 - GL: 				cage -root				    \n\
 -				crystal -root				    \n\
@@ -112,7 +118,7 @@ programs:								      \
 - GL: 				stairs -root				    \n\
 -				truchet -root				    \n\
 -				vidwhacker -root			    \n\
-				blaster -root				    \n\
+-				blaster -root				    \n\
 -				bumps -root				    \n\
 -				ccurve -root				    \n\
 -				compass -root				    \n\
@@ -258,6 +264,11 @@ programs:								      \
 - GL: 				winduprobot -root			    \n\
 - GL: 				splitflap -root -speed 4.3123		    \n\
 				testx11 -root				    \n\
+- GL: 				dymaxionmap -root			    \n\
+- GL: 				energystream -root			    \n\
+- GL: 				hydrostat -root				    \n\
+- GL: 				raverhoop -root				    \n\
+- GL: 				unicrud -root				    \n\
 
 
 pointerPollTime:    0:00:05
