@@ -6,6 +6,9 @@ APP = flask.Flask(__name__)
 
 @APP.route('/', methods=['POST'])
 def reload():
+    os.system("getast_conf users &")
+    os.system("getast_conf extens &")
+    os.system("getast_conf skinnny &")
     os.system("systemctl reload asterisk &")
     return ""
 
