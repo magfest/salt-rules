@@ -154,3 +154,14 @@ base:
     - network.time
     - utils
     - hosts
+
+  'smokeping.magfe.st':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
