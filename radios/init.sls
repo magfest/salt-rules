@@ -6,7 +6,8 @@ radios-reqs:
       - python-flask
 
 /opt/radios:
-  directory.created: []
+  file.directory:
+    - makedirs: True
   git.latest:
     - source: https://github.com/magfest/radio-manager-2.git
     - require:
