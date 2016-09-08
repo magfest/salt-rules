@@ -11,7 +11,7 @@ radios-reqs:
   git.latest:
     - source: https://github.com/magfest/radio-manager-2.git
     - require:
-      - directory: /opt/radios
+      - file: /opt/radios
 
 /usr/lib/systemd/system/radios.service:
   file.managed:
