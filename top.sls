@@ -154,3 +154,15 @@ base:
     - network.time
     - utils
     - hosts
+
+  'radios.magfe.st':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+    - radios
