@@ -1,0 +1,114 @@
+#!/bin/bash
+
+if [ "$#" -lt 3 ]; then
+    echo "Usage: $0 <width> <height> <output file> [<margins>]"
+    exit 1
+fi
+
+function remove() {
+    RES=()
+    for f in "${ALL_RANDOMS[@]}"; do
+	if [[ "$f" != "$1" ]]; then
+	    RES+=("$f")
+	fi
+    done
+    ALL_RANDOMS=("${RES[@]}")
+}
+
+IMAGE_WIDTH="$1"
+IMAGE_HEIGHT="$2"
+OUTPUT="$3"
+
+if [ "$IMAGE_WIDTH" -lt 800 -o "$IMAGE_HEIGHT" -lt 600 ]; then
+    IMAGE_WIDTH=400
+    IMAGE_HEIGHT=300
+fi
+
+if [ "$#" -lt 4 ]; then
+    MARGINS=0
+else
+    MARGINS="$4"
+fi
+
+FUCKIT=0
+
+LOGO_WIDTH=$(($IMAGE_WIDTH * 55 / 100))
+
+# was 420 for 1920x1280
+XS=( $((($IMAGE_WIDTH - 1180) / 2)) )
+# was 490 for 1920x1280
+YS=( $((($IMAGE_HEIGHT - 300) / 2)) )
+WS=(1180)
+HS=(300)
+
+function validate() {
+    X="$1"
+    Y="$2"
+    W="$3"
+    H="$4"
+
+    for i in $(seq 0 $((${#XS[@]}-1))); do
+	IX="${XS[i]}"
+	IY="${YS[i]}"
+	IW="${WS[i]}"
+	IH="${HS[i]}"
+	IX2=$(($IX + $IW))
+	IY2=$(($IY + $IH))
+
+	if [ "$X" -eq 0 -a "$Y" -eq 0 ]; then
+	    # Check for empty first-run values
+	    echo "Empty"
+	    return 1
+	elif [ $(($X + $W)) -ge $(($IMAGE_WIDTH-$MARGINS)) -o $(($Y + $H)) -ge $(($IMAGE_HEIGHT-$MARGINS)) ]; then
+	    # Check for values off the side
+	    return 1
+	elif [ "$FUCKIT" -eq "1" ]; then
+	    return 0
+	elif [ $(($X + $W)) -ge $IX -a $X -le $IX2 -a $(($Y + $H)) -ge $IY -a $Y -le $IY2 ]; then
+	    # Check for intersections of the bounding box
+	    return 1
+	elif [ $X -lt $MARGINS -o $Y -lt $MARGINS ]; then
+	    return 1
+	fi
+    done
+
+    return 0
+}
+
+IMAGE_DIRECTORY=/usr/share/magfest/images/labs_bg
+
+TOTAL=$(($RANDOM % 3 + 1))
+ALL_RANDOMS=($IMAGE_DIRECTORY/randoms/*)
+
+convert -size ${IMAGE_WIDTH}x${IMAGE_HEIGHT} tile:$IMAGE_DIRECTORY/tile.png $OUTPUT
+convert $OUTPUT $IMAGE_DIRECTORY/labslogo.png"[${LOGO_WIDTH}x]" -gravity center -composite $OUTPUT
+
+END="$(($(date +%s) + 5))"
+
+for i in $(seq 0 $TOTAL); do
+    len=${#ALL_RANDOMS[@]}
+    num=$(($RANDOM % $len))
+    chosen=${ALL_RANDOMS[$num]}
+    w=$(convert ${chosen} -ping -format "%w" info:)
+    h=$(convert ${chosen} -ping -format "%h" info:)
+
+    x=$(($RANDOM % $IMAGE_WIDTH))
+    y=$(($RANDOM % $IMAGE_HEIGHT))
+
+    until validate $x $y $w $h; do
+	if [ "$(date +%s)" -ge "$END" ]; then
+	    FUCKIT=1
+	    break
+	fi
+	x=$(($RANDOM % $IMAGE_WIDTH))
+	y=$(($RANDOM % $IMAGE_HEIGHT))
+    done
+
+    convert $OUTPUT $chosen -geometry +${x}+${y} -composite $OUTPUT
+    XS+=($x)
+    YS+=($y)
+    WS+=($w)
+    HS+=($h)
+	     
+    remove $chosen
+done

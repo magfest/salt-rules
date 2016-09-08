@@ -1,3 +1,6 @@
+include:
+  - desktop.wallpaper
+
 lxde:
   pkg.installed:
     - pkgs:
@@ -59,7 +62,7 @@ lxdm:
     - require:
       - file: desktop
       - file: /etc/lxdm/lxdm.conf
-      - file: wallpaper
+      - sls: desktop.wallpaper
       - file: lxdeconf
       - pkg: lxde
     - watch:
@@ -83,12 +86,6 @@ magfest:
     - empty_password: True
     - home: /home/magfest
     - groups:
-
-wallpaper:
-  file.managed:
-    - name: /usr/share/backgrounds/magfest.png
-    - source:
-      - salt://desktop/magfest.png
 
 lxdm.conf:
   file.managed:
