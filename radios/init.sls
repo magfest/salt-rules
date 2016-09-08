@@ -10,7 +10,8 @@ radios-reqs:
   file.directory:
     - makedirs: True
   git.latest:
-    - source: https://github.com/magfest/radio-manager-2.git
+    - name: https://github.com/magfest/radio-manager-2.git
+    - target: /opt/radios
     - require:
       - file: /opt/radios
       - pkg: radios-reqs
