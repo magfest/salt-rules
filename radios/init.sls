@@ -1,6 +1,7 @@
 radios-reqs:
   pkg.installed:
     - pkgs:
+      - git
       - python
       - python-jinja2
       - python-flask
@@ -12,6 +13,7 @@ radios-reqs:
     - source: https://github.com/magfest/radio-manager-2.git
     - require:
       - file: /opt/radios
+      - pkg: radios-reqs
 
 /usr/lib/systemd/system/radios.service:
   file.managed:
