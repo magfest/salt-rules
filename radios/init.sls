@@ -27,6 +27,7 @@ radios-reqs:
     - require:
       - git: /opt/radios
     - source: salt://radios/config.json
+    - template: jinja2
 
 radios.service:
   service.running:
