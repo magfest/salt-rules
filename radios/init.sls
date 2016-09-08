@@ -26,7 +26,7 @@ radios-reqs:
   file.managed:
     - require:
       - git: /opt/radios
-    - contents: {{ salt['pillar.get']('radios:config')|json }}
+    - contents: salt://radios/config.json
 
 radios.service:
   service.running:
