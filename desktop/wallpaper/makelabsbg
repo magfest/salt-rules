@@ -19,6 +19,19 @@ IMAGE_WIDTH="$1"
 IMAGE_HEIGHT="$2"
 OUTPUT="$3"
 
+function get_screen_resolution_x {
+    xdpyinfo | awk -F '[ x]+' '/dimensions:/{print $3}'
+}
+
+
+function get_screen_resolution_y {
+    xdpyinfo | awk -F '[ x]+' '/dimensions:/{print $4}'
+}
+
+IMAGE_WIDTH=$(get_screen_resolution_x)
+IMAGE_HEIGHT=$(get_screen_resolution_y)
+
+
 if [ "$IMAGE_WIDTH" -lt 800 -o "$IMAGE_HEIGHT" -lt 600 ]; then
     IMAGE_WIDTH=400
     IMAGE_HEIGHT=300
