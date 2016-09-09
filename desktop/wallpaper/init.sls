@@ -4,7 +4,7 @@ salt://desktop/wallpaper/makelabsbg:
     - require:
       - pkg: ImageMagick
       - file: /usr/share/magfest/images/labs_bg
-    - watch:
+    - watch_in:
       - cmd: update-pcmanfm
 
 update-pcmanfm:
