@@ -1,10 +1,18 @@
 salt://desktop/wallpaper/makelabsbg:
   cmd.script:
     - args: 1366 768 /usr/share/backgrounds/maglabs.png 100
-    - creates: /usr/share/backgrounds/maglabs.png
     - require:
       - pkg: ImageMagick
       - file: /usr/share/magfest/images/labs_bg
+    - watch:
+      - cmd: update-pcmanfm
+
+update-pcmanfm:
+  cmd.wait:
+    - name: pcmanfm --set-wallpaper=/usr/share/background/maglabs.png --wallpaper-mode=center
+    - env:
+      - DISPLAY: ":0.0"
+    - runas: magfest
 
 ImageMagick:
   pkg.installed: []
