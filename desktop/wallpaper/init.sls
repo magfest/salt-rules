@@ -9,10 +9,9 @@ salt://desktop/wallpaper/makelabsbg:
 
 update-pcmanfm:
   cmd.wait:
-    - name: pcmanfm --set-wallpaper=/usr/share/background/maglabs.png --wallpaper-mode=center
+    - name: su magfest -c 'pcmanfm --set-wallpaper=/usr/share/background/maglabs.png --wallpaper-mode=center'
     - env:
       - DISPLAY: ":0.0"
-    - runas: magfest
 
 ImageMagick:
   pkg.installed: []
