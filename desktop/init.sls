@@ -97,7 +97,7 @@ magfest:
 # This can stay actually, might as well keep it...
 wallpaper:
   file.managed:
-    - name: /usr/share/background/magfest.png
+    - name: /usr/share/backgrounds/magfest.png
     - source: salt://desktop/magfest.png
 
 lxdm.conf:
