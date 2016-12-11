@@ -175,7 +175,7 @@ def create_config(exten, mac, model, user):
                 cid=user.get('callerid', exten),
                 desc=user.get('desc', exten),
                 password=user['password'],
-                extensions=get_extens()
+                extensions=enumerate(sorted(list(get_extens().items())))
             ))
 
 def reload_asterisk():
