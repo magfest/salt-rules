@@ -1,5 +1,6 @@
-include:
-  - desktop.wallpaper
+# Uncomment to enable auto-generation of magic (e.g. labs sytle) backgrounds
+#include:
+#  - desktop.wallpaper
 
 lxde:
   pkg.installed:
@@ -62,7 +63,13 @@ lxdm:
     - require:
       - file: desktop
       - file: /etc/lxdm/lxdm.conf
-      - sls: desktop.wallpaper
+# Uncomment for labs BG
+###############################
+#      - sls: desktop.wallpaper
+###############################
+# Comment for labs BG
+      - file: wallpaper
+###############################
       - file: lxdeconf
       - pkg: lxde
     - watch:
@@ -86,6 +93,12 @@ magfest:
     - empty_password: True
     - home: /home/magfest
     - groups:
+
+# This can stay actually, might as well keep it...
+wallpaper:
+  file.managed:
+    - name: /usr/share/background/magfest.png
+    - source: salt://desktop/magfest.png
 
 lxdm.conf:
   file.managed:
