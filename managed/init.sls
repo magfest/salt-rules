@@ -34,3 +34,19 @@ daemon-reload:
     - runas: root
     - watch:
       - file: /etc/systemd/system/*
+
+# TODO: REMOVE BELOW once everything is migrated
+/etc/hostname:
+  file.replace:
+    - pattern: magfe.st
+    - repl: magevent.net
+
+/etc/sysconfig/network:
+  file.replace:
+    - pattern: magfe.st
+    - repl: magevent.net
+
+/etc/salt/minion_id:
+  file.replace:
+    - pattern: magfe.st
+    - repl: magevent.net
