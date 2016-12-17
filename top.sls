@@ -177,3 +177,153 @@ base:
     - utils
     - hosts
     - radios
+
+#####################################################
+# Remove above this line once migration is complete #
+#####################################################
+
+'salt.magevent.net':
+    - managed.master
+    - cloud
+    - saltpad
+    - hosts
+
+  'asterisk.magevent.net':
+    - asterisk
+
+  'repo.magevent.net':
+    - mrepo
+    - hosts
+
+  'role:dhcp-server':
+    - match: pillar
+    - dhcp
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+
+  'role:tftp-server':
+    - match: pillar
+    - tftp
+    - hosts
+
+  'tftp.magevent.net':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - tftp
+    - voip-provision
+    - ftp
+    - hosts
+
+  'foreman.magevent.net':
+    - firewall
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+
+  'freeipa.magevent.net':
+    - freeipa
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+
+  'ntp*.magevent.net':
+    - ntp
+    - hosts
+
+  'role:dns-server':
+    - match: pillar
+    - dns
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+
+  'freeradius.magevent.net':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - freeradius
+    - hosts
+
+  'cups.magevent.net':
+    - cups
+    - hosts
+
+  'noc.magevent.net':
+    - match: pillar
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+
+  'assman.magevent.net':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+
+  'smokeping.magevent.net':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+
+  'radios.magevent.net':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+    - radios
