@@ -195,24 +195,6 @@ base:
     - mrepo
     - hosts
 
-  'role:dhcp-server':
-    - match: pillar
-    - dhcp
-    - firewall
-    - repos
-    - managed
-    - managed.update
-    - login.ssh
-    - login.admin
-    - network.time
-    - utils
-    - hosts
-
-  'role:tftp-server':
-    - match: pillar
-    - tftp
-    - hosts
-
   'tftp.magevent.net':
     - firewall
     - repos
@@ -251,19 +233,6 @@ base:
 
   'ntp*.magevent.net':
     - ntp
-    - hosts
-
-  'role:dns-server':
-    - match: pillar
-    - dns
-    - firewall
-    - repos
-    - managed
-    - managed.update
-    - login.ssh
-    - login.admin
-    - network.time
-    - utils
     - hosts
 
   'freeradius.magevent.net':
