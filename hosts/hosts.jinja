@@ -18,6 +18,6 @@
 {%- for name, network in salt['pillar.get']('dns:networks').items() %}
 {%- set net_domain = salt['pillar.get']('dns:networks:' + name + ':options:domain-name', salt['pillar.get']('dns:defaults:options:domain-name')) %}
 {%- for hostname, attrs in salt['pillar.get']('dns:networks:' + name + ':hosts', {}).items() %}
-{{ attrs['ip'] }}	{{ hostname }}.magevent.net {{ hostname }}
+{{ attrs['ip'] }}	{{ hostname }}.magfe.st {{ hostname }}
 {%- endfor -%}
 {%- endfor -%}
