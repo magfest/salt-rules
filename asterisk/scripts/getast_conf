@@ -3,7 +3,7 @@
 TMPFILE="/tmp/astconf_$1_tmp$$"
 SAVEFILE="/etc/asterisk/include_$1.conf"
 
-if curl --silent -o $TMPFILE "http://tftp.magevent.net:8080/asterisk_$1" 2>/dev/null; then
+if curl --silent -o $TMPFILE "http://tftp.magfe.st:8080/asterisk_$1" 2>/dev/null; then
     cp $TMPFILE $SAVEFILE 2>/dev/null
 fi
 
