@@ -40,10 +40,12 @@ base:
 
   'asterisk.magfe.st':
     - asterisk
+    - managed
 
   'repo.magfe.st':
     - mrepo
     - hosts
+    - managed
 
   'role:dhcp-server':
     - match: pillar
@@ -102,6 +104,7 @@ base:
   'ntp*.magfe.st':
     - ntp
     - hosts
+    - managed
 
   'role:dns-server':
     - match: pillar
@@ -131,6 +134,7 @@ base:
   'cups.magfe.st':
     - cups
     - hosts
+    - managed
 
   'noc.magfe.st':
     - match: pillar
@@ -193,10 +197,12 @@ base:
 
   'asterisk.magevent.net':
     - asterisk
+    - managed
 
   'repo.magevent.net':
     - mrepo
     - hosts
+    - managed
 
   'tftp.magevent.net':
     - firewall
@@ -237,6 +243,7 @@ base:
   'ntp*.magevent.net':
     - ntp
     - hosts
+    - managed
 
   'freeradius.magevent.net':
     - firewall
@@ -253,6 +260,7 @@ base:
   'cups.magevent.net':
     - cups
     - hosts
+    - managed
 
   'noc.magevent.net':
     - match: pillar
