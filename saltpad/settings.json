@@ -1,5 +1,5 @@
 {
-    "API_URL": "salt.magfe.st",
+    "API_URL": "salt.magevent.net",
     "SECURE_HTTP": false,
     "FLAVOUR": "rest_cherrypy",
     "PATH_PREFIX": "/saltpad/"
