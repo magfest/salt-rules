@@ -21,7 +21,7 @@ reloader-service:
     - source:
       - salt://asterisk/reloader.service
     - watch_in:
-      - cmd: daemon-reload
+      - cmd: asterisk-daemon-reload
 
   service.running:
     - name: asterisk_reloader
@@ -30,6 +30,11 @@ reloader-service:
       - file: /usr/bin
       - file: reloader-service
       - pkg: reloader-deps
+
+asterisk-daemon-reload:
+  cmd.wait:
+    - name: systemctl daemon-reload
+    - runas: root
 
 /var/lib/asterisk/sounds/en/magfest:
   file.recurse:
