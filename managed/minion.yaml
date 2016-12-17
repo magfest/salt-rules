@@ -20,7 +20,7 @@ ipv6: False
 # Append a domain to a hostname in the event that it does not exist.  This is
 # useful for systems where socket.getfqdn() does not actually result in a
 # FQDN (for instance, Solaris).
-append_domain: magevent.net
+# append_domain: magevent.net
 
 # When waiting for a master to accept the minion's public key, salt will
 # continuously attempt to reconnect until successful. This is the time, in
