@@ -182,7 +182,7 @@ base:
 # Remove above this line once migration is complete #
 #####################################################
 
-'salt.magevent.net':
+  'salt.magevent.net':
     - managed.master
     - cloud
     - saltpad
