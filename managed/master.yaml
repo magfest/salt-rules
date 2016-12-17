@@ -4,22 +4,13 @@ ipv6: False
 
 worker_threads: 8
 
-gitfs_provider: pygit2
+file_roots:
+  base:
+    - /srv/salt/rules
 
-fileserver_backend:
-  - git
-
-gitfs_remotes:
-  - git@github.com:magfest/salt-rules.git:
-    - privkey: /etc/salt/pki/master/salt_git_key
-    - pubkey: /etc/salt/pki/master/salt_git_key.pub
-  - https://github.com/magfest/ipa-formula
-
-ext_pillar:
-  - git:
-    - master git@github.com:magfest/salt-pillars.git:
-      - privkey: /etc/salt/pki/master/salt_git_key
-      - pubkey: /etc/salt/pki/master/salt_git_key.pub
+pillar_roots:
+  base:
+    - /srv/salt/pillars
 
 file_ignore_regex:
   - '/\.git($|/)'
