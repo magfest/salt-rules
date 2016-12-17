@@ -178,9 +178,9 @@ base:
     - hosts
     - radios
 
-#####################################################
-# Remove above this line once migration is complete #
-#####################################################
+  #####################################################
+  # Remove above this line once migration is complete #
+  #####################################################
 
   'salt.magevent.net':
     - managed.master
