@@ -164,7 +164,7 @@ def create_config(exten, mac, model, user):
                 cid=user.get('callerid', exten),
                 desc=user.get('desc', exten)))
         with open(os.path.join(TFTP_DIR, 'ff{}'.format(mac.lower())), 'w') as target:
-            target.write('#txt\nDomain:magfe.st\n')
+            target.write('#txt\nDomain:magevent.net\n')
 
     elif model == MODEL_YT26P:
         template = jenv.get_template(YEALINK_TEMPLATE)
