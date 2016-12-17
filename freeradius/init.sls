@@ -7,4 +7,4 @@ freeradius-utils:
 /etc/raddb/clients.conf:
   file.managed:
     - source: salt://freeradius/clients.conf
-      - template: jinja
+    - template: jinja
