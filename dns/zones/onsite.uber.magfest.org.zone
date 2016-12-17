@@ -1,8 +1,8 @@
 
 $TTL 3600
 ; onsite.uber.magfest.org
-@ IN SOA dns1.magfe.st. admin.magfe.st. (
-	2016090200  ; Serial
+@ IN SOA dns1.magevent.net. admin.magevent.net. (
+	2016121700  ; Serial
 	28800      ; Refresh
 	1800       ; Retry
 	604800     ; Expire - 1 week
