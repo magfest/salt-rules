@@ -1,0 +1,23 @@
+ESSID={{ ssid }}
+MODE=Managed
+{% if 'key_mgmt' in options %}
+KEY_MGMT={{ options['key_mgmt'] }}
+{% endif %}
+TYPE=Wireless
+BOOTPROTO=dhcp
+DEFROUTE=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=yes
+IPV6_AUTOCONF=yes
+IPV6_DEFROUTE=yes
+IPV6_FAILURE_FATAL=no
+NAME={{ ssid }}
+UUID={{ salt['utils.consistent_uuid']('wifi_net:' + ssid ) }}
+ONBOOT=yes
+SECURITYMODE=open
+PEERDNS=yes
+PEERROUTES=yes
+IPV6_PEERDNS=yes
+IPV6_PEERROUTES=yes
+USERS=magfest
+{% endfor %}

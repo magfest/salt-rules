@@ -23,6 +23,7 @@ base:
     - desktop
     - desktop.utilities
     - desktop.admins
+    - desktop.wifi
     - extlinux
     - graphics
     - kiosk
