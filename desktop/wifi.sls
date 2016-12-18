@@ -9,6 +9,7 @@
     - context:
       ssid: {{ ssid }}
       options: {{ options }}
+      uuid: {{ salt['utils.consistent_uuid']('wifi_net:' + ssid ) }}
 {% if 'key_mgmt' in options %}
 /etc/sysconfig/network-scripts/keys-{{ ssid }}:
   file.managed:
