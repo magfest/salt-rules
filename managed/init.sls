@@ -50,3 +50,5 @@ daemon-reload:
   file.replace:
     - pattern: magfe.st
     - repl: magevent.net
+    - watch_in:
+      - service: salt-minion
