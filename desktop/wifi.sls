@@ -1,5 +1,5 @@
 {% for ssid, options in salt['pillar.get']('wifi:networks', {}).items() %}
-/etc/sysconfig/network-scripts/ifcfg-{{ ssid }}:
+/etc/sysconfig/network-scripts/ifcfg-{{ ssid.replace(' ','_') }}:
   file.managed:
     - user: root
     - group: root
@@ -11,7 +11,7 @@
       options: {{ options }}
       uuid: {{ salt['utils.consistent_uuid']('wifi_net:' + ssid ) }}
 {% if 'key_mgmt' in options %}
-/etc/sysconfig/network-scripts/keys-{{ ssid }}:
+/etc/sysconfig/network-scripts/keys-{{ ssid.replace(' ', '_') }}:
   file.managed:
     - user: root
     - group: root
