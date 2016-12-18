@@ -22,3 +22,4 @@
       key: {{ options.get('key', '') }}
       options: {{ options }}
 {% endif %}
+{% endfor %}
