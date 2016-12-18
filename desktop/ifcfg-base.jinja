@@ -1,7 +1,7 @@
 ESSID="{{ ssid }}"
 MODE=Managed
 {% if 'key_mgmt' in options %}
-KEY_MGMT={{ options['key_mgmt'] }}
+KEY_MGMT={{ options['key_mgmt']|upper }}
 {% endif %}
 TYPE=Wireless
 BOOTPROTO=dhcp
