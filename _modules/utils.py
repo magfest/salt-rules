@@ -19,7 +19,7 @@ def dictlist_to_dict(l):
     return res
 
 def consistent_uuid(key):
-    h = salt['grains.get_or_set_hash'](key, length=32, chars='abcdef0123456789')
+    h = __salt__['grains.get_or_set_hash'](key, length=32, chars='abcdef0123456789')
     return '-'.join(h[0:8], h[8:12], h[12:16], h[16:20], h[20:32])
 
 NET_REMAP = {'ip': 'ip_address'}
