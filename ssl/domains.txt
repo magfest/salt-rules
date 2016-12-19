@@ -1,0 +1,21 @@
+{% for host in salt['pillar.get']('letsencrypt:domains') %}
+  {% if salt['utils.is_str'](host) %}
+    {% set domains = [host] %}
+  {% else %}
+    {% set domains = list(host.values())[0] %}
+    {% set host = list(host.keys())[0] %}
+  {% endif %}
+
+  {% if host == grains['id'] %}
+    {% for domain in domains %}
+      {% if salt['utils.is_str'](domain) %}
+        {% set name = domain %}
+        {% set sans = [domain] %}
+      {% else %}
+        {% set name = list(domain.keys())[0] %}
+        {% set sans = list(domains.values())[0] %}
+	{% endif %}
+{{ name }} {{ ' '.join(sans) }}
+    {% endfor %}
+  {% endif %}
+{% endfor %}
