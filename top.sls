@@ -166,3 +166,12 @@ base:
     - utils
     - hosts
     - radios
+
+  'stereo.magevent.net':
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
