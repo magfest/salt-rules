@@ -193,3 +193,12 @@ base:
     - network.time
     - utils
     - hosts
+
+  'stereo.magevent.net':
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
