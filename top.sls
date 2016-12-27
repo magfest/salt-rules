@@ -215,6 +215,7 @@ base:
     - hosts
 
   'index.magevent.net':
+    - index
     - firewall
     - repos
     - managed
