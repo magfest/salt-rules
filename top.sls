@@ -194,6 +194,17 @@ base:
     - utils
     - hosts
 
+  'find.magevent.net':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+
   'stereo.magevent.net':
     - managed
     - managed.update
