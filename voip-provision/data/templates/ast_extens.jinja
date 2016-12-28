@@ -1,9 +1,9 @@
 {% for extension, vals in extens.items() %}
 {% if not vals.get('special', False) and ('users' in vals and vals['users'] or vals.get('ring_extra', [])) %}
-exten => {{ extension }},1,Dial({{ '&'.join((vals.get('users', '') + vals.get('ring_extra', []))) }},60)
+exten => {{ extension }},1,Dial({{ '&'.join((vals.get('users', []) + vals.get('ring_extra', []))) }},60)
 same => n,Hangup
 {% for alt in vals.get('alt_extens', []) %}
-exten => {{ alt }},1,Dial({{ '&'.join((vals.get('users', '') + vals.get('ring_extra', []))) }},60)
+exten => {{ alt }},1,Dial({{ '&'.join((vals.get('users', []) + vals.get('ring_extra', []))) }},60)
 same => n,Hangup
 {% endfor %}
 {% endif %}
