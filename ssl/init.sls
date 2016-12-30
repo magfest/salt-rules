@@ -2,7 +2,8 @@ certbot:
   pkg.installed: []
 
 dns-lexicon:
-  pip.installed: []
+  pip.installed:
+    - bin_env: /usr/bin/pip2
 
 /opt/dehydrated:
   file.directory: []
