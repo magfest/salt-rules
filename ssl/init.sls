@@ -29,13 +29,12 @@ https://github.com/lukas2511/dehydrated.git:
 # TODO: Get rid of CA when everything is figured out
 ssl-{{ grains['id'] }}:
   cmd.run:
-    - name: /opt/dehydrated/dehydrated --challenge dns-01 --cron
+    - name: /opt/dehydrated/dehydrated --challenge dns-01 --cron --hook=/usr/bin/dehydrated.default.sh
     - env:
       - CA: https://acme-staging.api.letsencrypt.org/directory
       - LEXICON_{{ salt['grains.get']('letsencrypt:provider')|upper }}_TOKEN: {{ salt['grains.get']('letsencrypt:token') }}
       - PROVIDER: {{ salt['grains.get']('letsencrypt:provider') }}
       - BASEDIR: /etc/dehydrated
-      - HOOK: /usr/bin/dehydrated.default.sh
     - require:
       - git: https://github.com/lukas2511/dehydrated.git
       - pkg: certbot
