@@ -1,0 +1,95 @@
+# TODO combine this with vhosts using a base
+
+{% if ssl_type %}
+server {
+  listen 80{% if default == True %} default{% endif %};
+  listen [::]:80{% if default == True %} default{% endif %};
+  server_name {{ hostname }};
+  {% if aliases %}
+  {% for alias in aliases %}
+  server_name {{ alias }};
+  {% endfor %}
+  {% endif %}
+
+  {% if ssl_type == "letsencrypt" %}
+  location /.well-known {
+    default_type text/plain;
+    root /srv/http/letsencrypt;
+  }
+  {% endif %}
+
+  location / {
+    return 301 https://{{ hostname }}$request_uri;
+  }
+}
+
+server {
+  listen 443{% if default == True %} default{% endif %};
+  listen [::]:443{% if default == True %} default{% endif %};
+
+  ssl on;
+  {% if ssl_type == "star" %}
+  ssl_certificate /etc/nginx/ssl/wildcard.hackafe.net.cert;
+  ssl_certificate_key /etc/nginx/ssl/wildcard.hackafe.net.key;
+  {% elif ssl_type in ("manual", "letsencrypt") %}
+  ssl_certificate /etc/nginx/ssl/{{ hostname }}.cert;
+  ssl_certificate_key /etc/nginx/ssl/{{ hostname }}.key;
+  {% endif %}
+
+  server_name {{ hostname }};
+  {% if aliases %}
+  {% for alias in aliases %}
+  server_name {{ alias }};
+  {% endfor %}
+  {% endif %}
+
+  access_log /var/log/nginx/{{ hostname }}-ssl;
+
+  {% if ssl_type == "letsencrypt" %}
+  location /.well-known {
+    default_type text/plain;
+    root /srv/http/letsencrypt;
+  }
+  {% endif %}
+{% else %}
+server {
+  listen 80{% if default == True %} default{% endif %};
+  listen [::]:80{% if default == True %} default{% endif %};
+  server_name {{ hostname }};
+  {% if aliases %}
+  {% for alias in aliases %}
+  server_name {{ alias }};
+  {% endfor %}
+  {% endif %}
+
+  access_log /var/log/nginx/{{hostname}};
+{% endif %}
+
+  root /srv/http/{{ hostname }};
+
+{% if rewrite %}
+{% for rule in rewrite %}
+  rewrite {{ ' '.join(rule) }};
+{% endfor %}
+{% endif %}
+
+{% for path, loc in locations.items() %}
+  location {{ path }} {
+    {% for k, v in loc.items() %}
+    {% if k == 'index' %}
+    index {{ ' '.join(v) }};
+    {% elif k == 'errors' %}
+    {% for code, err_loc in v.items() %}
+    error_page {{ code }} = {{ err_loc }};
+    {% endfor %}
+    {% else %}
+    {% if v in (True, False) %}
+    {{ k }} {{ 'on' if v else 'off' }};
+    {% elif k not in ('source', 'ssl', 'type', 'locations', 'rewrite', 'host') %}
+    {{ k }} {{ v }};
+    {% endif %}
+    {% endif %}
+    {% endfor %}
+  }
+{% endfor %}
+}

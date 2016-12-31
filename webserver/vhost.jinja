@@ -1,0 +1,90 @@
+# hostname
+# host_type = vhost
+# host
+# locations
+# ssl_type
+
+{% set otherport = '80' %}
+{% set otherproto = 'http' %}
+
+{% if ssl_type %}
+{% if ssl_type == "pass" %}
+{% set otherport = '443' %}
+{% set otherproto = 'https' %}
+{% endif %}
+
+server {
+  listen 80{% if default == True %} default{% endif %};
+  listen [::]:80{% if default == True %} default{% endif %};
+  server_name {{ hostname }};
+  {% for alias in aliases %}
+  server_name {{ alias }};
+  {% endfor %}
+
+  {% if ssl_type == "letsencrypt" %}
+  location /.well-known {
+    default_type text/plain;
+    root /srv/http/letsencrypt;
+  }
+  {% endif %}
+
+  {% if ssl_type == "pass" %}
+  {% for path, loc in locations.items() %}
+  location {{ path }} {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_pass http://{{ salt['dns.static_resolve'](loc.get('host', 'localhost')) }}:{{ loc.get('port', '80') }}{{ loc.get('path', '/') }};
+  }
+  {% endfor %}
+  {% else %}
+  location / {
+    return 301 https://{{ hostname }}$request_uri;
+  }
+  {% endif %}
+}
+
+server {
+  listen 443{% if default == True %} default{% endif %};
+  listen [::]:443{% if default == True %} default{% endif %};
+  server_name {{ hostname }};
+  {% for alias in aliases %}
+  server_name {{ alias }};
+  {% endfor %}
+
+  access_log /var/log/nginx/{{ hostname }}-ssl;
+
+  ssl on;
+  {% if ssl_type in ("star", "pass") %}
+  ssl_certificate /etc/nginx/ssl/wildcard.hackafe.net.cert;
+  ssl_certificate_key /etc/nginx/ssl/wildcard.hackafe.net.key;
+  {% elif ssl_type in ("manual", "letsencrypt") %}
+  ssl_certificate /etc/nginx/ssl/{{ hostname }}.cert;
+  ssl_certificate_key /etc/nginx/ssl/{{ hostname }}.key;
+  {% endif %}
+{% else %}
+server {
+  listen 80{% if default == True %} default{% endif %};
+  listen [::]:80{% if default == True %} default{% endif %};
+  server_name {{ hostname }};
+
+  access_log /var/log/nginx/{{hostname}};
+{% endif %}
+
+{% if ssl_type == "letsencrypt" %}
+  location /.well-known {
+    default_type text/plain;
+    root /srv/http/letsencrypt;
+  }
+{% endif %}
+{% for path, loc in locations.items() %}
+  location {{ path }} {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_pass {{ otherproto }}://{{ salt['dns.static_resolve'](loc.get('host', 'localhost')) }}:{{ loc.get('port', otherport) }}{{ loc.get('path', '/') }};
+  }
+{% endfor %}
+}
