@@ -3,7 +3,7 @@
 $TTL 3600
 ; magevent.net
 @ IN SOA dns1.magevent.net. admin.magevent.net. (
-	2016121703  ; Serial
+	2017010101  ; Serial
 	28800      ; Refresh
 	1800       ; Retry
 	604800     ; Expire - 1 week
@@ -25,8 +25,9 @@ _kerberos._udp		IN	SRV	10	10	88	freeipa
 _kpasswd._udp		IN	SRV	10	10	88	freeipa
 _ldap._tcp		IN	SRV	10	10	389	freeipa
 
-;@			IN	A	107.170.205.68
-;www			IN	A	107.170.205.68
+@			IN	A	10.101.22.24
+www			IN	A	10.101.22.24
+staffsuite		IN	CNAME	magsuite.jennytru.com.
 
 {%- set dns_defaults = salt['pillar.get']('dns:defaults') -%}
 {%- for name, network in salt['pillar.get']('dns:networks').items() %}
