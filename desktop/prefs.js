@@ -100,5 +100,5 @@ pref("toolkit.startup.last_success", 1455747114);
 pref("toolkit.telemetry.cachedClientID", "2a9163d5-ab20-488c-b76c-042a8c09cd76");
 pref("toolkit.telemetry.previousBuildID", "20151229124055");
 pref("toolkit.telemetry.reportingpolicy.firstRun", false);
-pref("browser.startup.homepage", "data:text/plain,browser.startup.homepage=http://onsite.uber.magfest.org");
+pref("browser.startup.homepage", "data:text/plain,browser.startup.homepage=http://index.magevent.net");
 lockPref("browser.startup.homepage");
