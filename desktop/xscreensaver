@@ -94,7 +94,7 @@ programs:								      \
 -				xjack -root				    \n\
 -				xlyap -root				    \n\
 - GL: 				atlantis -root				    \n\
-				bsod -root -no-windows -no-nt -no-2k	      \
+-				bsod -root -no-windows -no-nt -no-2k	      \
 				  -no-msdos -no-amiga -no-android	      \
 				  -no-apple2 -no-nvidia -no-os2 -no-mac	      \
 				  -no-mac1 -no-macsbug -no-macx -no-os390     \
