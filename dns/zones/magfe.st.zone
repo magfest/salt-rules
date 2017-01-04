@@ -3,7 +3,7 @@
 $TTL 3600
 ; magfe.st
 @ IN SOA dns1.magfe.st. admin.magfe.st. (
-	2016082800  ; Serial
+	2017010400  ; Serial
 	28800      ; Refresh
 	1800       ; Retry
 	604800     ; Expire - 1 week
@@ -29,6 +29,7 @@ _ldap._tcp		IN	SRV	10	10	389	freeipa
 www			IN	A	107.170.205.68
 staffsuite		IN	CNAME	magsuite.jennytru.com.
 wiki			IN	A	199.58.201.52
+techops			IN	A	159.203.123.61
 
 {%- set dns_defaults = salt['pillar.get']('dns:defaults') -%}
 {%- for name, network in salt['pillar.get']('dns:networks').items() %}
