@@ -11,7 +11,7 @@ nginx:
 
 /etc/nginx/nginx.conf:
   file.managed:
-    - source: salt://web/nginx.conf
+    - source: salt://webserver/nginx.conf
     - makedirs: True
     - require:
       - pkg: nginx
@@ -46,7 +46,7 @@ nginx:
 {% if static_srctype == 'salt' %}
 /srv/http/{{ hostname }}:
   file.recurse:
-    - source: {{ salt['pillar.get'](path + ':source:location', 'salt://web/static_sites/' + hostname) }}
+    - source: {{ salt['pillar.get'](path + ':source:location', 'salt://webserver/static_sites/' + hostname) }}
     - makedirs: True
 {% elif static_srctype == 'git' %}
 /srv/http/{{ hostname }}:
@@ -101,7 +101,7 @@ run-letsencrypt-{{ hostname }}:
 
 /etc/nginx/sites-available/{{ hostname }}:
   file.managed:
-    - source: {% if host_type == "custom" %}salt://web/custom/{{ hostname }}{% else %}salt://web/{{ host_type }}.jinja{% endif %}
+    - source: {% if host_type == "custom" %}salt://webserver/custom/{{ hostname }}{% else %}salt://webserver/{{ host_type }}.jinja{% endif %}
     - makedirs: True
     - template: jinja
     - context:
