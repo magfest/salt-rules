@@ -54,7 +54,8 @@ lxde:
       - google-chrome-stable
       - words
       - iwl3945-firmware
-
+      - iwl5000-firmware
+      - iwl5150-firmware
 xpad:
   pkg.removed
 
