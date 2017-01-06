@@ -238,3 +238,15 @@ base:
     - utils
     - hosts
 
+  'zoneminder.magevent.net':
+    - index
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+
