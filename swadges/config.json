@@ -1,0 +1,165 @@
+{
+    "version": 2,
+    "controller": {},
+    "workers": [
+        {
+            "type": "router",
+            "realms": [
+                {
+                    "name": "swadges",
+                    "roles": [
+                        {
+			    "name": "router",
+			    "permissions": [
+				{
+				    "uri": "*",
+				    "allow": {
+					"call": true,
+					"register": true,
+					"publish": true,
+					"subscribe": true
+				    }
+				}
+			    ]
+			}, {
+                            "name": "game",
+                            "permissions": [
+                                {
+                                    "uri": "badge.*.button.press",
+                                    "match": "wildcard",
+                                    "allow": {
+                                        "call": false,
+                                        "register": false,
+                                        "publish": false,
+                                        "subscribe": true
+                                    },
+                                    "cache": true
+                                }, {
+                                    "uri": "badge.*.button.release",
+                                    "match": "wildcard",
+                                    "allow": {
+                                        "call": false,
+                                        "register": false,
+                                        "publish": false,
+                                        "subscribe": true
+                                    },
+                                    "cache": true
+                                }, {
+                                    "uri": "badge.*.location",
+                                    "match": "wildcard",
+                                    "allow": {
+                                        "call": false,
+                                        "register": false,
+                                        "publish": false,
+                                        "subscribe": true
+                                    },
+                                    "cache": true
+                                }, {
+                                    "uri": "location",
+                                    "match": "prefix",
+                                    "allow": {
+                                        "call": false,
+                                        "register": false,
+                                        "publish": false,
+                                        "subscribe": true
+                                    },
+                                    "cache": true
+                                }, {
+                                    "uri": "game",
+                                    "match": "prefix",
+                                    "allow": {
+                                        "call": true,
+                                        "register": false,
+                                        "publish": false,
+                                        "subscribe": true
+                                    },
+                                    "cache": true
+                                }
+                            ]
+                        }, {
+                            "name": "anonymous",
+                            "permissions": [
+                                {
+                                    "uri": "badge.*.button.press",
+                                    "match": "wildcard",
+                                    "allow": {
+                                        "call": false,
+                                        "register": false,
+                                        "publish": false,
+                                        "subscribe": true
+                                    },
+                                    "cache": true
+                                }, {
+                                    "uri": "badge.*.button.release",
+                                    "match": "wildcard",
+                                    "allow": {
+                                        "call": false,
+                                        "register": false,
+                                        "publish": false,
+                                        "subscribe": true
+                                    },
+                                    "cache": true
+                                }, {
+                                    "uri": "game",
+                                    "match": "prefix",
+                                    "allow": {
+                                        "call": true,
+                                        "register": false,
+                                        "publish": false,
+                                        "subscribe": false
+                                    },
+                                    "cache": true
+                                }
+                            ]
+                        }, {
+                            "name": "find",
+                            "permissions": [
+                                {
+                                    "uri": "badge.*.scan",
+                                    "match": "wildcard",
+                                    "allow": {
+                                        "call": false,
+                                        "register": false,
+                                        "publish": false,
+                                        "subscribe": true
+                                    },
+                                    "cache": true
+                                }, {
+                                    "uri": "badge.*.request_scan",
+                                    "match": "wildcard",
+                                    "allow": {
+                                        "call": false,
+                                        "register": false,
+                                        "publish": true,
+                                        "subscribe": false
+                                    },
+                                    "cache": true
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "transports": [
+                {
+                    "type": "web",
+                    "endpoint": {
+                        "type": "tcp",
+                        "port": 1337
+                    },
+                    "paths": {
+                        "ws": {
+                            "auth": {
+                                "wampcra": {
+                                    "type": "static",
+                                    "users": {% salt['pillars.get']('swadges:users', {})|json %}
+                                }
+                            },
+                            "type": "websocket"
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

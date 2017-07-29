@@ -193,6 +193,7 @@ base:
     - network.time
     - utils
     - hosts
+    - swadges
 
   'find.magevent.net':
     - firewall

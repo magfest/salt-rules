@@ -1,0 +1,10 @@
+[Unit]
+Description=crossbar appliction router
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/crossbar start --config /etc/crossbar.json
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
