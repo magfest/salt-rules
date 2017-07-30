@@ -46,7 +46,7 @@ lxde:
       - xscreensaver-extras
       - xscreensaver-gl-base
       - xscreensaver-gl-extras
-      - yumex
+      - yumex-dnf
       - xorg-x11-drv-evdev
       - ghostscript
       - ghostscript-fonts
