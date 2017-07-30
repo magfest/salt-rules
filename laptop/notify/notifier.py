@@ -3,6 +3,8 @@ import socket
 import sys
 import os
 import threading
+import random
+import time
 
 sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 
@@ -10,6 +12,7 @@ server_address = ('0.0.0.0', 1337)
 sock.bind(server_address)
 
 def ding():
+  time.sleep(random.gammavariate(.75,2))
   os.system("aplay /usr/share/sounds/magfest/ding.wav")
   return
 
