@@ -27,9 +27,7 @@ base:
     - extlinux
     - graphics
     - kiosk
-    - challenges
     - selinux
-    - challenges.emulators
     - laptop.notify
     - hosts
 
