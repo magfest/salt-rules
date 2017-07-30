@@ -1,6 +1,6 @@
 notify-deps:
   pkg.installed:
-    - name: python
+    - name: python2
 
 notify-bin:
   file.managed:
