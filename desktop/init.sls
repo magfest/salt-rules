@@ -104,6 +104,9 @@ wallpaper:
 lxdm.conf:
   file.managed:
     - name: /etc/lxdm/lxdm.conf
+    - require:
+      - pkg: lxde
+    - makedirs: True
     - source:
       - salt://desktop/lxdm.conf
 
@@ -125,6 +128,9 @@ lxdeconf:
 /usr/share/lxdm/themes/Industrial/greeter.ui:
   file.managed:
     - source: salt://desktop/greeter.ui
+    - require:
+      - pkg: lxde
+    - makedirs: True
 
 /usr/share/icons/hicolor/128x128/apps/slack.png:
   file.managed:
@@ -154,3 +160,4 @@ lxdeconf:
 /usr/lib/firefox/browser/defaults/preferences/firefox-redhat-default-prefs.js:
   file.managed:
     - source: salt://desktop/prefs.js
+    - makedirs: True
