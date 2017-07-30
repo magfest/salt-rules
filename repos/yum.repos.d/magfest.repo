@@ -2,3 +2,9 @@
 https://mirrors.lug.mtu.edu/fedora/linux/releases/$releasever/Everything/$basearch/os/
 enabled=1
 gpgcheck=0
+
+[google]
+name = Google Chrome REpo
+baseurl=http://dl.google.com/linux/chrome/rpm/stable/x86_64
+enabled=1
+gpgcheck=0
