@@ -152,7 +152,7 @@
                             "auth": {
                                 "wampcra": {
                                     "type": "static",
-                                    "users": {{ salt['pillars.get']('swadges:users', {})|json }}
+                                    "users": {{ salt['pillar.get']('swadges:users', {})|json }}
                                 }
                             },
                             "type": "websocket"
