@@ -20,6 +20,7 @@ swadge-router-prereqs:
 
 crossbar:
   pip_state.installed:
+    - bin_env: /bin/pip3
     - require:
       - pkg: swadge-router-prereqs
   service.running:
