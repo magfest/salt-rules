@@ -3,10 +3,10 @@ swadge-router-prereqs:
     - pkgs:
       - libuv
       - jansson
-      - python3
-      - python3-devel
+      - python34
+      - python34-devel
       - redhat-rpm-config
-      - python3-pip
+      - python34-pip
       - gcc
 
 /etc/crossbar.json:
