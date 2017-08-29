@@ -69,8 +69,16 @@ base:
     - hosts
 
   'asterisk.magevent.net':
-    - asterisk
+    - firewall
+    - repos
     - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+    - asterisk
 
   'repo.magevent.net':
     - mrepo
