@@ -1,8 +1,8 @@
 asterisk:
   pkg.installed:
     - sources:
-      - pjproject: https://dl.dropboxusercontent.com/u/22486038/pjproject-2.5.5-2-x86_64.pkg.tar.xz
-      - asterisk: https://dl.dropboxusercontent.com/u/22486038/asterisk-13.10.0-2-x86_64.pkg.tar.xz
+      - pjproject: https://dl.dropboxusercontent.com/s/69jy4v329jgbc0d/pjproject-2.5.5-2-x86_64.pkg.tar.xz
+      - asterisk: https://dl.dropboxusercontent.com/s/1dbqlhwmg8bvl5s/asterisk-13.10.0-2-x86_64.pkg.tar.xz
   service.running:
     - enable: True
     - reload: True
