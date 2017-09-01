@@ -211,6 +211,7 @@ base:
     - network.time
     - utils
     - hosts
+    - find
 
   'stereo.magevent.net':
     - managed
