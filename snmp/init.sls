@@ -9,7 +9,7 @@ snmp-cmd:
   cmd.run:
     - creates:
       - /var/snmp.configured
-    - name: net-snmp-create-v3-user -ro -A {{ salt['pillar.get']('snmp:key', "snmppasskey") }} -X {{ salt['pillar.get']('snmp:key', "snmppasskey") }} -a SHA -x AES observium && touch /var/snmp.configured
+    - name: net-snmp-create-v3-user -ro -A {{ salt['pillar.get']('snmp:auth-key', "snmphashkey") }} -X {{ salt['pillar.get']('snmp:hash-key', "snmppasskey") }} -a SHA -x AES {{ salt['pillar.get']('snmp:username', "librenms") }} && touch /var/snmp.configured
 snmpd:
   service.running:
     - enable: true
