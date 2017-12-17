@@ -10,6 +10,7 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'role:laptop':
     - match: pillar
@@ -30,6 +31,7 @@ base:
     - selinux
     - laptop.notify
     - hosts
+    - snmp
 
   'role:dhcp-server':
     - match: pillar
@@ -43,11 +45,13 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'role:tftp-server':
     - match: pillar
     - tftp
     - hosts
+    - snmp
 
   'role:dns-server':
     - match: pillar
@@ -61,12 +65,14 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'salt.magevent.net':
     - managed.master
     - cloud
     - saltpad
     - hosts
+    - snmp
 
   'asterisk.magevent.net':
     - firewall
@@ -79,11 +85,13 @@ base:
     - utils
     - hosts
     - asterisk
+    - snmp
 
   'repo.magevent.net':
     - mrepo
     - hosts
     - managed
+    - snmp
 
   'tftp.magevent.net':
     - firewall
@@ -98,6 +106,7 @@ base:
     - voip-provision
     - ftp
     - hosts
+    - snmp
 
   'foreman.magevent.net':
     - firewall
@@ -108,6 +117,7 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'freeipa.magevent.net':
     - freeipa
@@ -120,11 +130,13 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'ntp*.magevent.net':
     - ntp
     - hosts
     - managed
+    - snmp
 
   'freeradius.magevent.net':
     - firewall
@@ -137,11 +149,13 @@ base:
     - utils
     - freeradius
     - hosts
+    - snmp
 
   'cups.magevent.net':
     - cups
     - hosts
     - managed
+    - snmp
 
   'noc.magevent.net':
     - match: pillar
@@ -154,6 +168,7 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'assman.magevent.net':
     - firewall
@@ -165,6 +180,7 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'smokeping.magevent.net':
     - firewall
@@ -176,6 +192,7 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'radios.magevent.net':
     - firewall
@@ -188,6 +205,7 @@ base:
     - utils
     - hosts
     - radios
+    - snmp
 
   'badges.magevent.net':
     - firewall
@@ -200,6 +218,7 @@ base:
     - utils
     - hosts
     - swadges
+    - snmp
 
   'find.magevent.net':
     - firewall
@@ -212,6 +231,7 @@ base:
     - utils
     - hosts
     - find
+    - snmp
 
   'stereo.magevent.net':
     - managed
@@ -221,6 +241,7 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'index.magevent.net':
     - webserver
@@ -233,6 +254,7 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'vpn.magevent.net':
     - index
@@ -245,6 +267,7 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
   'zoneminder.magevent.net':
     - index
@@ -257,4 +280,5 @@ base:
     - network.time
     - utils
     - hosts
+    - snmp
 
