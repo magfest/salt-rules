@@ -47,6 +47,7 @@ MODEL_C7960G = "c7960g"
 MODEL_P335 = 'p335'
 MODEL_C7902 = 'c7902'
 MODEL_YT26P = 'yt26p'
+MODEL_RINGER = "ringer"
 
 MODELS = {
     MODEL_C7940: Model(MODEL_C7940, 'Cisco 7940', 'CTLSEP{umac}.tlv', 'SIP'),
@@ -55,6 +56,7 @@ MODELS = {
     MODEL_P335: Model(MODEL_P335, 'Polycom 335', 'phone{umac}.cfg', 'SIP'),
     MODEL_C7902: Model(MODEL_C7902, 'Cisco 7902', 'ff{umac}', 'Skinny'),
     MODEL_YT26P: Model(MODEL_YT26P, 'Yealink T26P', '{umac}.cfg', 'SIP'),
+    MODEL_RINGER: Model(MODEL_RINGER, 'Visual Ringer', 'ringer_{umac}.json', 'SIP'),
 }
 
 MODEL_GROUPS = {
@@ -62,6 +64,7 @@ MODEL_GROUPS = {
     "Cisco 7902": [MODEL_C7902],
     "Polycom 335": [MODEL_P335],
     "Yealink T26P ": [MODEL_YT26P],
+    "Visual Ringer": [MODEL_RINGER],
 }
 
 def pretty_model(model):
@@ -177,6 +180,10 @@ def create_config(exten, mac, model, user):
                 password=user['password'],
                 extensions=enumerate(sorted(list(get_extens().items()), key=lambda v:v[1].get("desc", v[1].get("callerid", v[0]))))
             ))
+
+    elif model == MODEL_RINGER:
+        with open(os.path.join(TFTP_DIR, 'ringer_{}.json'.format(mac.lower())), 'w') as target:
+            json.dump({'username': user['username'], 'password': user['password'], 'sip_host': '10.101.22.12'}, target)
 
 def reload_asterisk():
     requests.post(ASTERISK_URL)
