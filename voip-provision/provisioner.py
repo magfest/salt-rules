@@ -32,6 +32,7 @@ INDEX_TEMPLATE = "index.html.jinja"
 USERS_TEMPLATE = "ast_sip.jinja"
 SKINNY_TEMPLATE = "ast_skinny.jinja"
 EXTENS_TEMPLATE = "ast_extens.jinja"
+QUEUES_TEMPLATE = "ast_queues.jinja"
 
 CISCO_TEMPLATE = "cisco_SIP.cnf.jinja"
 POLYCOM_TEMPLATE = "phoneMAC.cfg.jinja"
@@ -243,6 +244,29 @@ def asterisk_skinny():
 @APP.route('/asterisk_extens')
 def asterisk_extensions():
     template = jenv.get_template(EXTENS_TEMPLATE)
+
+    extensions = get_extens()
+    for user in get_users():
+        if user['exten'] not in extensions:
+            extensions[user['exten']] = {
+                'users': [],
+                'desc': user['exten'],
+                'cid': user['exten'],
+            }
+
+        if 'users' not in extensions[user['exten']]:
+            extensions[user['exten']]['users'] = []
+
+        if 'chan_address' in user:
+            extensions[user['exten']]['users'].append(user['chan_address'].format(**user))
+        else:
+            extensions[user['exten']]['users'].append(user.get('chan', 'SIP') + "/" + user['username'])
+
+    return template.render(extens=extensions)
+
+@APP.route('/asterisk_queues')
+def asterisk_queues():
+    template = jenv.get_template(QUEUES_TEMPLATE)
 
     extensions = get_extens()
     for user in get_users():
