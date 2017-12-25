@@ -2,9 +2,16 @@
 {% if not vals.get('special', False) and ('users' in vals and vals['users'] or vals.get('ring_extra', [])) %}
 exten => {{ extension }},1,Dial({{ '&'.join((vals.get('users', []) + vals.get('ring_extra', []))) }},60)
 same => n,Hangup
+{% if vals.get('queued', False) %}
+exten => {{ extension }},1,Queue({{ vals.get('cid', '').replace(' ', '') }})
+{% for alt in vals.get('alt_extens', []) %}
+exten => {{ extension }},1,Queue({{ vals.get('cid', '').replace(' ', '') }})
+{% endfor %}
+{% else %}
 {% for alt in vals.get('alt_extens', []) %}
 exten => {{ alt }},1,Dial({{ '&'.join((vals.get('users', []) + vals.get('ring_extra', []))) }},60)
 same => n,Hangup
 {% endfor %}
+{% endif %}
 {% endif %}
 {% endfor %}

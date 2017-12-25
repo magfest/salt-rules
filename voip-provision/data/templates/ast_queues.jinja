@@ -1,0 +1,25 @@
+{% for extension, vals in extens.items() %}
+{% if vals.get('queued', False) %}
+[{{ vals.get('cid', '').replace(' ', '') }}]
+music = default
+strategy = ringall
+ringinuse = no
+timeout = 30
+retry = 1
+wrapuptime = 5
+maxlen = 0
+announce-frequency = 90
+announce-position = yes
+anounce-holdtime = no
+
+{% for user in vals.get('users', []) + vals.get('ring_extra', []) %}
+member => {{ user }},1
+{% endfor %}
+{% for prio, numbers in enumerate(vals.get('queue_overflows', [])) %}
+{% for num in numbers %}
+member => {{ num }},{{ prio + 2 }}
+{% endfor %}
+{% endfor %}
+
+{% endif %}
+{% endfor %}
