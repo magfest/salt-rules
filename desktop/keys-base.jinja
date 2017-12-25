@@ -1,3 +1,5 @@
 {% if key_mgmt == "wpa-psk" %}
 WPA_PSK='{{ key }}'
+{% elif key_mgmt == "wpa-eap" %}
+IEEE_8021X_PASSWORD={{ options['password'] }}
 {% endif %}

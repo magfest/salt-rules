@@ -23,4 +23,13 @@
       key: {{ options.get('key', '') }}
       options: {{ options }}
 {% endif %}
+{% if 'cert' in options %}
+/etc/ssl/wifi/{{ ssid.lower().replace(' ', '_') }}.crt:
+  file.managed:
+    - user: root
+    - group: root
+    - mode: 644
+    - contents_pillar: wifi:networks:{{ ssid }}:cert
+    - makedirs: True
+{% endif %}
 {% endfor %}
