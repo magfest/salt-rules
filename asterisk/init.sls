@@ -41,7 +41,7 @@ asterisk-daemon-reload:
     - source: salt://asterisk/sounds
     - makedirs: True
 
-{% for conf_file in ['skinny', 'sip', 'extensions', 'rtp', 'confbridge'] %}
+{% for conf_file in ['skinny', 'sip', 'extensions', 'rtp', 'confbridge', 'queues', 'iax'] %}
 /etc/asterisk/{{ conf_file }}.conf:
   file.managed:
     - source: salt://asterisk/conf/{{ conf_file }}.conf
