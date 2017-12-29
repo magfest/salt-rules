@@ -3,7 +3,7 @@
 $TTL 3600
 ; magevent.net
 @ IN SOA dns1.magevent.net. admin.magevent.net. (
-	2017122801  ; Serial
+	2017122803  ; Serial
 	28800      ; Refresh
 	1800       ; Retry
 	604800     ; Expire - 1 week
@@ -28,7 +28,8 @@ _ldap._tcp		IN	SRV	10	10	389	freeipa
 @			IN	A	10.101.22.24
 www			IN	A	10.101.22.24
 staffsuite		IN	CNAME	magsuite.jennytru.com.
-fixit			IN	CNAME	web20a.us-east-1.cloud.groundcord.net.
+fixit			IN	A	52.45.46.140
+fixit			IN	AAAA	2600:1f18:423b:a500:76bf:d287:e6f9:2306
 
 {%- set dns_defaults = salt['pillar.get']('dns:defaults') -%}
 {%- for name, network in salt['pillar.get']('dns:networks').items() %}
