@@ -1,5 +1,4 @@
-
-% set admins = salt['utils.merged_pillars']('admins:default', 'admins:' + grains['host']) %}
+{% set admins = salt['utils.merged_pillars']('admins:default', 'admins:' + grains['host']) %}
 cups:
   pkg.installed: []
   group.present:
