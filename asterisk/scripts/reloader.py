@@ -8,7 +8,7 @@ APP = flask.Flask(__name__)
 def reload():
     os.system("getast_conf users &")
     os.system("getast_conf extens &")
-    os.system("getast_conf skinnny &")
+    #os.system("getast_conf skinnny &")
     os.system("getast_conf queues &")
     os.system("systemctl reload asterisk &")
     return ""
