@@ -19,11 +19,19 @@ cups:
     - enable: True
     - require:
       - pkg: cups
+    - watch:
+      - file: /etc/cups/cupsd.conf
 
 cups-web:
   service.running:
     - name: cups-browsed
     - enable: True
+    - require:
+      - pkg: cups
+
+/etc/cups/cupsd.conf:
+  file.managed:
+    - source: salt://cups/cupsd.conf
     - require:
       - pkg: cups
 
