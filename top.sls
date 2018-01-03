@@ -32,6 +32,7 @@ base:
     - laptop.notify
     - hosts
     - snmp
+    - cups.client
 
   'role:dhcp-server':
     - match: pillar
