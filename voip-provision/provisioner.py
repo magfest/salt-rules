@@ -286,6 +286,6 @@ def asterisk_queues():
         else:
             extensions[user['exten']]['users'].append(user.get('chan', 'SIP') + "/" + user['username'])
 
-    return template.render(extens=extensions)
+    return template.render(extens=extensions, enumerate=enumerate)
 
 APP.run('0.0.0.0', port=8080, debug=True)
