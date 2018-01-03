@@ -10,7 +10,7 @@ wrapuptime = 5
 maxlen = 0
 announce-frequency = 90
 announce-position = yes
-anounce-holdtime = no
+announce-holdtime = no
 
 {% for user in vals.get('users', []) + vals.get('ring_extra', []) %}
 member => {{ user }},1
