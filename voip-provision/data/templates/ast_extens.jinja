@@ -4,12 +4,15 @@
 exten => {{ extension }},1,Queue({{ vals.get('cid', '').replace(' ', '') }})
 {% for alt in vals.get('alt_extens', []) %}
 exten => {{ alt }},1,Queue({{ vals.get('cid', '').replace(' ', '') }})
+same => n,Goto(phones,0,1)
 {% endfor %}
 {% else %}
 exten => {{ extension }},1,Dial({{ '&'.join((vals.get('users', []) + vals.get('ring_extra', []))) }},60)
+same => n,Goto(phones,0,1)
 same => n,Hangup
 {% for alt in vals.get('alt_extens', []) %}
 exten => {{ alt }},1,Dial({{ '&'.join((vals.get('users', []) + vals.get('ring_extra', []))) }},60)
+same => n,Goto(phones,0,1)
 same => n,Hangup
 {% endfor %}
 {% endif %}
