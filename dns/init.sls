@@ -21,3 +21,12 @@ named:
       - service: named
     - context:
       ignore_hosts: []
+
+/etc/systemd/system/named.service:
+  file.managed:
+    - source: salt://dns/named.service
+    - template: jinja
+  module.run:
+    - name: service.systemctl_reload
+    - onchanges:
+      - file: /etc/systemd/system/named.service
