@@ -27,7 +27,6 @@ _ldap._tcp		IN	SRV	10	10	389	freeipa
 
 @			IN	A	107.170.205.68
 www			IN	A	107.170.205.68
-staffsuite		IN	CNAME	magsuite.jennytru.com.
 wiki			IN	A	199.58.201.52
 techops			IN	A	159.203.123.61
 foreman			IN	A	10.101.22.8
