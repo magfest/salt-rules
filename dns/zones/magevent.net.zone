@@ -27,7 +27,6 @@ _ldap._tcp		IN	SRV	10	10	389	freeipa
 
 @			IN	A	10.101.22.24
 www			IN	A	10.101.22.24
-staffsuite		IN	CNAME	magsuite.jennytru.com.
 fixit			IN	A	52.45.46.140
 fixit			IN	AAAA	2600:1f18:423b:a500:76bf:d287:e6f9:2306
 
