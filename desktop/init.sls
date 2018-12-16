@@ -49,7 +49,6 @@ lxde:
       - yumex-dnf
       - xorg-x11-drv-evdev
       - ghostscript
-      - ghostscript-fonts
       - hplip
       - google-chrome-stable
       - words
