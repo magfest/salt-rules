@@ -25,9 +25,7 @@ base:
     - desktop.utilities
     - desktop.admins
     - desktop.wifi
-    - extlinux
     - graphics
-    - kiosk
     - selinux
     - laptop.notify
     - hosts
