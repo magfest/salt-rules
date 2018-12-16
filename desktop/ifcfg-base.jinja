@@ -7,7 +7,7 @@ IEEE_8021X_EAP_METHODS={{ options['eap'] }}
 IEEE_8021X_IDENTITY={{ options['identity'] }}
 IEEE_8021X_PASSWORD_FLAGS=ask
 IEEE_8021X_INNER_AUTH_METHODS={{ options['inner_auth'] }}
-IEEE_8021X_CA_CERT=/etc/pki/wifi/{{ ssid.lower().replace(' ', '_') }}.crt
+IEEE_8021X_CA_CERT=/etc/ssl/wifi/{{ ssid.lower().replace(' ', '_') }}.crt
 {% endif %}
 {% endif %}
 TYPE=Wireless
