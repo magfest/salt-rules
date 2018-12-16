@@ -46,7 +46,6 @@ lxde:
       - xscreensaver-extras
       - xscreensaver-gl-base
       - xscreensaver-gl-extras
-      - yumex-dnf
       - xorg-x11-drv-evdev
       - ghostscript
       - hplip
