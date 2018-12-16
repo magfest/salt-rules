@@ -28,6 +28,8 @@ rest_cherrypy:
   app: /srv/saltpad/index.html
   app_path: /saltpad
 
+autosign_file: /etc/salt/autosign.conf
+
 external_auth:
   pam:
     root:
