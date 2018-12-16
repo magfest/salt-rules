@@ -3,7 +3,7 @@ Encoding=UTF-8
 Type=Application
 Icon=google-chrome
 Name=Chrome
-Exec=google-chrome http://magfest.org
+Exec=google-chrome http://index.magevent.net
 
 Comment[en_US]=
 

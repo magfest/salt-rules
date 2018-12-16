@@ -3,7 +3,7 @@ Encoding=UTF-8
 Type=Application
 Icon=firefox
 Name=Firefox
-Exec=firefox http://magfest.org
+Exec=firefox http://index.magevent.net
 
 Comment[en_US]=
 
