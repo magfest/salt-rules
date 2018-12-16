@@ -114,6 +114,13 @@ lxdeconf:
     - source:
       - salt://desktop/desktop-items-0.conf
     - makedirs: True
+    
+pcmanfmconf:
+  file.managed:
+    - name: /home/magfest/.config/pcmanfm/LXDE/pcmanfm.conf
+    - source:
+      - salt://desktop/pcmanfm.conf
+    - makedirs: True
 
 /home/magfest:
   file.directory:
