@@ -1,5 +1,10 @@
+[magfest-fedora-updates]
+baseurl= http://repo.magevent.net/fedora/updates/$releasever/Everything/$basearch/
+enabled=1
+gpgcheck=0
+
 [magfest-fedora]
-baseurl=https://mirrors.lug.mtu.edu/fedora/linux/releases/$releasever/Everything/$basearch/os/
+baseurl=http://repo.magevent.net/fedora/releases/$releasever/Everything/$basearch/os/
 enabled=1
 gpgcheck=0
 
