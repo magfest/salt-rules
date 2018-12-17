@@ -5,9 +5,7 @@ KEY_MGMT={{ options['key_mgmt']|upper }}
 {% if options['key_mgmt'] == 'wpa-eap' %}
 IEEE_8021X_EAP_METHODS={{ options['eap'] }}
 IEEE_8021X_IDENTITY={{ options['identity'] }}
-IEEE_8021X_PASSWORD_FLAGS=ask
 IEEE_8021X_INNER_AUTH_METHODS={{ options['inner_auth'] }}
-IEEE_8021X_CA_CERT=/etc/ssl/wifi/{{ ssid.lower().replace(' ', '_') }}.crt
 {% endif %}
 {% endif %}
 TYPE=Wireless
@@ -21,9 +19,7 @@ IPV6_FAILURE_FATAL=no
 NAME={{ ssid }}
 UUID={{ uuid }}
 ONBOOT=yes
-SECURITYMODE=open
-PEERDNS=yes
-PEERROUTES=yes
-IPV6_PEERDNS=yes
-IPV6_PEERROUTES=yes
-USERS=magfest
+MAC_ADDRESS_RANDOMIZATION=default
+PROXY_METHOD=none
+BROWSER_ONLY=no
+IPV6_PRIVACY=no
