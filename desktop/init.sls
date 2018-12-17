@@ -122,6 +122,13 @@ pcmanfmconf:
       - salt://desktop/pcmanfm.conf
     - makedirs: True
 
+libfmconf:
+  file.managed:
+    - name: /home/magfest/.config/libfm/libfm.conf
+    - source:
+      - salt://desktop/libfm.conf
+    - makedirs: True
+
 /home/magfest:
   file.directory:
     - user: magfest
