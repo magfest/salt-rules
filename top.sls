@@ -118,19 +118,6 @@ base:
     - hosts
     - snmp
 
-  'freeipa.magevent.net':
-    - freeipa
-    - firewall
-    - repos
-    - managed
-    - managed.update
-    - login.ssh
-    - login.admin
-    - network.time
-    - utils
-    - hosts
-    - snmp
-
   'ntp*.magevent.net':
     - ntp
     - hosts
@@ -219,19 +206,6 @@ base:
     - swadges
     - snmp
 
-  'find.magevent.net':
-    - firewall
-    - repos
-    - managed
-    - managed.update
-    - login.ssh
-    - login.admin
-    - network.time
-    - utils
-    - hosts
-    - find
-    - snmp
-
   'stereo.magevent.net':
     - managed
     - managed.update
@@ -268,16 +242,4 @@ base:
     - hosts
     - snmp
 
-  'zoneminder.magevent.net':
-    - index
-    - firewall
-    - repos
-    - managed
-    - managed.update
-    - login.ssh
-    - login.admin
-    - network.time
-    - utils
-    - hosts
-    - snmp
 
