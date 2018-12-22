@@ -14,6 +14,7 @@ zabbix-agent:
     - require:
       - pkg: zabbix-agent
       - file: /etc/zabbix/zabbix_agentd.conf
+      - file: /var/run/zabbix_agentd.pid
 
 /etc/zabbix/zabbix_agentd.conf:
   file.managed:
@@ -23,6 +24,10 @@ zabbix-agent:
       - pkg: zabbix-agent
     - watch_in:
       - service: zabbix-agent
-
+/var/run/zabbix_agentd.pid:
+  file.managed:
+    - user: zabbix
+    - group: zabbix
+    - mode: '0644'
 
 
