@@ -11,6 +11,7 @@ base:
     - utils
     - hosts
     - snmp
+    - zabbix
 
   'role:laptop':
     - match: pillar
