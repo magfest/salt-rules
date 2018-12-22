@@ -72,6 +72,7 @@ base:
     - saltpad
     - hosts
     - snmp
+    - zabbix
 
   'asterisk.magevent.net':
     - firewall
