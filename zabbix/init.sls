@@ -15,7 +15,7 @@ zabbix-agent:
       - pkg: zabbix-agent
       - file: /etc/zabbix/zabbix_agentd.conf
 
-/etc/zabbix/zabbix_agent.conf:
+/etc/zabbix/zabbix_agentd.conf:
   file.managed:
     - source: salt://zabbix/zabbix_agentd.conf
     - makedirs: True
