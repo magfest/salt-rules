@@ -93,6 +93,7 @@ base:
     - hosts
     - managed
     - snmp
+    - zabbix
 
   'tftp.magevent.net':
     - firewall
@@ -108,6 +109,7 @@ base:
     - ftp
     - hosts
     - snmp
+    - zabbix
 
   'foreman.magevent.net':
     - firewall
@@ -125,6 +127,7 @@ base:
     - hosts
     - managed
     - snmp
+    - zabbix
 
   'freeradius.magevent.net':
     - firewall
@@ -138,12 +141,14 @@ base:
     - freeradius
     - hosts
     - snmp
+    - zabbix
 
   'cups.magevent.net':
     - cups
     - hosts
     - managed
     - snmp
+    - zabbix
 
   'noc.magevent.net':
     - match: pillar
@@ -181,6 +186,7 @@ base:
     - utils
     - hosts
     - snmp
+    - zabbix
 
   'radios.magevent.net':
     - firewall
@@ -194,6 +200,7 @@ base:
     - hosts
     - radios
     - snmp
+    - zabbix
 
   'badges.magevent.net':
     - firewall
@@ -207,6 +214,7 @@ base:
     - hosts
     - swadges
     - snmp
+    - zabbix
 
   'stereo.magevent.net':
     - managed
@@ -217,6 +225,7 @@ base:
     - utils
     - hosts
     - snmp
+    - zabbix
 
   'index.magevent.net':
     - webserver
@@ -230,6 +239,7 @@ base:
     - utils
     - hosts
     - snmp
+    - zabbix
 
   'vpn.magevent.net':
     - index
