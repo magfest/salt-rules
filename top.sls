@@ -46,12 +46,14 @@ base:
     - utils
     - hosts
     - snmp
+    - zabbix
 
   'role:tftp-server':
     - match: pillar
     - tftp
     - hosts
     - snmp
+    - zabbix
 
   'role:dns-server':
     - match: pillar
@@ -66,6 +68,7 @@ base:
     - utils
     - hosts
     - snmp
+    - zabbix
 
   'salt.magevent.net':
     - managed.master
