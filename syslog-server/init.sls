@@ -16,3 +16,13 @@ rsyslog:
       - pkg: rsyslog
     - watch_in:
       - service: rsyslog
+
+/etc/cron.daily/compress_syslogs.sh:
+  file.managed:
+    - source: salt://syslog-server/compress_syslogs.sh
+    - makedirs: True
+    - mode: '0755'
+    - user: root
+    - group: root
+    - require:
+      - pkg: rsyslog
