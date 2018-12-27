@@ -26,6 +26,7 @@ zabbix-agent:
       - service: zabbix-agent
 /var/run/zabbix_agentd.pid:
   file.managed:
+    - replace: False
     - user: zabbix
     - group: zabbix
     - mode: '0644'
