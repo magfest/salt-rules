@@ -259,4 +259,6 @@ base:
     - hosts
     - snmp
 
-
+  'syslog.magevent.net':
+    - container
+    - syslog-server
