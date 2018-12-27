@@ -47,6 +47,7 @@ base:
     - hosts
     - snmp
     - zabbix
+    - syslog
 
   'role:tftp-server':
     - match: pillar
