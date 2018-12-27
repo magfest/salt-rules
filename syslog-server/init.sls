@@ -1,12 +1,16 @@
-rsyslog:
-  pkg.installed:
-    - name: rsyslog
-  service.running:
-    - enable: True
-    - reload: True
-    - require:
-      - pkg: rsyslog
-      - file: /etc/rsyslog.conf
+include:
+  - syslog
+
+extend:
+  rsyslog:
+    pkg.installed:
+      - name: rsyslog
+    service.running:
+      - enable: True
+      - restart: True
+      - require:
+        - pkg: rsyslog
+        - file: /etc/rsyslog.conf
 
 /etc/rsyslog.conf:
   file.managed:
