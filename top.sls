@@ -78,6 +78,7 @@ base:
     - hosts
     - snmp
     - zabbix
+    - syslog
 
   'asterisk.magevent.net':
     - firewall
