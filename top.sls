@@ -260,5 +260,15 @@ base:
     - snmp
 
   'syslog.magevent.net':
-    - container
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+    - snmp
+    - zabbix
     - syslog-server
