@@ -12,6 +12,7 @@ base:
     - hosts
     - snmp
     - zabbix
+    - syslog
 
   'role:laptop':
     - match: pillar
@@ -55,6 +56,7 @@ base:
     - hosts
     - snmp
     - zabbix
+    - syslog
 
   'role:dns-server':
     - match: pillar
@@ -70,6 +72,7 @@ base:
     - hosts
     - snmp
     - zabbix
+    - syslog
 
   'salt.magevent.net':
     - managed.master
@@ -99,6 +102,7 @@ base:
     - managed
     - snmp
     - zabbix
+    - syslog
 
   'tftp.magevent.net':
     - firewall
@@ -115,6 +119,7 @@ base:
     - hosts
     - snmp
     - zabbix
+    - syslog
 
   'foreman.magevent.net':
     - firewall
@@ -133,6 +138,7 @@ base:
     - managed
     - snmp
     - zabbix
+    - syslog
 
   'freeradius.magevent.net':
     - firewall
@@ -147,6 +153,7 @@ base:
     - hosts
     - snmp
     - zabbix
+    - syslog
 
   'cups.magevent.net':
     - cups
@@ -154,6 +161,7 @@ base:
     - managed
     - snmp
     - zabbix
+    - syslog
 
   'noc.magevent.net':
     - match: pillar
@@ -192,6 +200,7 @@ base:
     - hosts
     - snmp
     - zabbix
+    - syslog
 
   'radios.magevent.net':
     - firewall
@@ -206,6 +215,7 @@ base:
     - radios
     - snmp
     - zabbix
+    - syslog
 
   'badges.magevent.net':
     - firewall
@@ -220,6 +230,7 @@ base:
     - swadges
     - snmp
     - zabbix
+    - syslog
 
   'stereo.magevent.net':
     - managed
@@ -231,6 +242,7 @@ base:
     - hosts
     - snmp
     - zabbix
+    - syslog
 
   'index.magevent.net':
     - webserver
@@ -245,6 +257,7 @@ base:
     - hosts
     - snmp
     - zabbix
+    - syslog
 
   'vpn.magevent.net':
     - index
