@@ -3,7 +3,7 @@ rsyslog:
     - name: rsyslog
   service.running:
     - enable: True
-    - reload: True
+    - restart: True
     - require:
       - pkg: rsyslog
       - file: /etc/rsyslog.d/remote-server.conf
