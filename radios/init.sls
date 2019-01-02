@@ -5,6 +5,7 @@ radios-reqs:
       - python
       - python-jinja2
       - python-flask
+      - python-gunicorn
 
 /opt/radios:
   file.directory:
