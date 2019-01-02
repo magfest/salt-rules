@@ -14,7 +14,7 @@ tftp-hpa:
       - group: tftp
       - user: tftp
   archive.extracted:
-    - source: https://dl.dropboxusercontent.com/u/22486038/tftp.tar.gz
+    - source: https://www.dropbox.com/s/n1p4do50cqrpi30/tftp.tar.gz?dl=1
     - source_hash: sha256=6b38d5c59102e9de299c174690ef4d2f3a2ca69066a56362d9607cb0e6f2353b
     - if_missing: /srv/tftp/tftpboot/sip.ld
     - archive_format: tar
