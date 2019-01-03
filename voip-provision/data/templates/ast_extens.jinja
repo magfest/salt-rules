@@ -7,11 +7,17 @@ exten => {{ alt }},1,Queue({{ vals.get('cid', '').replace(' ', '') }})
 same => n,Goto(phones,0,1)
 {% endfor %}
 {% else %}
-exten => {{ extension }},1,Dial({{ '&'.join((vals.get('users', []) + vals.get('ring_extra', []))) }},60)
+exten => {{ extension }},1,Dial({{ '&'.join((vals.get('users', []) + vals.get('ring_extra', []))) }},30)
+{% for others in vals.get('fallback', []) %}
+same => n,Dial({{ '&'.join(others) }},30)
+{% endfor %}
 same => n,Goto(phones,0,1)
 same => n,Hangup
 {% for alt in vals.get('alt_extens', []) %}
-exten => {{ alt }},1,Dial({{ '&'.join((vals.get('users', []) + vals.get('ring_extra', []))) }},60)
+exten => {{ alt }},1,Dial({{ '&'.join((vals.get('users', []) + vals.get('ring_extra', []))) }},30)
+{% for others in vals.get('fallback', []) %}
+same => n,Dial({{ '&'.join(others) }},30)
+{% endfor %}
 same => n,Goto(phones,0,1)
 same => n,Hangup
 {% endfor %}
