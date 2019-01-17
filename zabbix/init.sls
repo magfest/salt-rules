@@ -24,11 +24,10 @@ zabbix-agent:
       - pkg: zabbix-agent
     - watch_in:
       - service: zabbix-agent
-/var/run/zabbix_agentd.pid:
-  file.managed:
-    - replace: False
+
+/var/run/zabbix:
+  file.directory:
     - user: zabbix
     - group: zabbix
-    - mode: '0644'
-
+    - mode: '0755'
 
