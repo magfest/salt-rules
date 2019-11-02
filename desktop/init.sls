@@ -97,7 +97,7 @@ magfest:
 wallpaper:
   file.managed:
     - name: /usr/share/backgrounds/magfest.png
-    - source: salt://desktop/magfest.png
+    - source: salt://desktop/TechOpsWP4.png
 
 lxdm.conf:
   file.managed:
