@@ -1,4 +1,4 @@
-{% set admins = salt['utils.merged_pillars']('admins:default', 'admins:' + grains['host']) %}
+{% set admins = salt['pillar.get']('admins:default') %}
 {% for admin, properties in admins.items() %}
 {{ admin }}:
   user.present:
