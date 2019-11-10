@@ -155,7 +155,7 @@ base:
     - zabbix
     - syslog
     
-    'freeradius2020.magevent.net':
+  'freeradius2020.magevent.net':
     - firewall
     - repos
     - managed
