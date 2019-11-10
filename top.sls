@@ -154,6 +154,20 @@ base:
     - snmp
     - zabbix
     - syslog
+    
+    'freeradius2020.magevent.net':
+    - firewall
+    - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+    - snmp
+    - zabbix
+    - syslog
 
   'cups.magevent.net':
     - cups
@@ -275,6 +289,19 @@ base:
   'syslog.magevent.net':
     - firewall
     - repos
+    - managed
+    - managed.update
+    - login.ssh
+    - login.admin
+    - network.time
+    - utils
+    - hosts
+    - snmp
+    - zabbix
+    - syslog-server
+    
+  'netbox.magevent.net':
+    - firewall
     - managed
     - managed.update
     - login.ssh
