@@ -15,7 +15,7 @@ salt-group:
   group.present:
     - name: salt
     - system: True
-    {% set admins = salt['utils.merged_pillars']('admins:default', 'admins:' + grains['host']) %}
+    {% set admins = salt['pillar.get']('admins:default') %}
     {% if admins %}
     - members:
       {% for admin in admins.keys() %}
