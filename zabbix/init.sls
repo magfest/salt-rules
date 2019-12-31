@@ -14,7 +14,7 @@ zabbix-agent:
     - require:
       - pkg: zabbix-agent
       - file: /etc/zabbix/zabbix_agentd.conf
-      - file: /var/run/zabbix_agentd.pid
+      - file: /var/run/zabbix
 
 /etc/zabbix/zabbix_agentd.conf:
   file.managed:
