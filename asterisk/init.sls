@@ -1,8 +1,9 @@
 asterisk:
   pkg.installed:
-    - sources:
-      - pjproject: https://dl.dropboxusercontent.com/s/69jy4v329jgbc0d/pjproject-2.5.5-2-x86_64.pkg.tar.xz
-      - asterisk: https://dl.dropboxusercontent.com/s/1dbqlhwmg8bvl5s/asterisk-13.10.0-2-x86_64.pkg.tar.xz
+    - pkgs:
+      - asterisk
+      - asterisk-sip
+      - asterisk-sounds-core-en-wav
   service.running:
     - enable: True
     - reload: True
@@ -12,8 +13,8 @@ asterisk:
 reloader-deps:
   pkg.installed:
     - pkgs:
-      - python
-      - python-flask
+      - python2
+      - python2-flask
 
 reloader-service:
   file.managed:
@@ -36,7 +37,7 @@ asterisk-daemon-reload:
     - name: systemctl daemon-reload
     - runas: root
 
-/var/lib/asterisk/sounds/en/magfest:
+/usr/share/asterisk/sounds/magfest:
   file.recurse:
     - source: salt://asterisk/sounds
     - makedirs: True
