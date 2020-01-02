@@ -30,6 +30,7 @@ www			IN	A	10.101.22.24
 fixit			IN	A	52.45.46.140
 fixit			IN	AAAA	2600:1f18:423b:a500:76bf:d287:e6f9:2306
 streaming               IN      CNAME   streaming-456449487.us-east-1.elb.amazonaws.com.
+coldbrew                IN      CNAME   hydrophobic-pheasant-7qpulrttf80t5n3leh0etcff.herokudns.com
 {%- set dns_defaults = salt['pillar.get']('dns:defaults') -%}
 {%- for name, network in salt['pillar.get']('dns:networks').items() %}
 ; {{ name }}
